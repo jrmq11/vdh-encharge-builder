@@ -1,8 +1,8 @@
 {
  "spec": 1,
  "flow": {
-  "key": "lw_fonts",
-  "name": "Font Codes Delivery + Follow-up",
+  "key": "lw_elements",
+  "name": "Element Codes Delivery + Follow-up",
   "status": "gated"
  },
  "settings": {
@@ -12,7 +12,7 @@
  "trigger": {
   "key": "t1",
   "op": "TAG ADDED",
-  "tag": "lead_canva_font_codes",
+  "tag": "lead_canva_element_codes",
   "next": "c1"
  },
  "steps": [
@@ -23,7 +23,7 @@
     "all": [
      [
       "tag",
-      "lead_canva_font_codes",
+      "lead_canva_element_codes",
       "present"
      ],
      [
@@ -39,7 +39,7 @@
   {
    "key": "x1",
    "op": "END",
-   "flow": "lw_elements",
+   "flow": "lw_fonts",
    "next": "x2"
   },
   {
@@ -52,7 +52,7 @@
    "key": "r1",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_lw_elements",
+    "in_flow_lw_fonts",
     "in_flow_lw_template"
    ],
    "next": "a1"
@@ -61,14 +61,14 @@
    "key": "a1",
    "op": "ADD TAG",
    "tags": [
-    "in_flow_lw_fonts"
+    "in_flow_lw_elements"
    ],
    "next": "s1"
   },
   {
    "key": "s1",
    "op": "SEND",
-   "email": "lw_fonts_1",
+   "email": "lw_elements_1",
    "next": "w1",
    "onBounced": "r2"
   },
@@ -76,7 +76,7 @@
    "key": "r2",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_lw_fonts"
+    "in_flow_lw_elements"
    ],
    "next": "x3"
   },
@@ -99,7 +99,7 @@
     "all": [
      [
       "tag",
-      "lead_canva_font_codes",
+      "lead_canva_element_codes",
       "present"
      ],
      [
@@ -116,7 +116,7 @@
    "key": "r3",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_lw_fonts"
+    "in_flow_lw_elements"
    ],
    "next": "x4"
   },
@@ -129,7 +129,7 @@
   {
    "key": "s2",
    "op": "SEND",
-   "email": "lw_fonts_2",
+   "email": "lw_elements_2",
    "next": "w2",
    "onBounced": "r2"
   },
@@ -178,7 +178,7 @@
    "key": "a2",
    "op": "ADD TAG",
    "tags": [
-    "lead_welcome_fonts_complete"
+    "lead_welcome_elements_complete"
    ],
    "next": "r4"
   },
@@ -186,7 +186,7 @@
    "key": "r4",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_lw_fonts"
+    "in_flow_lw_elements"
    ],
    "next": "x5"
   },
@@ -203,7 +203,7 @@
     "all": [
      [
       "tag",
-      "lead_canva_font_codes",
+      "lead_canva_element_codes",
       "present"
      ],
      [
@@ -220,7 +220,7 @@
    "key": "r5",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_lw_fonts"
+    "in_flow_lw_elements"
    ],
    "next": "x6"
   },
@@ -233,7 +233,7 @@
   {
    "key": "s3",
    "op": "SEND",
-   "email": "lw_fonts_3",
+   "email": "lw_elements_3",
    "next": "w3",
    "onBounced": "r2"
   },
@@ -333,7 +333,7 @@
    "key": "a3",
    "op": "ADD TAG",
    "tags": [
-    "lead_welcome_fonts_complete"
+    "lead_welcome_elements_complete"
    ],
    "next": "r6"
   },
@@ -341,7 +341,7 @@
    "key": "r6",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_lw_fonts"
+    "in_flow_lw_elements"
    ],
    "next": "x7"
   },
@@ -358,7 +358,7 @@
     "all": [
      [
       "tag",
-      "lead_canva_font_codes",
+      "lead_canva_element_codes",
       "present"
      ],
      [
@@ -375,7 +375,7 @@
    "key": "r7",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_lw_fonts"
+    "in_flow_lw_elements"
    ],
    "next": "x8"
   },
@@ -405,7 +405,7 @@
    "key": "r8",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_lw_fonts"
+    "in_flow_lw_elements"
    ],
    "next": "x9"
   },
@@ -419,7 +419,7 @@
    "key": "f1",
    "op": "SET FIELD",
    "field": "flow_lane_library",
-   "value": "lw_fonts",
+   "value": "lw_elements",
    "next": "w7"
   },
   {
@@ -437,7 +437,7 @@
       "field",
       "flow_lane_library",
       "is",
-      "lw_fonts"
+      "lw_elements"
      ]
     ]
    },
@@ -448,7 +448,7 @@
    "key": "r9",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_lw_fonts"
+    "in_flow_lw_elements"
    ],
    "next": "x10"
   },
@@ -461,7 +461,7 @@
   {
    "key": "s4",
    "op": "SEND",
-   "email": "lw_fonts_4",
+   "email": "lw_elements_4",
    "next": "f3",
    "onBounced": "f2"
   },
@@ -476,7 +476,7 @@
    "key": "r10",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_lw_fonts"
+    "in_flow_lw_elements"
    ],
    "next": "x11"
   },
@@ -497,7 +497,7 @@
    "key": "f4",
    "op": "SET FIELD",
    "field": "library_offer_code",
-   "value": "FONTLEAD10",
+   "value": "ELEMENTLEAD10",
    "next": "f5"
   },
   {
@@ -516,7 +516,7 @@
    "key": "a4",
    "op": "ADD TAG",
    "tags": [
-    "lead_welcome_fonts_complete"
+    "lead_welcome_elements_complete"
    ],
    "next": "r11"
   },
@@ -524,7 +524,7 @@
    "key": "r11",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_lw_fonts"
+    "in_flow_lw_elements"
    ],
    "next": "x12"
   },
@@ -537,7 +537,7 @@
   {
    "key": "n2",
    "op": "EXITS",
-   "text": "every branch ends REMOVE TAG → End Flow, and each Send Email step’s On bounced link leads to the same cleanup (V2): the spec carries it as onBounced, and the builder draws it (v52). A branch that just stops keeps in_flow_lw_fonts, and that person never gets another broadcast. Send a test contact down each exit before switching the flow on."
+   "text": "every branch ends REMOVE TAG → End Flow, and each Send Email step’s On bounced link leads to the same cleanup (V2): the spec carries it as onBounced, and the builder draws it (v52). A branch that just stops keeps in_flow_lw_elements, and that person never gets another broadcast. Send a test contact down each exit before switching the flow on."
   },
   {
    "key": "n3",
@@ -548,7 +548,7 @@
  "notes": [
   {
    "type": "note",
-   "text": "Font Codes Delivery + Follow-up · email set v57, built from its spec (decision 114)",
+   "text": "Element Codes Delivery + Follow-up · email set v59, built from its spec (decision 114)",
    "near": "t1"
   }
  ]

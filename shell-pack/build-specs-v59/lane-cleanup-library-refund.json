@@ -2,7 +2,7 @@
  "spec": 1,
  "flow": {
   "key": "lane_cleanup_library_refund",
-  "name": "Lane cleanup · Library refund",
+  "name": "Cleanup - Lane: Hacks Library refund",
   "status": "ship"
  },
  "settings": {
@@ -41,7 +41,7 @@
  "notes": [
   {
    "type": "note",
-   "text": "Lane cleanup · Library refund · email set v57, built from its spec (decision 114)",
+   "text": "Cleanup - Lane: Hacks Library refund · email set v59, built from its spec (decision 114)",
    "near": "t1"
   }
  ]

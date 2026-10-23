@@ -2,7 +2,7 @@
  "spec": 1,
  "flow": {
   "key": "checkout_abandon_cleanup",
-  "name": "Checkout Abandon · stuck-contact cleanup",
+  "name": "Cleanup - Contacts: Stuck in Hacks Library checkout abandon",
   "status": "ship"
  },
  "settings": {
@@ -77,7 +77,7 @@
   {
    "key": "n1",
    "op": "ENCHARGE",
-   "text": "the builder makes it switched off, like every flow. In the switch-over sitting (H2), once step 5 of FM VDH Abandoned Cart Router is deleted: remove abandoned_active from everyone who still holds it, since this flow sees only the tag being added (step 5 added it to every abandoner, and Checkout Abandon’s first check would stop them for good); switch this flow on; then the new Checkout Abandon, so it sees every tag that flow adds. Switch the two off and on together: with Checkout Abandon off and people in it, this flow could clear them mid-run. It removes abandoned_active, so the builder needs your permission for that tag here as well as in Checkout Abandon."
+   "text": "the builder makes it switched off, like every flow. In the switch-over sitting (H2), once step 5 of FM VDH Abandoned Cart Router is deleted: remove abandoned_active from everyone who still holds it, since this flow sees only the tag being added (step 5 added it to every abandoner, and Abandon: Hacks Library checkout’s first check would stop them for good); switch this flow on; then the new Abandon: Hacks Library checkout, so it sees every tag that flow adds. Switch the two off and on together: with Abandon: Hacks Library checkout off and people in it, this flow could clear them mid-run. It removes abandoned_active, so the builder needs your permission for that tag here as well as in Abandon: Hacks Library checkout."
   },
   {
    "key": "n2",
@@ -88,7 +88,7 @@
  "notes": [
   {
    "type": "note",
-   "text": "Checkout Abandon · stuck-contact cleanup · email set v57, built from its spec (decision 114). Decision 116: Checkout Abandon lasts 3 days, so anyone still holding abandoned_active a week after it was added is stuck. It checks for either tag, since FM VDH Purchase Router removes abandoned_active on any purchase (v52)",
+   "text": "Cleanup - Contacts: Stuck in Hacks Library checkout abandon · email set v59, built from its spec (decision 114). Decision 116: Abandon: Hacks Library checkout lasts 3 days, so anyone still holding abandoned_active a week after it was added is stuck. It checks for either tag, since FM VDH Purchase Router removes abandoned_active on any purchase (v52)",
    "near": "t1"
   }
  ]

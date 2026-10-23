@@ -2,7 +2,7 @@
  "spec": 1,
  "flow": {
   "key": "checkout_abandon",
-  "name": "Checkout Abandon",
+  "name": "Abandon: Hacks Library checkout",
   "status": "ship"
  },
  "settings": {
@@ -19,7 +19,7 @@
   {
    "key": "n1",
    "op": "ENCHARGE",
-   "text": "the builder makes this flow new, switched off: it never edits a live flow (decision 114). The switch-over is yours, in one sitting: switch off the Encharge flow Abandoned Cart Email Sending Sequence, delete step 5 of FM VDH Abandoned Cart Router (below), remove abandoned_active from everyone who still holds it, switch on Checkout Abandon · stuck-contact cleanup (System automations), then switch this flow on. The builder makes the entry segment edit (SEGMENT) inside that sitting, after Abandoned Cart Email Sending Sequence is off and before this flow goes on: it checks both are off first (spec format v0.6)."
+   "text": "the builder makes this flow new, switched off: it never edits a live flow (decision 114). The switch-over is yours, in one sitting: switch off the Encharge flow Abandoned Cart Email Sending Sequence, delete step 5 of FM VDH Abandoned Cart Router (below), remove abandoned_active from everyone who still holds it, switch on Cleanup - Contacts: Stuck in Hacks Library checkout abandon (System automations), then switch this flow on. The builder makes the entry segment edit (SEGMENT) inside that sitting, after Abandoned Cart Email Sending Sequence is off and before this flow goes on: it checks both are off first (spec format v0.6)."
   },
   {
    "key": "c1",
@@ -421,7 +421,7 @@
  "notes": [
   {
    "type": "note",
-   "text": "Checkout Abandon · email set v57, built from its spec (decision 114)",
+   "text": "Abandon: Hacks Library checkout · email set v59, built from its spec (decision 114)",
    "near": "t1"
   }
  ]

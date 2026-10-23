@@ -1,9 +1,9 @@
 {
  "spec": 1,
  "flow": {
-  "key": "lane_cleanup_library",
-  "name": "Lane cleanup · Library",
-  "status": "ship"
+  "key": "lane_cleanup_bundle",
+  "name": "Lane cleanup · Bundle",
+  "status": "parked"
  },
  "settings": {
   "reentry": "always",
@@ -12,14 +12,14 @@
  "trigger": {
   "key": "t1",
   "op": "TAG ADDED",
-  "tag": "product_canva_hacks_library",
+  "tag": "product_canva_templates_all",
   "next": "f1"
  },
  "steps": [
   {
    "key": "f1",
    "op": "SET FIELD",
-   "field": "flow_lane_library",
+   "field": "flow_lane_bundle",
    "value": "none",
    "next": null
   }
@@ -27,7 +27,7 @@
  "notes": [
   {
    "type": "note",
-   "text": "Lane cleanup · Library · email set v57, built from its spec (decision 114)",
+   "text": "Lane cleanup · Bundle · email set v59, built from its spec (decision 114)",
    "near": "t1"
   }
  ]

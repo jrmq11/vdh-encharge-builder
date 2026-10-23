@@ -2,7 +2,7 @@
  "spec": 1,
  "flow": {
   "key": "library_onboarding",
-  "name": "Library Onboarding",
+  "name": "Onboarding: Hacks Library",
   "status": "ship"
  },
  "settings": {
@@ -241,7 +241,7 @@
  "notes": [
   {
    "type": "note",
-   "text": "Library Onboarding · email set v57, built from its spec (decision 114)",
+   "text": "Onboarding: Hacks Library · email set v59, built from its spec (decision 114)",
    "near": "t1"
   }
  ]

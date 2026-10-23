@@ -2,7 +2,7 @@
  "spec": 1,
  "flow": {
   "key": "template_delivery",
-  "name": "Free Template Delivery",
+  "name": "Delivery: Free Template",
   "status": "gated"
  },
  "settings": {
@@ -124,7 +124,7 @@
  "notes": [
   {
    "type": "note",
-   "text": "Free Template Delivery · email set v57, built from its spec (decision 114)",
+   "text": "Delivery: Free Template · email set v59, built from its spec (decision 114)",
    "near": "t1"
   }
  ]

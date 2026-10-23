@@ -206,13 +206,13 @@
   {
    "key": "n5",
    "op": "TEST",
-   "text": "one Crash PDF abandon with a real inbox: the email arrives about an hour later and the contact leaves People IN FLOW. A Library abandon from the same contact goes to Checkout Abandon only. Then a test purchase during the wait: no email."
+   "text": "one Crash PDF abandon with a real inbox: the email arrives about an hour later and the contact leaves People IN FLOW. A Library abandon from the same contact goes to Abandon: Hacks Library checkout only. Then a test purchase during the wait: no email."
   }
  ],
  "notes": [
   {
    "type": "note",
-   "text": "Crash PDF Checkout Abandon · email set v57, built from its spec (decision 114)",
+   "text": "Crash PDF Checkout Abandon · email set v59, built from its spec (decision 114)",
    "near": "t1"
   }
  ]

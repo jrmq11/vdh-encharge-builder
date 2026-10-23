@@ -249,7 +249,7 @@ In a Check condition step the same group is stored as a JSON **string**, wrapped
 - **It never saves a whole flow.** Every canvas action is its own small call. PROVEN.
 - **A new flow is created off** (`status: "deactivated"`). **A copy is created off even when its original is on.** PROVEN.
 - ⚠️ **On/off has no call of its own.** It goes through `PATCH /v1/integrations/{id}`, which also renames and saves the flow's settings. That call always carries a status: the app sends the flow's current one. PROVEN.
-- **The API name is frozen at creation.** PROVEN. **Names keep `·` (U+00B7), `→` (U+2192) and `+`**, in the display name and in the API name (live test B1: Encharge flow *ZZ B1 Lane cleanup · Library → Pack + test*, 405353). PROVEN.
+- **The API name is frozen at creation.** PROVEN. **A rename changes only the display name** (`name`); `apiName` keeps the name the flow was created with. PROVEN 2026-10-23: Joe renamed ten flows (for example 409556, now *Abandon: Hacks Library checkout*, API name *Checkout Abandon*), read back by the Flow Reader. A flow created under a name already taken gets an API name with " (2)" (410153, *Lane cleanup · Templates Pack (2)*). So match flows by ID; where a name must be matched, check both `name` and `apiName`, as reconcile does. **Names keep `·` (U+00B7), `→` (U+2192) and `+`**, in the display name and in the API name (live test B1: Encharge flow *ZZ B1 Lane cleanup · Library → Pack + test*, 405353). PROVEN.
 - **Values round-trip exactly** (section 8). PROVEN.
 
 ### 7.2 Calls

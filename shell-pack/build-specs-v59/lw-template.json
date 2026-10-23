@@ -1,8 +1,8 @@
 {
  "spec": 1,
  "flow": {
-  "key": "lw_elements",
-  "name": "Element Codes Delivery + Follow-up",
+  "key": "lw_template",
+  "name": "Free Template Follow-up",
   "status": "gated"
  },
  "settings": {
@@ -12,7 +12,7 @@
  "trigger": {
   "key": "t1",
   "op": "TAG ADDED",
-  "tag": "lead_canva_element_codes",
+  "tag": "lead_social_instagram",
   "next": "c1"
  },
  "steps": [
@@ -23,13 +23,13 @@
     "all": [
      [
       "tag",
-      "lead_canva_element_codes",
+      "lead_social_instagram",
       "present"
      ],
      [
-      "tag",
-      "product_canva_hacks_library",
-      "absent"
+      "tagGroup",
+      "template_pack_owner",
+      "none"
      ]
     ]
    },
@@ -45,7 +45,7 @@
   {
    "key": "x2",
    "op": "END",
-   "flow": "lw_template",
+   "flow": "lw_elements",
    "next": "r1"
   },
   {
@@ -53,7 +53,7 @@
    "op": "REMOVE TAG",
    "tags": [
     "in_flow_lw_fonts",
-    "in_flow_lw_template"
+    "in_flow_lw_elements"
    ],
    "next": "a1"
   },
@@ -61,22 +61,41 @@
    "key": "a1",
    "op": "ADD TAG",
    "tags": [
-    "in_flow_lw_elements"
+    "pitch_pending_pack"
    ],
-   "next": "s1"
+   "next": "w1"
   },
   {
-   "key": "s1",
-   "op": "SEND",
-   "email": "lw_elements_1",
-   "next": "w1",
-   "onBounced": "r2"
+   "key": "w1",
+   "op": "WAIT",
+   "days": 1,
+   "next": "c2"
+  },
+  {
+   "key": "c2",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "tag",
+      "lead_social_instagram",
+      "present"
+     ],
+     [
+      "tagGroup",
+      "template_pack_owner",
+      "none"
+     ]
+    ]
+   },
+   "yes": "r3",
+   "no": "r2"
   },
   {
    "key": "r2",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_lw_elements"
+    "pitch_pending_pack"
    ],
    "next": "x3"
   },
@@ -87,36 +106,33 @@
    "next": null
   },
   {
-   "key": "w1",
-   "op": "WAIT",
-   "days": 2,
-   "next": "c2"
-  },
-  {
-   "key": "c2",
-   "op": "CHECK",
-   "if": {
-    "all": [
-     [
-      "tag",
-      "lead_canva_element_codes",
-      "present"
-     ],
-     [
-      "tag",
-      "product_canva_hacks_library",
-      "absent"
-     ]
-    ]
-   },
-   "yes": "s2",
-   "no": "r3"
-  },
-  {
    "key": "r3",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_lw_elements"
+    "pitch_pending_pack"
+   ],
+   "next": "a2"
+  },
+  {
+   "key": "a2",
+   "op": "ADD TAG",
+   "tags": [
+    "in_flow_lw_template"
+   ],
+   "next": "s1"
+  },
+  {
+   "key": "s1",
+   "op": "SEND",
+   "email": "lw_template_1",
+   "next": "w2",
+   "onBounced": "r4"
+  },
+  {
+   "key": "r4",
+   "op": "REMOVE TAG",
+   "tags": [
+    "in_flow_lw_template"
    ],
    "next": "x4"
   },
@@ -125,13 +141,6 @@
    "op": "END",
    "flow": "self",
    "next": null
-  },
-  {
-   "key": "s2",
-   "op": "SEND",
-   "email": "lw_elements_2",
-   "next": "w2",
-   "onBounced": "r2"
   },
   {
    "key": "w2",
@@ -146,47 +155,27 @@
     "all": [
      [
       "tag",
-      "lead_welcome_fonts_complete",
-      "absent"
-     ],
-     [
-      "tag",
-      "lead_welcome_elements_complete",
-      "absent"
-     ],
-     [
-      "tag",
-      "lead_welcome_template_complete",
-      "absent"
-     ],
-     [
-      "tagGroup",
-      "template_pack_owner",
-      "none"
-     ],
-     [
-      "tag",
-      "product_canva_crash_pdf",
+      "product_canva_hacks_library",
       "absent"
      ]
     ]
    },
    "yes": "c4",
-   "no": "a2"
+   "no": "a3"
   },
   {
-   "key": "a2",
+   "key": "a3",
    "op": "ADD TAG",
    "tags": [
-    "lead_welcome_elements_complete"
+    "lead_welcome_template_complete"
    ],
-   "next": "r4"
+   "next": "r5"
   },
   {
-   "key": "r4",
+   "key": "r5",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_lw_elements"
+    "in_flow_lw_template"
    ],
    "next": "x5"
   },
@@ -203,24 +192,24 @@
     "all": [
      [
       "tag",
-      "lead_canva_element_codes",
+      "lead_social_instagram",
       "present"
      ],
      [
-      "tag",
-      "product_canva_hacks_library",
-      "absent"
+      "tagGroup",
+      "template_pack_owner",
+      "none"
      ]
     ]
    },
-   "yes": "s3",
-   "no": "r5"
+   "yes": "s2",
+   "no": "r6"
   },
   {
-   "key": "r5",
+   "key": "r6",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_lw_elements"
+    "in_flow_lw_template"
    ],
    "next": "x6"
   },
@@ -231,11 +220,11 @@
    "next": null
   },
   {
-   "key": "s3",
+   "key": "s2",
    "op": "SEND",
-   "email": "lw_elements_3",
+   "email": "lw_template_2",
    "next": "w3",
-   "onBounced": "r2"
+   "onBounced": "r4"
   },
   {
    "key": "w3",
@@ -315,33 +304,28 @@
    "if": {
     "all": [
      [
-      "tagGroup",
-      "template_pack_owner",
-      "none"
-     ],
-     [
       "tag",
-      "product_canva_crash_pdf",
+      "product_canva_hacks_library",
       "absent"
      ]
     ]
    },
    "yes": "c9",
-   "no": "a3"
+   "no": "a4"
   },
   {
-   "key": "a3",
+   "key": "a4",
    "op": "ADD TAG",
    "tags": [
-    "lead_welcome_elements_complete"
+    "lead_welcome_template_complete"
    ],
-   "next": "r6"
+   "next": "r7"
   },
   {
-   "key": "r6",
+   "key": "r7",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_lw_elements"
+    "in_flow_lw_template"
    ],
    "next": "x7"
   },
@@ -358,24 +342,24 @@
     "all": [
      [
       "tag",
-      "lead_canva_element_codes",
+      "lead_social_instagram",
       "present"
      ],
      [
-      "tag",
-      "product_canva_hacks_library",
-      "absent"
+      "tagGroup",
+      "template_pack_owner",
+      "none"
      ]
     ]
    },
    "yes": "c10",
-   "no": "r7"
+   "no": "r8"
   },
   {
-   "key": "r7",
+   "key": "r8",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_lw_elements"
+    "in_flow_lw_template"
    ],
    "next": "x8"
   },
@@ -392,20 +376,20 @@
     "all": [
      [
       "field",
-      "flow_lane_library",
+      "flow_lane_pack",
       "emptyOrIs",
       "none"
      ]
     ]
    },
    "yes": "f1",
-   "no": "r8"
+   "no": "r9"
   },
   {
-   "key": "r8",
+   "key": "r9",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_lw_elements"
+    "in_flow_lw_template"
    ],
    "next": "x9"
   },
@@ -418,8 +402,8 @@
   {
    "key": "f1",
    "op": "SET FIELD",
-   "field": "flow_lane_library",
-   "value": "lw_elements",
+   "field": "flow_lane_pack",
+   "value": "lw_template",
    "next": "w7"
   },
   {
@@ -435,20 +419,20 @@
     "all": [
      [
       "field",
-      "flow_lane_library",
+      "flow_lane_pack",
       "is",
-      "lw_elements"
+      "lw_template"
      ]
     ]
    },
-   "yes": "s4",
-   "no": "r9"
+   "yes": "s3",
+   "no": "r10"
   },
   {
-   "key": "r9",
+   "key": "r10",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_lw_elements"
+    "in_flow_lw_template"
    ],
    "next": "x10"
   },
@@ -459,24 +443,24 @@
    "next": null
   },
   {
-   "key": "s4",
+   "key": "s3",
    "op": "SEND",
-   "email": "lw_elements_4",
+   "email": "lw_template_3",
    "next": "f3",
    "onBounced": "f2"
   },
   {
    "key": "f2",
    "op": "SET FIELD",
-   "field": "flow_lane_library",
+   "field": "flow_lane_pack",
    "value": "none",
-   "next": "r10"
+   "next": "r11"
   },
   {
-   "key": "r10",
+   "key": "r11",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_lw_elements"
+    "in_flow_lw_template"
    ],
    "next": "x11"
   },
@@ -494,37 +478,30 @@
    "next": "f4"
   },
   {
-   "key": "f4",
-   "op": "SET FIELD",
-   "field": "library_offer_code",
-   "value": "ELEMENTLEAD10",
-   "next": "f5"
-  },
-  {
    "key": "n1",
    "op": "HOLD",
-   "text": "Library sales broadcasts skip this person for 90 days from this email (decision 34). It starts at the offer, so a run cut short before it starts no hold (V9). Not built yet (A3)."
+   "text": "Pack sales broadcasts skip this person for 90 days from this email (decision 34). It starts at the offer, so a run cut short before it starts no hold (V9). Not built yet (A3)."
   },
   {
-   "key": "f5",
+   "key": "f4",
    "op": "SET FIELD",
-   "field": "flow_lane_library",
+   "field": "flow_lane_pack",
    "value": "none",
-   "next": "a4"
+   "next": "a5"
   },
   {
-   "key": "a4",
+   "key": "a5",
    "op": "ADD TAG",
    "tags": [
-    "lead_welcome_elements_complete"
+    "lead_welcome_template_complete"
    ],
-   "next": "r11"
+   "next": "r12"
   },
   {
-   "key": "r11",
+   "key": "r12",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_lw_elements"
+    "in_flow_lw_template"
    ],
    "next": "x12"
   },
@@ -537,7 +514,7 @@
   {
    "key": "n2",
    "op": "EXITS",
-   "text": "every branch ends REMOVE TAG → End Flow, and each Send Email step’s On bounced link leads to the same cleanup (V2): the spec carries it as onBounced, and the builder draws it (v52). A branch that just stops keeps in_flow_lw_elements, and that person never gets another broadcast. Send a test contact down each exit before switching the flow on."
+   "text": "every branch ends REMOVE TAG → End Flow, and each Send Email step’s On bounced link leads to the same cleanup (V2): the spec carries it as onBounced, and the builder draws it (v52). A branch that just stops keeps in_flow_lw_template, and that person never gets another broadcast. Send a test contact down each exit before switching the flow on."
   },
   {
    "key": "n3",
@@ -548,7 +525,7 @@
  "notes": [
   {
    "type": "note",
-   "text": "Element Codes Delivery + Follow-up · email set v57, built from its spec (decision 114)",
+   "text": "Free Template Follow-up · email set v59, built from its spec (decision 114)",
    "near": "t1"
   }
  ]

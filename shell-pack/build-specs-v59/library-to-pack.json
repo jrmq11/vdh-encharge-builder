@@ -1,9 +1,9 @@
 {
  "spec": 1,
  "flow": {
-  "key": "multipack_bundle",
-  "name": "Multi-Pack → Bundle",
-  "status": "parked"
+  "key": "library_to_pack",
+  "name": "Library → Pack",
+  "status": "ship"
  },
  "settings": {
   "reentry": "once",
@@ -11,8 +11,8 @@
  },
  "trigger": {
   "key": "t1",
-  "op": "ENTERED SEGMENT",
-  "segment": "multi_pack_owner",
+  "op": "TAG ADDED",
+  "tag": "product_canva_hacks_library",
   "next": "c1"
  },
  "steps": [
@@ -29,13 +29,7 @@
      [
       "tagGroup",
       "template_pack_owner",
-      "atLeast",
-      2
-     ],
-     [
-      "tag",
-      "product_canva_templates_all",
-      "absent"
+      "none"
      ]
     ]
    },
@@ -46,14 +40,14 @@
    "key": "a1",
    "op": "ADD TAG",
    "tags": [
-    "pitch_pending_bundle"
+    "pitch_pending_pack"
    ],
    "next": "w1"
   },
   {
    "key": "w1",
    "op": "WAIT",
-   "days": 5,
+   "days": 14,
    "next": "c2"
   },
   {
@@ -63,20 +57,28 @@
     "all": [
      [
       "field",
-      "last_pitch_at",
-      "emptyOrOlderThanDays",
-      1
+      "LoginCount",
+      "moreThan",
+      0
      ]
     ]
    },
-   "yes": "c5",
-   "no": "w2"
+   "yes": "c3",
+   "no": "r1"
   },
   {
-   "key": "w2",
-   "op": "WAIT",
-   "days": 1,
-   "next": "c3"
+   "key": "r1",
+   "op": "REMOVE TAG",
+   "tags": [
+    "pitch_pending_pack"
+   ],
+   "next": "x1"
+  },
+  {
+   "key": "x1",
+   "op": "END",
+   "flow": "self",
+   "next": null
   },
   {
    "key": "c3",
@@ -91,11 +93,11 @@
      ]
     ]
    },
-   "yes": "c5",
-   "no": "w3"
+   "yes": "c6",
+   "no": "w2"
   },
   {
-   "key": "w3",
+   "key": "w2",
    "op": "WAIT",
    "days": 1,
    "next": "c4"
@@ -113,17 +115,39 @@
      ]
     ]
    },
-   "yes": "c5",
-   "no": "w4"
+   "yes": "c6",
+   "no": "w3"
   },
   {
-   "key": "w4",
+   "key": "w3",
    "op": "WAIT",
    "days": 1,
    "next": "c5"
   },
   {
    "key": "c5",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "field",
+      "last_pitch_at",
+      "emptyOrOlderThanDays",
+      1
+     ]
+    ]
+   },
+   "yes": "c6",
+   "no": "w4"
+  },
+  {
+   "key": "w4",
+   "op": "WAIT",
+   "days": 1,
+   "next": "c6"
+  },
+  {
+   "key": "c6",
    "op": "CHECK",
    "if": {
     "all": [
@@ -135,70 +159,18 @@
      [
       "tagGroup",
       "template_pack_owner",
-      "atLeast",
-      2
-     ],
-     [
-      "tag",
-      "product_canva_templates_all",
-      "absent"
+      "none"
      ]
     ]
    },
-   "yes": "r2",
-   "no": "r1"
-  },
-  {
-   "key": "r1",
-   "op": "REMOVE TAG",
-   "tags": [
-    "pitch_pending_bundle"
-   ],
-   "next": "x1"
-  },
-  {
-   "key": "x1",
-   "op": "END",
-   "flow": "self",
-   "next": null
+   "yes": "r3",
+   "no": "r2"
   },
   {
    "key": "r2",
    "op": "REMOVE TAG",
    "tags": [
-    "pitch_pending_bundle"
-   ],
-   "next": "a2"
-  },
-  {
-   "key": "a2",
-   "op": "ADD TAG",
-   "tags": [
-    "in_flow_multipack_bundle"
-   ],
-   "next": "c6"
-  },
-  {
-   "key": "c6",
-   "op": "CHECK",
-   "if": {
-    "all": [
-     [
-      "field",
-      "flow_lane_bundle",
-      "emptyOrIs",
-      "none"
-     ]
-    ]
-   },
-   "yes": "f1",
-   "no": "r3"
-  },
-  {
-   "key": "r3",
-   "op": "REMOVE TAG",
-   "tags": [
-    "in_flow_multipack_bundle"
+    "pitch_pending_pack"
    ],
    "next": "x2"
   },
@@ -209,16 +181,19 @@
    "next": null
   },
   {
-   "key": "f1",
-   "op": "SET FIELD",
-   "field": "flow_lane_bundle",
-   "value": "multipack_bundle",
-   "next": "w5"
+   "key": "r3",
+   "op": "REMOVE TAG",
+   "tags": [
+    "pitch_pending_pack"
+   ],
+   "next": "a2"
   },
   {
-   "key": "w5",
-   "op": "WAIT",
-   "minutes": 1,
+   "key": "a2",
+   "op": "ADD TAG",
+   "tags": [
+    "in_flow_library_to_pack"
+   ],
    "next": "c7"
   },
   {
@@ -228,20 +203,20 @@
     "all": [
      [
       "field",
-      "flow_lane_bundle",
-      "is",
-      "multipack_bundle"
+      "flow_lane_pack",
+      "emptyOrIs",
+      "none"
      ]
     ]
    },
-   "yes": "s1",
+   "yes": "f1",
    "no": "r4"
   },
   {
    "key": "r4",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_multipack_bundle"
+    "in_flow_library_to_pack"
    ],
    "next": "x3"
   },
@@ -252,29 +227,72 @@
    "next": null
   },
   {
+   "key": "f1",
+   "op": "SET FIELD",
+   "field": "flow_lane_pack",
+   "value": "library_to_pack",
+   "next": "w5"
+  },
+  {
+   "key": "w5",
+   "op": "WAIT",
+   "minutes": 1,
+   "next": "c8"
+  },
+  {
+   "key": "c8",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "field",
+      "flow_lane_pack",
+      "is",
+      "library_to_pack"
+     ]
+    ]
+   },
+   "yes": "s1",
+   "no": "r5"
+  },
+  {
+   "key": "r5",
+   "op": "REMOVE TAG",
+   "tags": [
+    "in_flow_library_to_pack"
+   ],
+   "next": "x4"
+  },
+  {
+   "key": "x4",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
    "key": "s1",
    "op": "SEND",
-   "email": "multipack_bundle_1",
+   "email": "library_to_pack_1",
    "next": "f3",
    "onBounced": "f2"
   },
   {
    "key": "f2",
    "op": "SET FIELD",
-   "field": "flow_lane_bundle",
+   "field": "flow_lane_pack",
    "value": "none",
-   "next": "r5"
+   "next": "r6"
   },
   {
-   "key": "r5",
+   "key": "r6",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_multipack_bundle"
+    "in_flow_library_to_pack"
    ],
-   "next": "x4"
+   "next": "x5"
   },
   {
-   "key": "x4",
+   "key": "x5",
    "op": "END",
    "flow": "self",
    "next": null
@@ -290,28 +308,6 @@
    "key": "w6",
    "op": "WAIT",
    "days": 5,
-   "next": "c8"
-  },
-  {
-   "key": "c8",
-   "op": "CHECK",
-   "if": {
-    "all": [
-     [
-      "field",
-      "last_pitch_at",
-      "emptyOrOlderThanDays",
-      1
-     ]
-    ]
-   },
-   "yes": "c11",
-   "no": "w7"
-  },
-  {
-   "key": "w7",
-   "op": "WAIT",
-   "days": 1,
    "next": "c9"
   },
   {
@@ -327,11 +323,11 @@
      ]
     ]
    },
-   "yes": "c11",
-   "no": "w8"
+   "yes": "c12",
+   "no": "w7"
   },
   {
-   "key": "w8",
+   "key": "w7",
    "op": "WAIT",
    "days": 1,
    "next": "c10"
@@ -349,11 +345,11 @@
      ]
     ]
    },
-   "yes": "c11",
-   "no": "w9"
+   "yes": "c12",
+   "no": "w8"
   },
   {
-   "key": "w9",
+   "key": "w8",
    "op": "WAIT",
    "days": 1,
    "next": "c11"
@@ -365,31 +361,53 @@
     "all": [
      [
       "field",
-      "flow_lane_bundle",
-      "is",
-      "multipack_bundle"
+      "last_pitch_at",
+      "emptyOrOlderThanDays",
+      1
      ]
     ]
    },
    "yes": "c12",
-   "no": "r6"
+   "no": "w9"
   },
   {
-   "key": "r6",
+   "key": "w9",
+   "op": "WAIT",
+   "days": 1,
+   "next": "c12"
+  },
+  {
+   "key": "c12",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "field",
+      "flow_lane_pack",
+      "is",
+      "library_to_pack"
+     ]
+    ]
+   },
+   "yes": "c13",
+   "no": "r7"
+  },
+  {
+   "key": "r7",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_multipack_bundle"
+    "in_flow_library_to_pack"
    ],
-   "next": "x5"
+   "next": "x6"
   },
   {
-   "key": "x5",
+   "key": "x6",
    "op": "END",
    "flow": "self",
    "next": null
   },
   {
-   "key": "c12",
+   "key": "c13",
    "op": "CHECK",
    "if": {
     "all": [
@@ -401,13 +419,7 @@
      [
       "tagGroup",
       "template_pack_owner",
-      "atLeast",
-      2
-     ],
-     [
-      "tag",
-      "product_canva_templates_all",
-      "absent"
+      "none"
      ]
     ]
    },
@@ -417,20 +429,20 @@
   {
    "key": "f4",
    "op": "SET FIELD",
-   "field": "flow_lane_bundle",
+   "field": "flow_lane_pack",
    "value": "none",
-   "next": "r7"
+   "next": "r8"
   },
   {
-   "key": "r7",
+   "key": "r8",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_multipack_bundle"
+    "in_flow_library_to_pack"
    ],
-   "next": "x6"
+   "next": "x7"
   },
   {
-   "key": "x6",
+   "key": "x7",
    "op": "END",
    "flow": "self",
    "next": null
@@ -438,7 +450,7 @@
   {
    "key": "s2",
    "op": "SEND",
-   "email": "multipack_bundle_2",
+   "email": "library_to_pack_2",
    "next": "f5",
    "onBounced": "f2"
   },
@@ -452,29 +464,7 @@
   {
    "key": "w10",
    "op": "WAIT",
-   "days": 7,
-   "next": "c13"
-  },
-  {
-   "key": "c13",
-   "op": "CHECK",
-   "if": {
-    "all": [
-     [
-      "field",
-      "last_pitch_at",
-      "emptyOrOlderThanDays",
-      1
-     ]
-    ]
-   },
-   "yes": "c16",
-   "no": "w11"
-  },
-  {
-   "key": "w11",
-   "op": "WAIT",
-   "days": 1,
+   "days": 3,
    "next": "c14"
   },
   {
@@ -490,11 +480,11 @@
      ]
     ]
    },
-   "yes": "c16",
-   "no": "w12"
+   "yes": "c17",
+   "no": "w11"
   },
   {
-   "key": "w12",
+   "key": "w11",
    "op": "WAIT",
    "days": 1,
    "next": "c15"
@@ -512,11 +502,11 @@
      ]
     ]
    },
-   "yes": "c16",
-   "no": "w13"
+   "yes": "c17",
+   "no": "w12"
   },
   {
-   "key": "w13",
+   "key": "w12",
    "op": "WAIT",
    "days": 1,
    "next": "c16"
@@ -528,31 +518,53 @@
     "all": [
      [
       "field",
-      "flow_lane_bundle",
-      "is",
-      "multipack_bundle"
+      "last_pitch_at",
+      "emptyOrOlderThanDays",
+      1
      ]
     ]
    },
    "yes": "c17",
-   "no": "r8"
+   "no": "w13"
   },
   {
-   "key": "r8",
+   "key": "w13",
+   "op": "WAIT",
+   "days": 1,
+   "next": "c17"
+  },
+  {
+   "key": "c17",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "field",
+      "flow_lane_pack",
+      "is",
+      "library_to_pack"
+     ]
+    ]
+   },
+   "yes": "c18",
+   "no": "r9"
+  },
+  {
+   "key": "r9",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_multipack_bundle"
+    "in_flow_library_to_pack"
    ],
-   "next": "x7"
+   "next": "x8"
   },
   {
-   "key": "x7",
+   "key": "x8",
    "op": "END",
    "flow": "self",
    "next": null
   },
   {
-   "key": "c17",
+   "key": "c18",
    "op": "CHECK",
    "if": {
     "all": [
@@ -564,13 +576,7 @@
      [
       "tagGroup",
       "template_pack_owner",
-      "atLeast",
-      2
-     ],
-     [
-      "tag",
-      "product_canva_templates_all",
-      "absent"
+      "none"
      ]
     ]
    },
@@ -580,20 +586,20 @@
   {
    "key": "f6",
    "op": "SET FIELD",
-   "field": "flow_lane_bundle",
+   "field": "flow_lane_pack",
    "value": "none",
-   "next": "r9"
+   "next": "r10"
   },
   {
-   "key": "r9",
+   "key": "r10",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_multipack_bundle"
+    "in_flow_library_to_pack"
    ],
-   "next": "x8"
+   "next": "x9"
   },
   {
-   "key": "x8",
+   "key": "x9",
    "op": "END",
    "flow": "self",
    "next": null
@@ -601,7 +607,7 @@
   {
    "key": "s3",
    "op": "SEND",
-   "email": "multipack_bundle_3",
+   "email": "library_to_pack_3",
    "next": "f7",
    "onBounced": "f2"
   },
@@ -615,20 +621,20 @@
   {
    "key": "f8",
    "op": "SET FIELD",
-   "field": "flow_lane_bundle",
+   "field": "flow_lane_pack",
    "value": "none",
-   "next": "r10"
+   "next": "r11"
   },
   {
-   "key": "r10",
+   "key": "r11",
    "op": "REMOVE TAG",
    "tags": [
-    "in_flow_multipack_bundle"
+    "in_flow_library_to_pack"
    ],
-   "next": "x9"
+   "next": "x10"
   },
   {
-   "key": "x9",
+   "key": "x10",
    "op": "END",
    "flow": "self",
    "next": null
@@ -636,7 +642,7 @@
   {
    "key": "n1",
    "op": "EXITS",
-   "text": "every branch ends REMOVE TAG → End Flow, and each Send Email step’s On bounced link leads to the same cleanup (V2): the spec carries it as onBounced, and the builder draws it (v52). A branch that just stops keeps in_flow_multipack_bundle, and that person never gets another broadcast. Send a test contact down each exit before switching the flow on."
+   "text": "every branch ends REMOVE TAG → End Flow, and each Send Email step’s On bounced link leads to the same cleanup (V2): the spec carries it as onBounced, and the builder draws it (v52). A branch that just stops keeps in_flow_library_to_pack, and that person never gets another broadcast. Send a test contact down each exit before switching the flow on."
   },
   {
    "key": "n2",
@@ -647,7 +653,7 @@
  "notes": [
   {
    "type": "note",
-   "text": "Multi-Pack → Bundle · email set v57, built from its spec (decision 114)",
+   "text": "Library → Pack · email set v59, built from its spec (decision 114)",
    "near": "t1"
   }
  ]

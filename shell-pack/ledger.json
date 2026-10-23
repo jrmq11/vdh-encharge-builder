@@ -653,10 +653,17 @@
     "emailSet": "v52"
    },
    "verify": "ok",
-   "name": "Lane cleanup · Library",
+   "name": "Cleanup - Lane: Hacks Library",
+   "apiName": "Lane cleanup · Library",
    "steps": {
     "t1": 1721515,
     "f1": 1721516
+   },
+   "renamed": {
+    "date": "2026-10-23",
+    "from": "Lane cleanup · Library",
+    "by": "Joe, in Encharge (display name only; the API name never changes)",
+    "readBack": "Flow Reader, 2026-10-23 15:45 UTC"
    }
   },
   "lane_cleanup_pack": {
@@ -675,10 +682,17 @@
     "emailSet": "v57"
    },
    "verify": "ok",
-   "name": "Lane cleanup · Templates Pack",
+   "name": "Cleanup - Lane: Templates Pack",
+   "apiName": "Lane cleanup · Templates Pack (2)",
    "steps": {
     "t1": 1745867,
     "f1": 1745868
+   },
+   "renamed": {
+    "date": "2026-10-23",
+    "from": "Lane cleanup · Templates Pack",
+    "by": "Joe, in Encharge (display name only; the API name never changes)",
+    "readBack": "Flow Reader, 2026-10-23 15:45 UTC"
    }
   },
   "lane_cleanup_library_refund": {
@@ -697,12 +711,19 @@
     "emailSet": "v52"
    },
    "verify": "ok",
-   "name": "Lane cleanup · Library refund",
+   "name": "Cleanup - Lane: Hacks Library refund",
+   "apiName": "Lane cleanup · Library refund",
    "steps": {
     "t1": 1721525,
     "f1": 1721526,
     "f2": 1721527,
     "f3": 1721528
+   },
+   "renamed": {
+    "date": "2026-10-23",
+    "from": "Lane cleanup · Library refund",
+    "by": "Joe, in Encharge (display name only; the API name never changes)",
+    "readBack": "Flow Reader, 2026-10-23 15:45 UTC"
    }
   },
   "checkout_abandon_cleanup": {
@@ -721,7 +742,8 @@
     "emailSet": "v52"
    },
    "verify": "ok",
-   "name": "Checkout Abandon · stuck-contact cleanup",
+   "name": "Cleanup - Contacts: Stuck in Hacks Library checkout abandon",
+   "apiName": "Checkout Abandon · stuck-contact cleanup",
    "steps": {
     "t1": 1721531,
     "w1": 1721532,
@@ -729,6 +751,12 @@
     "r1": 1721534,
     "c2": 1721535,
     "f1": 1721536
+   },
+   "renamed": {
+    "date": "2026-10-23",
+    "from": "Checkout Abandon · stuck-contact cleanup",
+    "by": "Joe, in Encharge (display name only; the API name never changes)",
+    "readBack": "Flow Reader, 2026-10-23 15:45 UTC"
    }
   },
   "checkout_abandon": {
@@ -747,7 +775,8 @@
     "emailSet": "v55"
    },
    "verify": "ok",
-   "name": "Checkout Abandon",
+   "name": "Abandon: Hacks Library checkout",
+   "apiName": "Checkout Abandon",
    "steps": {
     "t1": 1743385,
     "c1": 1743386,
@@ -793,6 +822,12 @@
     "f9": 1743426,
     "r7": 1743427,
     "x8": 1743428
+   },
+   "renamed": {
+    "date": "2026-10-23",
+    "from": "Checkout Abandon",
+    "by": "Joe, in Encharge (display name only; the API name never changes)",
+    "readBack": "Flow Reader, 2026-10-23 15:45 UTC"
    }
   },
   "zz_a12_check": {
@@ -836,7 +871,8 @@
     "emailSet": "v57"
    },
    "verify": "ok",
-   "name": "Library Onboarding",
+   "name": "Onboarding: Hacks Library",
+   "apiName": "Library Onboarding",
    "steps": {
     "t1": 1744182,
     "c1": 1744183,
@@ -864,6 +900,12 @@
     "s4": 1744205,
     "r5": 1744206,
     "x6": 1744207
+   },
+   "renamed": {
+    "date": "2026-10-23",
+    "from": "Library Onboarding",
+    "by": "Joe, in Encharge (display name only; the API name never changes)",
+    "readBack": "Flow Reader, 2026-10-23 15:45 UTC"
    }
   },
   "template_delivery": {
@@ -882,7 +924,8 @@
     "emailSet": "v57"
    },
    "verify": "ok",
-   "name": "Free Template Delivery",
+   "name": "Delivery: Free Template",
+   "apiName": "Free Template Delivery",
    "steps": {
     "t1": 1745671,
     "c1": 1745672,
@@ -895,6 +938,12 @@
     "x2": 1745679,
     "r3": 1745680,
     "x3": 1745681
+   },
+   "renamed": {
+    "date": "2026-10-23",
+    "from": "Free Template Delivery",
+    "by": "Joe, in Encharge (display name only; the API name never changes)",
+    "readBack": "Flow Reader, 2026-10-23 15:45 UTC"
    }
   },
   "templates_pack_to_canva_hacks_library": {
@@ -913,7 +962,8 @@
     "emailSet": "v57"
    },
    "verify": "ok",
-   "name": "Pack → Library",
+   "name": "Upsell: Pack → Hacks Library",
+   "apiName": "Pack → Library",
    "steps": {
     "t1": 1745691,
     "c1": 1745692,
@@ -968,6 +1018,12 @@
     "a3": 1745741,
     "r8": 1745742,
     "x7": 1745743
+   },
+   "renamed": {
+    "date": "2026-10-23",
+    "from": "Pack → Library",
+    "by": "Joe, in Encharge (display name only; the API name never changes)",
+    "readBack": "Flow Reader, 2026-10-23 15:45 UTC"
    }
   },
   "canva_crash_pdf_to_canva_hacks_library": {
@@ -986,7 +1042,8 @@
     "emailSet": "v57"
    },
    "verify": "ok",
-   "name": "Crash PDF → Library",
+   "name": "Upsell: Crash PDF → Hacks Library",
+   "apiName": "Crash PDF → Library",
    "steps": {
     "t1": 1745804,
     "c1": 1745805,
@@ -1039,6 +1096,12 @@
     "a3": 1745852,
     "r8": 1745853,
     "x7": 1745854
+   },
+   "renamed": {
+    "date": "2026-10-23",
+    "from": "Crash PDF → Library",
+    "by": "Joe, in Encharge (display name only; the API name never changes)",
+    "readBack": "Flow Reader, 2026-10-23 15:45 UTC"
    }
   },
   "lane_cleanup_pack-old-2026-10-23": {
@@ -1057,7 +1120,8 @@
     "emailSet": "v52"
    },
    "verify": "ok",
-   "name": "Lane cleanup · Templates Pack",
+   "name": "OLD, delete: Cleanup - Lane: Templates Pack",
+   "apiName": "Lane cleanup · Templates Pack",
    "steps": {
     "t1": 1721520,
     "f1": 1721521
@@ -1065,6 +1129,12 @@
    "superseded": {
     "date": "2026-10-23",
     "joeSaid": "Lane cleanup · Templates Pack: a new flow on product_canva_templates_best_of_hacks (decision 134); old flow 405727 untouched."
+   },
+   "renamed": {
+    "date": "2026-10-23",
+    "from": "Lane cleanup · Templates Pack",
+    "by": "Joe, in Encharge (display name only; the API name never changes)",
+    "readBack": "Flow Reader, 2026-10-23 15:45 UTC"
    }
   },
   "zz_reader_test_1": {
@@ -1089,6 +1159,7 @@
    },
    "verify": "ok",
    "name": "ZZ reader test 1 - delete",
+   "apiName": "ZZ reader test 1 - delete",
    "steps": {
     "t1": 1746046,
     "f1": 1746047
@@ -1116,6 +1187,7 @@
    },
    "verify": "ok",
    "name": "ZZ reader test 2 - delete",
+   "apiName": "ZZ reader test 2 - delete",
    "steps": {
     "t1": 1746048,
     "f1": 1746049
@@ -1143,6 +1215,7 @@
    },
    "verify": "ok",
    "name": "ZZ reader test 3 - delete",
+   "apiName": "ZZ reader test 3 - delete",
    "steps": {
     "t1": 1746050,
     "f1": 1746051
@@ -1170,6 +1243,7 @@
    },
    "verify": "ok",
    "name": "ZZ reader test 4 - delete",
+   "apiName": "ZZ reader test 4 - delete",
    "steps": {
     "t1": 1746052,
     "f1": 1746053
@@ -1197,6 +1271,7 @@
    },
    "verify": "ok",
    "name": "ZZ reader test 5 - delete",
+   "apiName": "ZZ reader test 5 - delete",
    "steps": {
     "t1": 1746054,
     "f1": 1746055
@@ -1224,6 +1299,7 @@
    },
    "verify": "ok",
    "name": "ZZ reader test 6 - delete",
+   "apiName": "ZZ reader test 6 - delete",
    "steps": {
     "t1": 1746056,
     "f1": 1746057
@@ -1251,6 +1327,7 @@
    },
    "verify": "ok",
    "name": "ZZ reader test 7 - delete",
+   "apiName": "ZZ reader test 7 - delete",
    "steps": {
     "t1": 1746058,
     "f1": 1746059
@@ -2165,5 +2242,6 @@
    }
   }
  },
- "_note": "The sitting ledger (builder v1.00 reads it: pagecmd.py refs and reconcile, compile.py --ledger). Updated 2026-09-26 after v1.00: the ZZ tags, fields and master email Joe made by hand are listed, so v1.00's reconcile, which compares tags and fields too, knows them."
+ "_note": "The sitting ledger (builder v1.00 reads it: pagecmd.py refs and reconcile, compile.py --ledger). Updated 2026-09-26 after v1.00: the ZZ tags, fields and master email Joe made by hand are listed, so v1.00's reconcile, which compares tags and fields too, knows them.",
+ "_names": "Flows have two names in Encharge. \"name\" is the display name, the one shown in the app; Joe can rename it at any time. \"apiName\" is set once, when the flow is created, and never changes (api-map, The API name is frozen at creation); Encharge adds \" (2)\" when the name was already taken. Neither is a key: the builder finds every flow by its Encharge id. Reconcile matches a name only to spot a draft it has no id for, and checks both names. On 2026-10-23 Joe renamed ten flows in Encharge (display names only); their entries carry \"renamed\". Emails were not renamed."
 }

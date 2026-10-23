@@ -10,7 +10,7 @@ Tested 2026-10-23 from a clean copy: `compile.py ... needs` and `pagecmd.py size
 
 This folder is packed inside `encharge-api/kit/encharge-build-kit-v1_11.tar.gz.b64.txt` in the Project (unpack steps: `encharge-api/kit/README-Kit-Unpack.md`). Run with `python3 -B`; keep the folder layout (scripts/compiler/ beside scripts/compile.py; live/ beside data/).
 
-Working inputs it needs beside it: `ledger.json` (`encharge-api/Encharge-Sitting-Ledger-2026-09-25.json`), `permissions.json` (`[]`), `fields.json`, `tags.json`, `tag-groups.json`, and the build specs in `build-specs-v57/` (in the kit).
+Working inputs it needs beside it: `ledger.json` (`encharge-api/Encharge-Sitting-Ledger-2026-09-25.json`), `permissions.json` (`[]`), `fields.json`, `tags.json`, `tag-groups.json`, and the build specs in `build-specs-v59/` (in the kit).
 
 ## Typical calls
 

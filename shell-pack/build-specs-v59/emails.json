@@ -1,12 +1,17 @@
 {
- "emailSet": "v57",
+ "emailSet": "v59",
  "master": {
   "key": "vdh_master_letter",
   "id": 488125,
   "name": "VDH Master · Letter",
   "previewPath": "body.values.preheaderText",
   "letterPath": "body.rows.0.columns.0.contents.1.values.html",
-  "note": "Made by hand in Encharge (decisions 115 and 122): logo, one HTML block holding LETTER GOES HERE, a divider, the footer (text and links #6B6B6B, 19 Oct). The preheader holds PREVIEW TEXT GOES HERE. Each email copies it and swaps both."
+  "note": "Made by hand in Encharge (decisions 115 and 122): logo, one HTML block holding LETTER GOES HERE, a divider, the footer (text and links #6B6B6B, 19 Oct). The preheader holds PREVIEW TEXT GOES HERE. Each email copies it and swaps both.",
+  "sender": {
+   "name": "Joe",
+   "email": "hello@visualdesignhacks.com",
+   "note": "Read in Encharge on 23 Oct: the master (488125) and all 10 built emails send as Joe <hello@visualdesignhacks.com>. Encharge emails have no separate reply-to, so replies go to that address. The builder copies fromName and fromEmail from the master and checks them after every build, so no extra check is needed."
+  }
  },
  "note": "Every email in the map as a finished letter (decisions 122, 123 and 126), in the builder's shape plus flow, status, ready and missing. ready means every link is known and no placeholder is left; only ready emails of flows that are not parked go in manifest.json shared.emails. 30 emails to build, 19 ready. The greeting is the name rule (decision 123), {template_name} is {{ person.requested_template_name }}, and Liquid inside a link uses single quotes.",
  "emails": [
@@ -261,7 +266,7 @@
     },
     {
      "path": "body.rows.0.columns.0.contents.1.values.html",
-     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Here's your Pack.</p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"TBD: the Pack access location\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->Open your templates<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Inside: 15 polished templates, each built around a striking Canva technique. Reels, story covers, post layouts, video covers, all ready to edit.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Fastest first win: open [STARTER_TEMPLATE], drop your own clips in, publish. Under ten minutes, nothing to learn first.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Every template comes in two versions, styled and blank. The blank ones are where the real value is. More on that in a couple of days.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Have fun with it,<br>Joe</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>P.S.</strong> Access trouble? Reply and it gets sorted.</p>"
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Here's your Pack.</p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"TBD: the Pack access location\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->Open your templates<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Inside: 15 polished templates, each built around a striking Canva technique. Reels, story covers, post layouts, video covers, all ready to edit.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Fastest first win: open <a href=\"TBD: the starter template's link\" target=\"_blank\" style=\"color: #933bc9; text-decoration: underline;\">[STARTER_TEMPLATE]</a>, drop your own clips in, publish. Under ten minutes, nothing to learn first.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Every template comes in two versions, styled and blank. The blank ones are where the real value is. More on that in a couple of days.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Have fun with it,<br>Joe</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>P.S.</strong> Access trouble? Reply and it gets sorted.</p>"
     }
    ],
    "flow": "pack_onboarding",
@@ -269,7 +274,8 @@
    "ready": false,
    "missing": [
     "placeholder [STARTER_TEMPLATE]",
-    "button \"Open your templates\": TBD: the Pack access location"
+    "button \"Open your templates\": TBD: the Pack access location",
+    "link \"[STARTER_TEMPLATE]\": TBD: the starter template's link"
    ]
   },
   {

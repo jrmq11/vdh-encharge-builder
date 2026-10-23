@@ -1,6 +1,6 @@
 {
- "emailSet": "v57",
- "note": "Written by flow map v57 from the rows of its Build tab (decision 114). Every flow is built switched off. shared.emails holds each finished email of a flow that is not parked: the master vdh_master_letter (Encharge 488125) copied with two swaps, the preview text and the whole letter (decisions 122 and 126). An email still missing a link or a placeholder value is held back; emails.json lists all of them, with what each is missing. The later block holds what the parked flows need: never compiled until they un-park, and some values are not known yet (TBD).",
+ "emailSet": "v59",
+ "note": "Written by flow map v59 from the rows of its Build tab (decision 114). Every flow is built switched off. shared.emails holds each finished email of a flow that is not parked: the master vdh_master_letter (Encharge 488125) copied with two swaps, the preview text and the whole letter (decisions 122 and 126). An email still missing a link or a placeholder value is held back; emails.json lists all of them, with what each is missing. The later block holds what the parked flows need: never compiled until they un-park, and some values are not known yet (TBD).",
  "shared": {
   "fields": [
    {

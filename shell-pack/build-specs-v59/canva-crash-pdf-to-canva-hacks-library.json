@@ -2,7 +2,7 @@
  "spec": 1,
  "flow": {
   "key": "canva_crash_pdf_to_canva_hacks_library",
-  "name": "Crash PDF → Library",
+  "name": "Upsell: Crash PDF → Hacks Library",
   "status": "gated"
  },
  "settings": {
@@ -513,7 +513,7 @@
  "notes": [
   {
    "type": "note",
-   "text": "Crash PDF → Library · email set v57, built from its spec (decision 114)",
+   "text": "Upsell: Crash PDF → Hacks Library · email set v59, built from its spec (decision 114)",
    "near": "t1"
   }
  ]

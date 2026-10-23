@@ -2,7 +2,7 @@
  "spec": 1,
  "flow": {
   "key": "templates_pack_to_canva_hacks_library",
-  "name": "Pack → Library",
+  "name": "Upsell: Pack → Hacks Library",
   "status": "ship"
  },
  "settings": {
@@ -506,7 +506,7 @@
  "notes": [
   {
    "type": "note",
-   "text": "Pack → Library · email set v57, built from its spec (decision 114)",
+   "text": "Upsell: Pack → Hacks Library · email set v59, built from its spec (decision 114)",
    "near": "t1"
   }
  ]

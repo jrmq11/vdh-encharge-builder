@@ -142,7 +142,7 @@ Keys are in the order a person reads a flow: **identity → settings → trigger
 - **Steps are one list in run order.** The main path comes first, and each check's else-branch follows straight after its check.
 - **Every step says where it goes next:** `next`, or `yes` and `no` for a check. `null` ends that path. Several steps may lead to the same step (a join); no loops.
 - **Name things by key,** never by Encharge ID: emails by their stable key (`checkout_abandon_1`); new segments, flows and fields by key; existing segments by the keys above.
-- **Names are final.** Encharge freezes a flow's API name when it is created, and the builder never renames. Encharge keeps `·`, `→` and `+` in both (live test B1, 2026-09-25).
+- **Names are final for the builder.** Encharge freezes a flow's API name when it is created, and the builder never renames. Encharge keeps `·`, `→` and `+` in both (live test B1, 2026-09-25). Joe may rename the **display name** later in Encharge (he renamed ten flows on 2026-10-23); the API name stays as built, so the two can differ. A spec's `flow.name` is the display name the flow is created with; every flow is found by its Encharge ID and its key, never by a name.
 - **`settings`** holds only `reentry` and `duplicateSend`; any other key is refused, naming it (v0.8).
 - **Each step holds only its own keys** (v0.9): `key`, `op`, the fields section 2 gives its type, and `next` (or `yes` and `no` for a CHECK, which takes no `next`). Any other key on a step the builder builds is refused, naming the step and the key. Rows that are not Encharge steps are not checked.
 - **`reentry`:** `"always"` (Encharge's default), `"once"`, or `"per30d"`.
