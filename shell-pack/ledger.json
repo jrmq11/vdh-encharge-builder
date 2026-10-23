@@ -793,6 +793,37 @@
     "r5": 1744206,
     "x6": 1744207
    }
+  },
+  "template_delivery": {
+   "id": 410130,
+   "state": "built-off",
+   "made": {
+    "date": "2026-10-23",
+    "run": "td_flow",
+    "session": "Post flows 2, Free Template Delivery flow, 2026-10-23"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.11",
+    "inputs": [
+     "template-delivery.json@cb0319408ed9"
+    ],
+    "emailSet": "v57"
+   },
+   "verify": "ok",
+   "name": "Free Template Delivery",
+   "steps": {
+    "t1": 1745671,
+    "c1": 1745672,
+    "c2": 1745673,
+    "r1": 1745674,
+    "x1": 1745675,
+    "a1": 1745676,
+    "s1": 1745677,
+    "r2": 1745678,
+    "x2": 1745679,
+    "r3": 1745680,
+    "x3": 1745681
+   }
   }
  },
  "segments": {
