@@ -469,6 +469,42 @@
    },
    "verify": "ok",
    "name": "Pack → Library 2"
+  },
+  "canva_crash_pdf_to_canva_hacks_library_1": {
+   "id": 496093,
+   "state": "built-off",
+   "made": {
+    "date": "2026-10-23",
+    "run": "cp_emails",
+    "session": "Post flows 2, Crash PDF to Library emails, 2026-10-23"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.11",
+    "inputs": [
+     "manifest-cp-emails.json@93e6d1fd846b"
+    ],
+    "emailSet": "v57"
+   },
+   "verify": "ok",
+   "name": "Crash PDF → Library 1"
+  },
+  "canva_crash_pdf_to_canva_hacks_library_2": {
+   "id": 496094,
+   "state": "built-off",
+   "made": {
+    "date": "2026-10-23",
+    "run": "cp_emails",
+    "session": "Post flows 2, Crash PDF to Library emails, 2026-10-23"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.11",
+    "inputs": [
+     "manifest-cp-emails.json@93e6d1fd846b"
+    ],
+    "emailSet": "v57"
+   },
+   "verify": "ok",
+   "name": "Crash PDF → Library 2"
   }
  },
  "flows": {
