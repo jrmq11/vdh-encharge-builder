@@ -433,6 +433,42 @@
    },
    "verify": "ok",
    "name": "Free Template Delivery 1"
+  },
+  "templates_pack_to_canva_hacks_library_1": {
+   "id": 496074,
+   "state": "built-off",
+   "made": {
+    "date": "2026-10-23",
+    "run": "pl_emails",
+    "session": "Post flows 2, Pack to Library emails, 2026-10-23"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.11",
+    "inputs": [
+     "manifest-pl-emails.json@55e8e7124ac0"
+    ],
+    "emailSet": "v57"
+   },
+   "verify": "ok",
+   "name": "Pack → Library 1"
+  },
+  "templates_pack_to_canva_hacks_library_2": {
+   "id": 496075,
+   "state": "built-off",
+   "made": {
+    "date": "2026-10-23",
+    "run": "pl_emails",
+    "session": "Post flows 2, Pack to Library emails, 2026-10-23"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.11",
+    "inputs": [
+     "manifest-pl-emails.json@55e8e7124ac0"
+    ],
+    "emailSet": "v57"
+   },
+   "verify": "ok",
+   "name": "Pack → Library 2"
   }
  },
  "flows": {
