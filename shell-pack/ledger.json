@@ -1871,6 +1871,109 @@
    "made": {
     "date": "2026-10-20"
    }
+  },
+  "segment:1257090#2": {
+   "change": "2026-10-23: added two rows to People IN FLOW (12 rows to 14), tag has in_flow_templates_pack_to_canva_hacks_library and in_flow_canva_crash_pdf_to_canva_hacks_library, appended after the existing rows; nothing else changed. Run pif, snapshot taken before.",
+   "permission": "Yes, edit the Encharge segment People IN FLOW. Take your snapshot of the segments first, then add one row each for the two new in-flow tags of Encharge flow Pack → Library (410132) and Encharge flow Crash PDF → Library (410148). Change nothing else in the segment.",
+   "made": {
+    "date": "2026-10-23",
+    "run": "pif"
+   },
+   "snapshot": {
+    "file": "snapshot-people-in-flow.json",
+    "sha256": "dd79743f4476960878adff0e3e731daa7ea09cfddfb6111221620485a4f0f844",
+    "content": {
+     "ok": true,
+     "segments": [
+      {
+       "id": 1257090,
+       "name": "People IN FLOW",
+       "accountId": 146791,
+       "version": 2,
+       "color": "#d15252",
+       "objectName": "person",
+       "conditions": {
+        "type": "group",
+        "operator": "or",
+        "conditions": [
+         {
+          "type": "tag",
+          "uuid": "38d63a3a-be7f-4be2-830d-9b0220060dfc",
+          "value": "in_flow_checkout_abandon",
+          "condition": "has"
+         },
+         {
+          "type": "tag",
+          "uuid": "06d3c2fc-ec05-5e1e-955d-819b41da2dfe",
+          "value": "in_flow_salespage_abandon",
+          "condition": "has"
+         },
+         {
+          "type": "tag",
+          "uuid": "ed0015af-69ce-5e5a-9564-b931d6c07828",
+          "value": "in_flow_library_onboarding",
+          "condition": "has"
+         },
+         {
+          "type": "tag",
+          "uuid": "4321c257-880f-5c9e-8d5c-12a6ca29df1a",
+          "value": "in_flow_library_to_pack",
+          "condition": "has"
+         },
+         {
+          "type": "tag",
+          "uuid": "9e45bffd-5ab6-56a1-a6c6-569ec1e008a1",
+          "value": "in_flow_pack_onboarding",
+          "condition": "has"
+         },
+         {
+          "type": "tag",
+          "uuid": "78f57ec9-54e7-5228-b44a-e2c06e0ef260",
+          "value": "in_flow_pack_to_library",
+          "condition": "has"
+         },
+         {
+          "type": "tag",
+          "uuid": "783961e8-f7a0-56b6-8db7-3fe465a3da9e",
+          "value": "in_flow_crash_delivery",
+          "condition": "has"
+         },
+         {
+          "type": "tag",
+          "uuid": "a4372bcd-518c-5af7-b432-23568699b2fe",
+          "value": "in_flow_crash_to_library",
+          "condition": "has"
+         },
+         {
+          "type": "tag",
+          "uuid": "086c6e90-f834-5300-8eb7-00e2d9a31263",
+          "value": "in_flow_lw_fonts",
+          "condition": "has"
+         },
+         {
+          "type": "tag",
+          "uuid": "bb1c5fd4-c2a1-504c-81d5-bc5d089850d8",
+          "value": "in_flow_lw_elements",
+          "condition": "has"
+         },
+         {
+          "type": "tag",
+          "uuid": "9aa76b4e-b237-5ef8-95a4-6224ad0e1c73",
+          "value": "in_flow_lw_template",
+          "condition": "has"
+         },
+         {
+          "type": "tag",
+          "uuid": "f0f47559-af79-53d5-99a7-52177841d2e1",
+          "value": "in_flow_template_delivery",
+          "condition": "has"
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
   }
  },
  "_note": "The sitting ledger (builder v1.00 reads it: pagecmd.py refs and reconcile, compile.py --ledger). Updated 2026-09-26 after v1.00: the ZZ tags, fields and master email Joe made by hand are listed, so v1.00's reconcile, which compares tags and fields too, knows them."
