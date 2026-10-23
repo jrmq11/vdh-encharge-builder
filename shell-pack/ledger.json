@@ -1534,6 +1534,70 @@
    "verify": "ok",
    "deleted": "2026-10-20",
    "deletedJoeSaid": "i did cleanup and disabled flow"
+  },
+  "templates_pack_to_canva_hacks_library_complete": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-10-23",
+    "run": "pl_objects",
+    "session": "Post flows 2, Pack to Library tags, 2026-10-23"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.11",
+    "inputs": [
+     "manifest-pl-objects.json@838cb638b24b"
+    ],
+    "emailSet": "v57"
+   },
+   "verify": "ok"
+  },
+  "canva_crash_pdf_to_canva_hacks_library_complete": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-10-23",
+    "run": "pl_objects",
+    "session": "Post flows 2, Pack to Library tags, 2026-10-23"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.11",
+    "inputs": [
+     "manifest-pl-objects.json@838cb638b24b"
+    ],
+    "emailSet": "v57"
+   },
+   "verify": "ok"
+  },
+  "in_flow_templates_pack_to_canva_hacks_library": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-10-23",
+    "run": "pl_objects",
+    "session": "Post flows 2, Pack to Library tags, 2026-10-23"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.11",
+    "inputs": [
+     "manifest-pl-objects.json@838cb638b24b"
+    ],
+    "emailSet": "v57"
+   },
+   "verify": "ok"
+  },
+  "in_flow_canva_crash_pdf_to_canva_hacks_library": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-10-23",
+    "run": "pl_objects",
+    "session": "Post flows 2, Pack to Library tags, 2026-10-23"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.11",
+    "inputs": [
+     "manifest-pl-objects.json@838cb638b24b"
+    ],
+    "emailSet": "v57"
+   },
+   "verify": "ok"
   }
  },
  "edited": {
