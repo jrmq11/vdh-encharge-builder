@@ -1,0 +1,219 @@
+{
+ "spec": 1,
+ "flow": {
+  "key": "crash_abandon",
+  "name": "Crash PDF Checkout Abandon",
+  "status": "parked"
+ },
+ "settings": {
+  "reentry": "per30d",
+  "duplicateSend": true
+ },
+ "trigger": {
+  "key": "t1",
+  "op": "ENTERED SEGMENT",
+  "segment": "crash_abandoners_active_24h",
+  "next": "c1"
+ },
+ "steps": [
+  {
+   "key": "c1",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "tag",
+      "product_canva_crash_pdf",
+      "absent"
+     ],
+     [
+      "tag",
+      "product_canva_hacks_library",
+      "absent"
+     ]
+    ]
+   },
+   "yes": "c2",
+   "no": null
+  },
+  {
+   "key": "c2",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "field",
+      "validationResult",
+      "isNot",
+      "invalid"
+     ],
+     [
+      "field",
+      "isEmailDisposable",
+      "is",
+      false
+     ]
+    ]
+   },
+   "yes": "w1",
+   "no": "a1"
+  },
+  {
+   "key": "a1",
+   "op": "ADD TAG",
+   "tags": [
+    "invalid_email_removed_from_abandon_flow"
+   ],
+   "next": "x1"
+  },
+  {
+   "key": "x1",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "w1",
+   "op": "WAIT",
+   "hours": 1,
+   "next": "c3"
+  },
+  {
+   "key": "c3",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "tag",
+      "product_canva_crash_pdf",
+      "absent"
+     ],
+     [
+      "tag",
+      "product_canva_hacks_library",
+      "absent"
+     ]
+    ]
+   },
+   "yes": "a3",
+   "no": "a2"
+  },
+  {
+   "key": "a2",
+   "op": "ADD TAG",
+   "tags": [
+    "recovered_user"
+   ],
+   "next": "x2"
+  },
+  {
+   "key": "x2",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "a3",
+   "op": "ADD TAG",
+   "tags": [
+    "in_flow_crash_abandon"
+   ],
+   "next": "f1"
+  },
+  {
+   "key": "f1",
+   "op": "SET FIELD",
+   "field": "flow_lane_crash",
+   "value": "crash_abandon",
+   "next": "s1"
+  },
+  {
+   "key": "s1",
+   "op": "SEND",
+   "email": "crash_abandon_1",
+   "next": "f3",
+   "onBounced": "f2"
+  },
+  {
+   "key": "f2",
+   "op": "SET FIELD",
+   "field": "flow_lane_crash",
+   "value": "none",
+   "next": "r1"
+  },
+  {
+   "key": "r1",
+   "op": "REMOVE TAG",
+   "tags": [
+    "in_flow_crash_abandon"
+   ],
+   "next": "x3"
+  },
+  {
+   "key": "x3",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "f3",
+   "op": "SET FIELD",
+   "field": "last_pitch_at",
+   "value": "{% now %}",
+   "next": "f4"
+  },
+  {
+   "key": "f4",
+   "op": "SET FIELD",
+   "field": "flow_lane_crash",
+   "value": "none",
+   "next": "r2"
+  },
+  {
+   "key": "r2",
+   "op": "REMOVE TAG",
+   "tags": [
+    "in_flow_crash_abandon"
+   ],
+   "next": "x4"
+  },
+  {
+   "key": "x4",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "n1",
+   "op": "EXITS",
+   "text": "every branch ends REMOVE TAG → End Flow, and each Send Email step’s On bounced link leads to the same cleanup (V2): the spec carries it as onBounced, and the builder draws it (v52). A branch that just stops keeps in_flow_crash_abandon, and that person never gets another broadcast. Send a test contact down each exit before switching the flow on."
+  },
+  {
+   "key": "n2",
+   "op": "GREETING",
+   "text": "the export writes the greeting with the name rule: joe and JOE read Joe, JoAnn stays JoAnn, mcH reads McH, an empty name reads there (decision 123). The emails come from the master, so nothing is typed by hand"
+  },
+  {
+   "key": "n3",
+   "op": "FIELD",
+   "text": "flow_lane_crash (Text): create it before this flow goes live, with its lane cleanup (the Build tab, first card)"
+  },
+  {
+   "key": "n4",
+   "op": "LINKS",
+   "text": "Email 1 links to the Crash PDF's ThriveCart checkout. No code rides it: no Crash PDF code exists."
+  },
+  {
+   "key": "n5",
+   "op": "TEST",
+   "text": "one Crash PDF abandon with a real inbox: the email arrives about an hour later and the contact leaves People IN FLOW. A Library abandon from the same contact goes to Checkout Abandon only. Then a test purchase during the wait: no email."
+  }
+ ],
+ "notes": [
+  {
+   "type": "note",
+   "text": "Crash PDF Checkout Abandon · email set v57, built from its spec (decision 114)",
+   "near": "t1"
+  }
+ ]
+}

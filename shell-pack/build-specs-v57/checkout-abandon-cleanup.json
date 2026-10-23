@@ -1,0 +1,95 @@
+{
+ "spec": 1,
+ "flow": {
+  "key": "checkout_abandon_cleanup",
+  "name": "Checkout Abandon · stuck-contact cleanup",
+  "status": "ship"
+ },
+ "settings": {
+  "reentry": "always",
+  "duplicateSend": false
+ },
+ "trigger": {
+  "key": "t1",
+  "op": "TAG ADDED",
+  "tag": "abandoned_active",
+  "next": "w1"
+ },
+ "steps": [
+  {
+   "key": "w1",
+   "op": "WAIT",
+   "days": 7,
+   "next": "c1"
+  },
+  {
+   "key": "c1",
+   "op": "CHECK",
+   "if": {
+    "any": [
+     [
+      "tag",
+      "abandoned_active",
+      "present"
+     ],
+     [
+      "tag",
+      "in_flow_checkout_abandon",
+      "present"
+     ]
+    ]
+   },
+   "yes": "r1",
+   "no": null
+  },
+  {
+   "key": "r1",
+   "op": "REMOVE TAG",
+   "tags": [
+    "abandoned_active",
+    "in_flow_checkout_abandon"
+   ],
+   "next": "c2"
+  },
+  {
+   "key": "c2",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "field",
+      "flow_lane_library",
+      "is",
+      "checkout_abandon"
+     ]
+    ]
+   },
+   "yes": "f1",
+   "no": null
+  },
+  {
+   "key": "f1",
+   "op": "SET FIELD",
+   "field": "flow_lane_library",
+   "value": "none",
+   "next": null
+  },
+  {
+   "key": "n1",
+   "op": "ENCHARGE",
+   "text": "the builder makes it switched off, like every flow. In the switch-over sitting (H2), once step 5 of FM VDH Abandoned Cart Router is deleted: remove abandoned_active from everyone who still holds it, since this flow sees only the tag being added (step 5 added it to every abandoner, and Checkout Abandon’s first check would stop them for good); switch this flow on; then the new Checkout Abandon, so it sees every tag that flow adds. Switch the two off and on together: with Checkout Abandon off and people in it, this flow could clear them mid-run. It removes abandoned_active, so the builder needs your permission for that tag here as well as in Checkout Abandon."
+  },
+  {
+   "key": "n2",
+   "op": "TEST",
+   "text": "at H2’s test abandon, the test contact should also show in this flow, at its 7-day wait: that shows a tag added by another flow starts it."
+  }
+ ],
+ "notes": [
+  {
+   "type": "note",
+   "text": "Checkout Abandon · stuck-contact cleanup · email set v57, built from its spec (decision 114). Decision 116: Checkout Abandon lasts 3 days, so anyone still holding abandoned_active a week after it was added is stuck. It checks for either tag, since FM VDH Purchase Router removes abandoned_active on any purchase (v52)",
+   "near": "t1"
+  }
+ ]
+}

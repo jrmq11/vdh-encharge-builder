@@ -1,0 +1,428 @@
+{
+ "spec": 1,
+ "flow": {
+  "key": "checkout_abandon",
+  "name": "Checkout Abandon",
+  "status": "ship"
+ },
+ "settings": {
+  "reentry": "per30d",
+  "duplicateSend": true
+ },
+ "trigger": {
+  "key": "t1",
+  "op": "ENTERED SEGMENT",
+  "segment": "abandoners_active_24h",
+  "next": "c1"
+ },
+ "steps": [
+  {
+   "key": "n1",
+   "op": "ENCHARGE",
+   "text": "the builder makes this flow new, switched off: it never edits a live flow (decision 114). The switch-over is yours, in one sitting: switch off the Encharge flow Abandoned Cart Email Sending Sequence, delete step 5 of FM VDH Abandoned Cart Router (below), remove abandoned_active from everyone who still holds it, switch on Checkout Abandon · stuck-contact cleanup (System automations), then switch this flow on. The builder makes the entry segment edit (SEGMENT) inside that sitting, after Abandoned Cart Email Sending Sequence is off and before this flow goes on: it checks both are off first (spec format v0.6)."
+  },
+  {
+   "key": "c1",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "tag",
+      "product_canva_hacks_library",
+      "absent"
+     ]
+    ]
+   },
+   "yes": "c2",
+   "no": null
+  },
+  {
+   "key": "c2",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "tag",
+      "abandoned_active",
+      "absent"
+     ]
+    ]
+   },
+   "yes": "a1",
+   "no": "x1"
+  },
+  {
+   "key": "x1",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "a1",
+   "op": "ADD TAG",
+   "tags": [
+    "abandoned_active"
+   ],
+   "next": "c3"
+  },
+  {
+   "key": "c3",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "field",
+      "validationResult",
+      "isNot",
+      "invalid"
+     ],
+     [
+      "field",
+      "isEmailDisposable",
+      "is",
+      false
+     ]
+    ]
+   },
+   "yes": "w1",
+   "no": "a2"
+  },
+  {
+   "key": "a2",
+   "op": "ADD TAG",
+   "tags": [
+    "invalid_email_removed_from_abandon_flow"
+   ],
+   "next": "r1"
+  },
+  {
+   "key": "r1",
+   "op": "REMOVE TAG",
+   "tags": [
+    "abandoned_active"
+   ],
+   "next": "x2"
+  },
+  {
+   "key": "x2",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "w1",
+   "op": "WAIT",
+   "hours": 1,
+   "next": "c4"
+  },
+  {
+   "key": "c4",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "field",
+      "mostrecent_abandonedproduct_id",
+      "is",
+      "1"
+     ]
+    ]
+   },
+   "yes": "c5",
+   "no": "r2"
+  },
+  {
+   "key": "r2",
+   "op": "REMOVE TAG",
+   "tags": [
+    "abandoned_active"
+   ],
+   "next": "x3"
+  },
+  {
+   "key": "x3",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "c5",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "tag",
+      "product_canva_hacks_library",
+      "absent"
+     ]
+    ]
+   },
+   "yes": "a4",
+   "no": "a3"
+  },
+  {
+   "key": "a3",
+   "op": "ADD TAG",
+   "tags": [
+    "recovered_user"
+   ],
+   "next": "r3"
+  },
+  {
+   "key": "r3",
+   "op": "REMOVE TAG",
+   "tags": [
+    "abandoned_active"
+   ],
+   "next": "x4"
+  },
+  {
+   "key": "x4",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "a4",
+   "op": "ADD TAG",
+   "tags": [
+    "in_flow_checkout_abandon"
+   ],
+   "next": "f1"
+  },
+  {
+   "key": "f1",
+   "op": "SET FIELD",
+   "field": "flow_lane_library",
+   "value": "checkout_abandon",
+   "next": "f2"
+  },
+  {
+   "key": "f2",
+   "op": "SET FIELD",
+   "field": "canva_library_abandoned_at",
+   "value": "{% now %}",
+   "next": "s1"
+  },
+  {
+   "key": "s1",
+   "op": "SEND",
+   "email": "checkout_abandon_1",
+   "next": "f4",
+   "onBounced": "f3"
+  },
+  {
+   "key": "f3",
+   "op": "SET FIELD",
+   "field": "flow_lane_library",
+   "value": "none",
+   "next": "r4"
+  },
+  {
+   "key": "r4",
+   "op": "REMOVE TAG",
+   "tags": [
+    "abandoned_active",
+    "in_flow_checkout_abandon"
+   ],
+   "next": "x5"
+  },
+  {
+   "key": "x5",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "f4",
+   "op": "SET FIELD",
+   "field": "last_pitch_at",
+   "value": "{% now %}",
+   "next": "w2"
+  },
+  {
+   "key": "w2",
+   "op": "WAIT",
+   "hours": 23,
+   "next": "c6"
+  },
+  {
+   "key": "c6",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "tag",
+      "product_canva_hacks_library",
+      "absent"
+     ]
+    ]
+   },
+   "yes": "s2",
+   "no": "a5"
+  },
+  {
+   "key": "a5",
+   "op": "ADD TAG",
+   "tags": [
+    "recovered_user"
+   ],
+   "next": "f5"
+  },
+  {
+   "key": "f5",
+   "op": "SET FIELD",
+   "field": "flow_lane_library",
+   "value": "none",
+   "next": "r5"
+  },
+  {
+   "key": "r5",
+   "op": "REMOVE TAG",
+   "tags": [
+    "abandoned_active",
+    "in_flow_checkout_abandon"
+   ],
+   "next": "x6"
+  },
+  {
+   "key": "x6",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "s2",
+   "op": "SEND",
+   "email": "checkout_abandon_2",
+   "next": "f6",
+   "onBounced": "f3"
+  },
+  {
+   "key": "f6",
+   "op": "SET FIELD",
+   "field": "last_pitch_at",
+   "value": "{% now %}",
+   "next": "w3"
+  },
+  {
+   "key": "w3",
+   "op": "WAIT",
+   "days": 2,
+   "next": "c7"
+  },
+  {
+   "key": "c7",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "tag",
+      "product_canva_hacks_library",
+      "absent"
+     ]
+    ]
+   },
+   "yes": "s3",
+   "no": "a6"
+  },
+  {
+   "key": "a6",
+   "op": "ADD TAG",
+   "tags": [
+    "recovered_user"
+   ],
+   "next": "f7"
+  },
+  {
+   "key": "f7",
+   "op": "SET FIELD",
+   "field": "flow_lane_library",
+   "value": "none",
+   "next": "r6"
+  },
+  {
+   "key": "r6",
+   "op": "REMOVE TAG",
+   "tags": [
+    "abandoned_active",
+    "in_flow_checkout_abandon"
+   ],
+   "next": "x7"
+  },
+  {
+   "key": "x7",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "s3",
+   "op": "SEND",
+   "email": "checkout_abandon_3",
+   "next": "f8",
+   "onBounced": "f3"
+  },
+  {
+   "key": "f8",
+   "op": "SET FIELD",
+   "field": "last_pitch_at",
+   "value": "{% now %}",
+   "next": "f9"
+  },
+  {
+   "key": "f9",
+   "op": "SET FIELD",
+   "field": "flow_lane_library",
+   "value": "none",
+   "next": "r7"
+  },
+  {
+   "key": "r7",
+   "op": "REMOVE TAG",
+   "tags": [
+    "abandoned_active",
+    "in_flow_checkout_abandon"
+   ],
+   "next": "x8"
+  },
+  {
+   "key": "x8",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "n2",
+   "op": "EXITS",
+   "text": "every branch ends REMOVE TAG → End Flow, and each Send Email step’s On bounced link leads to the same cleanup (V2): the spec carries it as onBounced, and the builder draws it (v52). A branch that just stops keeps in_flow_checkout_abandon, and that person never gets another broadcast. Send a test contact down each exit before switching the flow on."
+  },
+  {
+   "key": "n3",
+   "op": "GREETING",
+   "text": "the export writes the greeting with the name rule: joe and JOE read Joe, JoAnn stays JoAnn, mcH reads McH, an empty name reads there (decision 123). The emails come from the master, so nothing is typed by hand"
+  },
+  {
+   "key": "n4",
+   "op": "LINKS",
+   "text": "Emails 1 and 3 link to the Library checkout, ending {% if person.library_offer_code and person.library_offer_code != \"\" %}?coupon={{ person.library_offer_code }}{% endif %} (&coupon= if the checkout URL already has a query string); Email 2 links to the sales page. Someone who was offered a Library code, or holds the Crash PDF credit (decision 86), gets it back. Confirm on a test send that the button link accepts Liquid."
+  },
+  {
+   "key": "n5",
+   "op": "FLOWMATTIC",
+   "text": "same sitting, after switching off Abandoned Cart Email Sending Sequence and before switching this flow on: delete step 5 of FM VDH Abandoned Cart Router (Add Abandoned Active Tag). Never while the old flow is on: its placeholder email would start sending."
+  },
+  {
+   "key": "n6",
+   "op": "TEST",
+   "text": "the switch-over’s last step (the router test, N2, passed on 25 Sep): one abandon from a new, real inbox, not one of the old test contacts (the architecture chat asks for a new one) and not an example.com address (the validation check stops those). Tell the architecture chat: it checks straight away and again about 27 hours later, after Email 2. Then a test purchase: the flow ends without Email 3. Email 1 arrives about an hour after entry, and the contact leaves People IN FLOW when the flow ends. Reply to ThriveCart’s receipt and check the reply reaches you: Email 3 tells people to (V15). After Email 1, last_pitch_at shows its send time. The product check compares the text \"1\" (gap A12): if the test contact stops there, tell the architecture chat."
+  }
+ ],
+ "notes": [
+  {
+   "type": "note",
+   "text": "Checkout Abandon · email set v57, built from its spec (decision 114)",
+   "near": "t1"
+  }
+ ]
+}

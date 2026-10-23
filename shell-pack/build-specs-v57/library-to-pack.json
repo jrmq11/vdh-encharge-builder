@@ -1,0 +1,660 @@
+{
+ "spec": 1,
+ "flow": {
+  "key": "library_to_pack",
+  "name": "Library → Pack",
+  "status": "ship"
+ },
+ "settings": {
+  "reentry": "once",
+  "duplicateSend": false
+ },
+ "trigger": {
+  "key": "t1",
+  "op": "TAG ADDED",
+  "tag": "product_canva_hacks_library",
+  "next": "c1"
+ },
+ "steps": [
+  {
+   "key": "c1",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "tag",
+      "product_canva_hacks_library",
+      "present"
+     ],
+     [
+      "tagGroup",
+      "template_pack_owner",
+      "none"
+     ]
+    ]
+   },
+   "yes": "a1",
+   "no": null
+  },
+  {
+   "key": "a1",
+   "op": "ADD TAG",
+   "tags": [
+    "pitch_pending_pack"
+   ],
+   "next": "w1"
+  },
+  {
+   "key": "w1",
+   "op": "WAIT",
+   "days": 14,
+   "next": "c2"
+  },
+  {
+   "key": "c2",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "field",
+      "LoginCount",
+      "moreThan",
+      0
+     ]
+    ]
+   },
+   "yes": "c3",
+   "no": "r1"
+  },
+  {
+   "key": "r1",
+   "op": "REMOVE TAG",
+   "tags": [
+    "pitch_pending_pack"
+   ],
+   "next": "x1"
+  },
+  {
+   "key": "x1",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "c3",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "field",
+      "last_pitch_at",
+      "emptyOrOlderThanDays",
+      1
+     ]
+    ]
+   },
+   "yes": "c6",
+   "no": "w2"
+  },
+  {
+   "key": "w2",
+   "op": "WAIT",
+   "days": 1,
+   "next": "c4"
+  },
+  {
+   "key": "c4",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "field",
+      "last_pitch_at",
+      "emptyOrOlderThanDays",
+      1
+     ]
+    ]
+   },
+   "yes": "c6",
+   "no": "w3"
+  },
+  {
+   "key": "w3",
+   "op": "WAIT",
+   "days": 1,
+   "next": "c5"
+  },
+  {
+   "key": "c5",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "field",
+      "last_pitch_at",
+      "emptyOrOlderThanDays",
+      1
+     ]
+    ]
+   },
+   "yes": "c6",
+   "no": "w4"
+  },
+  {
+   "key": "w4",
+   "op": "WAIT",
+   "days": 1,
+   "next": "c6"
+  },
+  {
+   "key": "c6",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "tag",
+      "product_canva_hacks_library",
+      "present"
+     ],
+     [
+      "tagGroup",
+      "template_pack_owner",
+      "none"
+     ]
+    ]
+   },
+   "yes": "r3",
+   "no": "r2"
+  },
+  {
+   "key": "r2",
+   "op": "REMOVE TAG",
+   "tags": [
+    "pitch_pending_pack"
+   ],
+   "next": "x2"
+  },
+  {
+   "key": "x2",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "r3",
+   "op": "REMOVE TAG",
+   "tags": [
+    "pitch_pending_pack"
+   ],
+   "next": "a2"
+  },
+  {
+   "key": "a2",
+   "op": "ADD TAG",
+   "tags": [
+    "in_flow_library_to_pack"
+   ],
+   "next": "c7"
+  },
+  {
+   "key": "c7",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "field",
+      "flow_lane_pack",
+      "emptyOrIs",
+      "none"
+     ]
+    ]
+   },
+   "yes": "f1",
+   "no": "r4"
+  },
+  {
+   "key": "r4",
+   "op": "REMOVE TAG",
+   "tags": [
+    "in_flow_library_to_pack"
+   ],
+   "next": "x3"
+  },
+  {
+   "key": "x3",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "f1",
+   "op": "SET FIELD",
+   "field": "flow_lane_pack",
+   "value": "library_to_pack",
+   "next": "w5"
+  },
+  {
+   "key": "w5",
+   "op": "WAIT",
+   "minutes": 1,
+   "next": "c8"
+  },
+  {
+   "key": "c8",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "field",
+      "flow_lane_pack",
+      "is",
+      "library_to_pack"
+     ]
+    ]
+   },
+   "yes": "s1",
+   "no": "r5"
+  },
+  {
+   "key": "r5",
+   "op": "REMOVE TAG",
+   "tags": [
+    "in_flow_library_to_pack"
+   ],
+   "next": "x4"
+  },
+  {
+   "key": "x4",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "s1",
+   "op": "SEND",
+   "email": "library_to_pack_1",
+   "next": "f3",
+   "onBounced": "f2"
+  },
+  {
+   "key": "f2",
+   "op": "SET FIELD",
+   "field": "flow_lane_pack",
+   "value": "none",
+   "next": "r6"
+  },
+  {
+   "key": "r6",
+   "op": "REMOVE TAG",
+   "tags": [
+    "in_flow_library_to_pack"
+   ],
+   "next": "x5"
+  },
+  {
+   "key": "x5",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "f3",
+   "op": "SET FIELD",
+   "field": "last_pitch_at",
+   "value": "{% now %}",
+   "next": "w6"
+  },
+  {
+   "key": "w6",
+   "op": "WAIT",
+   "days": 5,
+   "next": "c9"
+  },
+  {
+   "key": "c9",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "field",
+      "last_pitch_at",
+      "emptyOrOlderThanDays",
+      1
+     ]
+    ]
+   },
+   "yes": "c12",
+   "no": "w7"
+  },
+  {
+   "key": "w7",
+   "op": "WAIT",
+   "days": 1,
+   "next": "c10"
+  },
+  {
+   "key": "c10",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "field",
+      "last_pitch_at",
+      "emptyOrOlderThanDays",
+      1
+     ]
+    ]
+   },
+   "yes": "c12",
+   "no": "w8"
+  },
+  {
+   "key": "w8",
+   "op": "WAIT",
+   "days": 1,
+   "next": "c11"
+  },
+  {
+   "key": "c11",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "field",
+      "last_pitch_at",
+      "emptyOrOlderThanDays",
+      1
+     ]
+    ]
+   },
+   "yes": "c12",
+   "no": "w9"
+  },
+  {
+   "key": "w9",
+   "op": "WAIT",
+   "days": 1,
+   "next": "c12"
+  },
+  {
+   "key": "c12",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "field",
+      "flow_lane_pack",
+      "is",
+      "library_to_pack"
+     ]
+    ]
+   },
+   "yes": "c13",
+   "no": "r7"
+  },
+  {
+   "key": "r7",
+   "op": "REMOVE TAG",
+   "tags": [
+    "in_flow_library_to_pack"
+   ],
+   "next": "x6"
+  },
+  {
+   "key": "x6",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "c13",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "tag",
+      "product_canva_hacks_library",
+      "present"
+     ],
+     [
+      "tagGroup",
+      "template_pack_owner",
+      "none"
+     ]
+    ]
+   },
+   "yes": "s2",
+   "no": "f4"
+  },
+  {
+   "key": "f4",
+   "op": "SET FIELD",
+   "field": "flow_lane_pack",
+   "value": "none",
+   "next": "r8"
+  },
+  {
+   "key": "r8",
+   "op": "REMOVE TAG",
+   "tags": [
+    "in_flow_library_to_pack"
+   ],
+   "next": "x7"
+  },
+  {
+   "key": "x7",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "s2",
+   "op": "SEND",
+   "email": "library_to_pack_2",
+   "next": "f5",
+   "onBounced": "f2"
+  },
+  {
+   "key": "f5",
+   "op": "SET FIELD",
+   "field": "last_pitch_at",
+   "value": "{% now %}",
+   "next": "w10"
+  },
+  {
+   "key": "w10",
+   "op": "WAIT",
+   "days": 3,
+   "next": "c14"
+  },
+  {
+   "key": "c14",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "field",
+      "last_pitch_at",
+      "emptyOrOlderThanDays",
+      1
+     ]
+    ]
+   },
+   "yes": "c17",
+   "no": "w11"
+  },
+  {
+   "key": "w11",
+   "op": "WAIT",
+   "days": 1,
+   "next": "c15"
+  },
+  {
+   "key": "c15",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "field",
+      "last_pitch_at",
+      "emptyOrOlderThanDays",
+      1
+     ]
+    ]
+   },
+   "yes": "c17",
+   "no": "w12"
+  },
+  {
+   "key": "w12",
+   "op": "WAIT",
+   "days": 1,
+   "next": "c16"
+  },
+  {
+   "key": "c16",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "field",
+      "last_pitch_at",
+      "emptyOrOlderThanDays",
+      1
+     ]
+    ]
+   },
+   "yes": "c17",
+   "no": "w13"
+  },
+  {
+   "key": "w13",
+   "op": "WAIT",
+   "days": 1,
+   "next": "c17"
+  },
+  {
+   "key": "c17",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "field",
+      "flow_lane_pack",
+      "is",
+      "library_to_pack"
+     ]
+    ]
+   },
+   "yes": "c18",
+   "no": "r9"
+  },
+  {
+   "key": "r9",
+   "op": "REMOVE TAG",
+   "tags": [
+    "in_flow_library_to_pack"
+   ],
+   "next": "x8"
+  },
+  {
+   "key": "x8",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "c18",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "tag",
+      "product_canva_hacks_library",
+      "present"
+     ],
+     [
+      "tagGroup",
+      "template_pack_owner",
+      "none"
+     ]
+    ]
+   },
+   "yes": "s3",
+   "no": "f6"
+  },
+  {
+   "key": "f6",
+   "op": "SET FIELD",
+   "field": "flow_lane_pack",
+   "value": "none",
+   "next": "r10"
+  },
+  {
+   "key": "r10",
+   "op": "REMOVE TAG",
+   "tags": [
+    "in_flow_library_to_pack"
+   ],
+   "next": "x9"
+  },
+  {
+   "key": "x9",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "s3",
+   "op": "SEND",
+   "email": "library_to_pack_3",
+   "next": "f7",
+   "onBounced": "f2"
+  },
+  {
+   "key": "f7",
+   "op": "SET FIELD",
+   "field": "last_pitch_at",
+   "value": "{% now %}",
+   "next": "f8"
+  },
+  {
+   "key": "f8",
+   "op": "SET FIELD",
+   "field": "flow_lane_pack",
+   "value": "none",
+   "next": "r11"
+  },
+  {
+   "key": "r11",
+   "op": "REMOVE TAG",
+   "tags": [
+    "in_flow_library_to_pack"
+   ],
+   "next": "x10"
+  },
+  {
+   "key": "x10",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "n1",
+   "op": "EXITS",
+   "text": "every branch ends REMOVE TAG → End Flow, and each Send Email step’s On bounced link leads to the same cleanup (V2): the spec carries it as onBounced, and the builder draws it (v52). A branch that just stops keeps in_flow_library_to_pack, and that person never gets another broadcast. Send a test contact down each exit before switching the flow on."
+  },
+  {
+   "key": "n2",
+   "op": "GREETING",
+   "text": "the export writes the greeting with the name rule: joe and JOE read Joe, JoAnn stays JoAnn, mcH reads McH, an empty name reads there (decision 123). The emails come from the master, so nothing is typed by hand"
+  }
+ ],
+ "notes": [
+  {
+   "type": "note",
+   "text": "Library → Pack · email set v57, built from its spec (decision 114)",
+   "near": "t1"
+  }
+ ]
+}

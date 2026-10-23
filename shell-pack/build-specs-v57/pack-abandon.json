@@ -1,0 +1,204 @@
+{
+ "spec": 1,
+ "flow": {
+  "key": "pack_abandon",
+  "name": "Pack Checkout Abandon",
+  "status": "parked"
+ },
+ "settings": {
+  "reentry": "per30d",
+  "duplicateSend": true
+ },
+ "trigger": {
+  "key": "t1",
+  "op": "ENTERED SEGMENT",
+  "segment": "pack_abandoners_active_24h",
+  "next": "c1"
+ },
+ "steps": [
+  {
+   "key": "c1",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "tagGroup",
+      "template_pack_owner",
+      "none"
+     ]
+    ]
+   },
+   "yes": "c2",
+   "no": null
+  },
+  {
+   "key": "c2",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "field",
+      "validationResult",
+      "isNot",
+      "invalid"
+     ],
+     [
+      "field",
+      "isEmailDisposable",
+      "is",
+      false
+     ]
+    ]
+   },
+   "yes": "w1",
+   "no": "a1"
+  },
+  {
+   "key": "a1",
+   "op": "ADD TAG",
+   "tags": [
+    "invalid_email_removed_from_abandon_flow"
+   ],
+   "next": "x1"
+  },
+  {
+   "key": "x1",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "w1",
+   "op": "WAIT",
+   "hours": 1,
+   "next": "c3"
+  },
+  {
+   "key": "c3",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "tagGroup",
+      "template_pack_owner",
+      "none"
+     ]
+    ]
+   },
+   "yes": "a3",
+   "no": "a2"
+  },
+  {
+   "key": "a2",
+   "op": "ADD TAG",
+   "tags": [
+    "recovered_user"
+   ],
+   "next": "x2"
+  },
+  {
+   "key": "x2",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "a3",
+   "op": "ADD TAG",
+   "tags": [
+    "in_flow_pack_abandon"
+   ],
+   "next": "f1"
+  },
+  {
+   "key": "f1",
+   "op": "SET FIELD",
+   "field": "flow_lane_pack",
+   "value": "pack_abandon",
+   "next": "s1"
+  },
+  {
+   "key": "s1",
+   "op": "SEND",
+   "email": "pack_abandon_1",
+   "next": "f3",
+   "onBounced": "f2"
+  },
+  {
+   "key": "f2",
+   "op": "SET FIELD",
+   "field": "flow_lane_pack",
+   "value": "none",
+   "next": "r1"
+  },
+  {
+   "key": "r1",
+   "op": "REMOVE TAG",
+   "tags": [
+    "in_flow_pack_abandon"
+   ],
+   "next": "x3"
+  },
+  {
+   "key": "x3",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "f3",
+   "op": "SET FIELD",
+   "field": "last_pitch_at",
+   "value": "{% now %}",
+   "next": "f4"
+  },
+  {
+   "key": "f4",
+   "op": "SET FIELD",
+   "field": "flow_lane_pack",
+   "value": "none",
+   "next": "r2"
+  },
+  {
+   "key": "r2",
+   "op": "REMOVE TAG",
+   "tags": [
+    "in_flow_pack_abandon"
+   ],
+   "next": "x4"
+  },
+  {
+   "key": "x4",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "n1",
+   "op": "EXITS",
+   "text": "every branch ends REMOVE TAG → End Flow, and each Send Email step’s On bounced link leads to the same cleanup (V2): the spec carries it as onBounced, and the builder draws it (v52). A branch that just stops keeps in_flow_pack_abandon, and that person never gets another broadcast. Send a test contact down each exit before switching the flow on."
+  },
+  {
+   "key": "n2",
+   "op": "GREETING",
+   "text": "the export writes the greeting with the name rule: joe and JOE read Joe, JoAnn stays JoAnn, mcH reads McH, an empty name reads there (decision 123). The emails come from the master, so nothing is typed by hand"
+  },
+  {
+   "key": "n3",
+   "op": "LINKS",
+   "text": "Email 1 links to the Pack's ThriveCart checkout. Open at un-park: a template lead offered TEMPLATELEAD5, or a Library buyer offered PACK5, would find $25 here. A pack_offer_code field, saved by the offer emails and carried on this link as library_offer_code rides Checkout Abandon's, would give it back."
+  },
+  {
+   "key": "n4",
+   "op": "TEST",
+   "text": "one Pack abandon with a real inbox: the email arrives about an hour later and the contact leaves People IN FLOW. A Library abandon from the same contact goes to Checkout Abandon only. Then a test purchase during the wait: no email."
+  }
+ ],
+ "notes": [
+  {
+   "type": "note",
+   "text": "Pack Checkout Abandon · email set v57, built from its spec (decision 114)",
+   "near": "t1"
+  }
+ ]
+}

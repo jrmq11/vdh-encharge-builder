@@ -1,0 +1,27 @@
+{
+ "format": 1,
+ "about": "The policy facts guard.js does not hold, in one place (v1.10, P20). Read by the compiler (scripts/compiler/context.py), by live/pagecmd.py, and in the page through live/policy.js, which scripts/policy.py generates from this file and guard.js. Change a fact here, run python3 -B scripts/policy.py, and the package check compares the generated files. What guard.js declares (protected tags, router fields, step types) is read from guard.js itself into data/guard-policy.json.",
+ "notes": {
+  "permissionWords": "A permission is Joe's own words, with the day he gave them (rule 4; review of v1.01, N4). Words that are a note (starting with an opener) or that hold a test's, a dry run's or a rehearsal's words (on their letters and digits alone, case folded) are not his; nor is a date before firstDate or after tomorrow. Invisible characters (Unicode's format and control characters) are taken out first: Python by its own unicodedata categories, the page by a table of its own, which stay where they are, since the two differ on seven code points Unicode 15.1 added (U+13439 to U+1343F) and one source would change one side's judgement; the difference depends on the Python (none on 3.12, Unicode 15.0).",
+  "liveIds": "Live objects the builder did not make (the switch-over's flow, the seeded segments, the master emails), which the ledger tool never marks failed or deleted by a put. 488125 is Encharge email VDH Master - Letter, the master Joe made on 2026-09-28 (v1.05); 373125 is Tester 1, the old master.",
+  "switchOver": "D1: Encharge segment Abandoners (active last 24h) starts Encharge flow Abandoned Cart Email Sending Sequence, which is on. Its edit runs only inside the switch-over, behind a read that requires that flow off (offStatuses: a new flow never switched on, and one switched off by a person; api-map 7.5)."
+ },
+ "permissionWords": {
+  "notWords": "offlinetest|dryrun|rehearsal|notjoe",
+  "noteOpeners": ["(", "["],
+  "firstDate": "2020-01-01"
+ },
+ "liveIds": {
+  "flows": [310308],
+  "segments": [1257090, 1257089, 1057634, 1057637, 1059368, 1057638],
+  "emails": [373125, 488125]
+ },
+ "switchOver": {
+  "segment": "abandoners_active_24h",
+  "segmentId": 1059368,
+  "segmentName": "Abandoners (active last 24h)",
+  "flowId": 310308,
+  "flowName": "Abandoned Cart Email Sending Sequence"
+ },
+ "offStatuses": ["deactivated", "deactivated-user"]
+}

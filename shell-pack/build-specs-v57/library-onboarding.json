@@ -1,0 +1,248 @@
+{
+ "spec": 1,
+ "flow": {
+  "key": "library_onboarding",
+  "name": "Library Onboarding",
+  "status": "ship"
+ },
+ "settings": {
+  "reentry": "once",
+  "duplicateSend": false
+ },
+ "trigger": {
+  "key": "t1",
+  "op": "TAG ADDED",
+  "tag": "product_canva_hacks_library",
+  "next": "c1"
+ },
+ "steps": [
+  {
+   "key": "c1",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "tag",
+      "product_canva_hacks_library",
+      "present"
+     ]
+    ]
+   },
+   "yes": "w1",
+   "no": null
+  },
+  {
+   "key": "w1",
+   "op": "WAIT",
+   "hours": 1,
+   "next": "c2"
+  },
+  {
+   "key": "c2",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "tag",
+      "product_canva_hacks_library",
+      "present"
+     ]
+    ]
+   },
+   "yes": "a1",
+   "no": "x1"
+  },
+  {
+   "key": "x1",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "a1",
+   "op": "ADD TAG",
+   "tags": [
+    "in_flow_library_onboarding"
+   ],
+   "next": "s1"
+  },
+  {
+   "key": "s1",
+   "op": "SEND",
+   "email": "library_onboarding_1",
+   "next": "w2",
+   "onBounced": "r1"
+  },
+  {
+   "key": "r1",
+   "op": "REMOVE TAG",
+   "tags": [
+    "in_flow_library_onboarding"
+   ],
+   "next": "x2"
+  },
+  {
+   "key": "x2",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "w2",
+   "op": "WAIT",
+   "hours": 47,
+   "next": "c3"
+  },
+  {
+   "key": "c3",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "tag",
+      "product_canva_hacks_library",
+      "present"
+     ]
+    ]
+   },
+   "yes": "s2",
+   "no": "r2"
+  },
+  {
+   "key": "r2",
+   "op": "REMOVE TAG",
+   "tags": [
+    "in_flow_library_onboarding"
+   ],
+   "next": "x3"
+  },
+  {
+   "key": "x3",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "s2",
+   "op": "SEND",
+   "email": "library_onboarding_2",
+   "next": "w3",
+   "onBounced": "r1"
+  },
+  {
+   "key": "w3",
+   "op": "WAIT",
+   "days": 3,
+   "next": "c4"
+  },
+  {
+   "key": "c4",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "tag",
+      "product_canva_hacks_library",
+      "present"
+     ]
+    ]
+   },
+   "yes": "s3",
+   "no": "r3"
+  },
+  {
+   "key": "r3",
+   "op": "REMOVE TAG",
+   "tags": [
+    "in_flow_library_onboarding"
+   ],
+   "next": "x4"
+  },
+  {
+   "key": "x4",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "s3",
+   "op": "SEND",
+   "email": "library_onboarding_3",
+   "next": "w4",
+   "onBounced": "r1"
+  },
+  {
+   "key": "w4",
+   "op": "WAIT",
+   "days": 5,
+   "next": "c5"
+  },
+  {
+   "key": "c5",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "tag",
+      "product_canva_hacks_library",
+      "present"
+     ]
+    ]
+   },
+   "yes": "s4",
+   "no": "r4"
+  },
+  {
+   "key": "r4",
+   "op": "REMOVE TAG",
+   "tags": [
+    "in_flow_library_onboarding"
+   ],
+   "next": "x5"
+  },
+  {
+   "key": "x5",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "s4",
+   "op": "SEND",
+   "email": "library_onboarding_4",
+   "next": "r5",
+   "onBounced": "r1"
+  },
+  {
+   "key": "r5",
+   "op": "REMOVE TAG",
+   "tags": [
+    "in_flow_library_onboarding"
+   ],
+   "next": "x6"
+  },
+  {
+   "key": "x6",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "n1",
+   "op": "EXITS",
+   "text": "every branch ends REMOVE TAG → End Flow, and each Send Email step’s On bounced link leads to the same cleanup (V2): the spec carries it as onBounced, and the builder draws it (v52). A branch that just stops keeps in_flow_library_onboarding, and that person never gets another broadcast. Send a test contact down each exit before switching the flow on."
+  },
+  {
+   "key": "n2",
+   "op": "GREETING",
+   "text": "the export writes the greeting with the name rule: joe and JOE read Joe, JoAnn stays JoAnn, mcH reads McH, an empty name reads there (decision 123). The emails come from the master, so nothing is typed by hand"
+  }
+ ],
+ "notes": [
+  {
+   "type": "note",
+   "text": "Library Onboarding · email set v57, built from its spec (decision 114)",
+   "near": "t1"
+  }
+ ]
+}

@@ -1,0 +1,1522 @@
+{
+ "emails": {
+  "tester_1": {
+   "id": 373125
+  },
+  "zz_b4_email": {
+   "id": 487536,
+   "state": "deleted",
+   "made": "sitting 2026-09-25",
+   "name": "ZZ B4 Email",
+   "test": "B4",
+   "note": "never sent",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "zz_r2_email": {
+   "id": 487671,
+   "state": "deleted",
+   "made": "re-check 2026-09-26",
+   "name": "ZZ R2 Email",
+   "test": "R2",
+   "spec": "tests/specs/r2-email.json (builder v0.4)",
+   "master": 486819,
+   "verify": "ok",
+   "note": "never sent",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "copy_of_tester_1": {
+   "id": 486819,
+   "made": "by Joe in the app, capture 2, 2026-09-23",
+   "note": "B4's and R2's master, only read; on the delete list",
+   "state": "deleted",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "zz_master_letter_test": {
+   "id": 488131,
+   "state": "deleted",
+   "made": {
+    "date": "2026-09-28",
+    "run": "zz-master-letter-1",
+    "session": "master template test 2026-09-28 (Product & Arch)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest-zz-master-letter.json@4e395a5131be"
+    ],
+    "emailSet": "master-test-2026-09-28"
+   },
+   "verify": "ok",
+   "name": "ZZ Master Letter Test",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "9 is done"
+  },
+  "zz_master_letter_html": {
+   "id": 488137,
+   "name": "ZZ Master Letter HTML",
+   "made": "by Joe by hand, 2026-09-28",
+   "note": "the master test fallback: a copy of VDH Master · Letter (488125) with the letter in an HTML block; only read by the builder; deleted by hand at the end of the test",
+   "put": "2026-09-28",
+   "state": "deleted",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "9 is done"
+  },
+  "zz_master_letter_html_test": {
+   "id": 488140,
+   "state": "deleted",
+   "made": {
+    "date": "2026-09-28",
+    "run": "zz-master-letter-html-1",
+    "session": "master template test 2026-09-28 (Product & Arch)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest-zz-master-letter-html.json@3d2f00b98e1f"
+    ],
+    "emailSet": "master-test-2026-09-28"
+   },
+   "verify": "ok",
+   "name": "ZZ Master Letter HTML Test",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "9 is done"
+  },
+  "zz_button_test": {
+   "id": 488149,
+   "state": "deleted",
+   "made": {
+    "date": "2026-09-28",
+    "run": "zz-button-test-1",
+    "session": "master template test 2026-09-28 (Product & Arch)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest-zz-button-test.json@fdf9a1a2ccc4"
+    ],
+    "emailSet": "master-test-2026-09-28"
+   },
+   "verify": "ok",
+   "name": "ZZ Button Test",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "deleted."
+  },
+  "zz_button_test_2": {
+   "id": 488150,
+   "state": "deleted",
+   "made": {
+    "date": "2026-09-28",
+    "run": "zz-button-test-2",
+    "session": "master template test 2026-09-28 (Product & Arch)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest-zz-button-test-2.json@bfd4c1e74939"
+    ],
+    "emailSet": "master-test-2026-09-28"
+   },
+   "verify": "ok",
+   "name": "ZZ Button Test 2",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "deleted."
+  },
+  "zz_button_test_3": {
+   "id": 488155,
+   "state": "deleted",
+   "made": {
+    "date": "2026-09-28",
+    "run": "zz-button-test-3",
+    "session": "master template test 2026-09-28 (Product & Arch)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest-zz-button-test-3.json@2d84e496d879"
+    ],
+    "emailSet": "master-test-2026-09-28"
+   },
+   "verify": "ok",
+   "name": "ZZ Button Test 3",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "deleted."
+  },
+  "zz_button_test_4": {
+   "id": 488163,
+   "state": "deleted",
+   "made": {
+    "date": "2026-09-28",
+    "run": "zz-button-test-4",
+    "session": "master template test 2026-09-28 (Product & Arch)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest-zz-button-test-4.json@cfb8c8101947"
+    ],
+    "emailSet": "master-test-2026-09-28"
+   },
+   "verify": "ok",
+   "name": "ZZ Button Test 4",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "deleted."
+  },
+  "vdh_master_letter": {
+   "id": 488125,
+   "name": "VDH Master · Letter",
+   "made": "by Joe by hand, 2026-09-28",
+   "note": "the master template (E3/D4): every letter email is copied from it; the builder only reads it",
+   "put": "2026-09-28"
+  },
+  "zz_button_test_5": {
+   "id": 488180,
+   "state": "deleted",
+   "made": {
+    "date": "2026-09-28",
+    "run": "zz-button-test-5",
+    "session": "master template test 2026-09-28 (Product & Arch)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest-zz-button-test-5.json@d2663eea741c"
+    ],
+    "emailSet": "master-test-2026-09-28"
+   },
+   "verify": "ok",
+   "name": "ZZ Button Test 5",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "deleted."
+  },
+  "zz_button_test_6": {
+   "id": 488188,
+   "state": "deleted",
+   "made": {
+    "date": "2026-09-28",
+    "run": "zz-button-test-6",
+    "session": "master template test 2026-09-28 (Product & Arch)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest-zz-button-test-6.json@fbc6a1eed3bb"
+    ],
+    "emailSet": "master-test-2026-09-28"
+   },
+   "verify": "ok",
+   "name": "ZZ Button Test 6",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "deleted."
+  },
+  "zz_sitting_2a_checkout_abandon_1": {
+   "id": 494839,
+   "state": "deleted",
+   "made": {
+    "date": "2026-10-19",
+    "run": "zz-sitting-2a-1",
+    "session": "Encharge Sitting 2, sitting 2a, 2026-10-19 (Product & Arch)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.07",
+    "inputs": [
+     "manifest-2a-v53.json@acac863db53b"
+    ],
+    "emailSet": "sitting-2a-2026-10-19 (from v53: v53)"
+   },
+   "verify": "ok",
+   "name": "ZZ Sitting 2a Checkout Abandon 1",
+   "deleted": "2026-10-20",
+   "deletedJoeSaid": "yes, delete the four ZZ emails yourself through Encharge's screens and read each back"
+  },
+  "zz_sitting_2a_bullet_test": {
+   "id": 494846,
+   "state": "deleted",
+   "made": {
+    "date": "2026-10-19",
+    "run": "zz-sitting-2a-bullets-1",
+    "session": "Encharge Sitting 2, sitting 2a, 2026-10-19 (Product & Arch)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.07",
+    "inputs": [
+     "manifest-2a-bullets.json@406f45e5bd15"
+    ],
+    "emailSet": "sitting-2a-bullets-2026-10-19 (from v53 checkout_abandon_1)"
+   },
+   "verify": "ok",
+   "name": "ZZ Sitting 2a Bullet Test",
+   "deleted": "2026-10-20",
+   "deletedJoeSaid": "yes, delete the four ZZ emails yourself through Encharge's screens and read each back"
+  },
+  "zz_sitting_2a_v54_checkout_abandon_1": {
+   "id": 495068,
+   "state": "deleted",
+   "made": {
+    "date": "2026-10-20",
+    "run": "zz-sitting-2a-v54-1"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.07",
+    "inputs": [
+     "manifest-2a-v54.json@6137b6f9af4c"
+    ],
+    "emailSet": "sitting-2a-2026-10-20 (from v54)"
+   },
+   "verify": "ok",
+   "name": "ZZ Sitting 2a v54 Checkout Abandon 1",
+   "deleted": "2026-10-20",
+   "deletedJoeSaid": "yes, delete the four ZZ emails yourself through Encharge's screens and read each back"
+  },
+  "zz_sitting_3_v55_checkout_abandon_1": {
+   "id": 495074,
+   "state": "deleted",
+   "made": {
+    "date": "2026-10-20",
+    "run": "zz-s3-v55-1",
+    "session": "Encharge Sitting 3, sitting 2a close, 2026-10-20 (Product & Arch)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.07",
+    "inputs": [
+     "manifest-s3-v55.json@7ba7d6393b4c"
+    ],
+    "emailSet": "sitting-3-2026-10-20 (from v55)"
+   },
+   "verify": "ok",
+   "name": "ZZ Sitting 3 v55 Checkout Abandon 1",
+   "deleted": "2026-10-20",
+   "deletedJoeSaid": "yes, delete the four ZZ emails yourself through Encharge's screens and read each back"
+  },
+  "checkout_abandon_1": {
+   "id": 495084,
+   "state": "built-off",
+   "made": {
+    "date": "2026-10-20",
+    "run": "checkout-abandon-emails-1",
+    "session": "Encharge Sitting 3, sitting 2b, 2026-10-20 (Product & Arch)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.07",
+    "inputs": [
+     "manifest-checkout-abandon-emails.json@99c74abdce79"
+    ],
+    "emailSet": "v55"
+   },
+   "verify": "ok",
+   "name": "Checkout Abandon 1"
+  },
+  "checkout_abandon_2": {
+   "id": 495085,
+   "state": "built-off",
+   "made": {
+    "date": "2026-10-20",
+    "run": "checkout-abandon-emails-1",
+    "session": "Encharge Sitting 3, sitting 2b, 2026-10-20 (Product & Arch)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.07",
+    "inputs": [
+     "manifest-checkout-abandon-emails.json@99c74abdce79"
+    ],
+    "emailSet": "v55"
+   },
+   "verify": "ok",
+   "name": "Checkout Abandon 2"
+  },
+  "checkout_abandon_3": {
+   "id": 495086,
+   "state": "built-off",
+   "made": {
+    "date": "2026-10-20",
+    "run": "checkout-abandon-emails-1",
+    "session": "Encharge Sitting 3, sitting 2b, 2026-10-20 (Product & Arch)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.07",
+    "inputs": [
+     "manifest-checkout-abandon-emails.json@99c74abdce79"
+    ],
+    "emailSet": "v55"
+   },
+   "verify": "ok",
+   "name": "Checkout Abandon 3"
+  },
+  "library_onboarding_1": {
+   "id": 495444,
+   "state": "built-off",
+   "made": {
+    "date": "2026-10-21",
+    "run": "lo_emails",
+    "session": "Post flows 1, Part 2, 2026-10-21"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.11",
+    "inputs": [
+     "manifest-library_onboarding-emails.json@208399939feb"
+    ],
+    "emailSet": "v57"
+   },
+   "verify": "ok",
+   "name": "Library Onboarding 1"
+  },
+  "library_onboarding_2": {
+   "id": 495445,
+   "state": "built-off",
+   "made": {
+    "date": "2026-10-21",
+    "run": "lo_emails",
+    "session": "Post flows 1, Part 2, 2026-10-21"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.11",
+    "inputs": [
+     "manifest-library_onboarding-emails.json@208399939feb"
+    ],
+    "emailSet": "v57"
+   },
+   "verify": "ok",
+   "name": "Library Onboarding 2"
+  },
+  "library_onboarding_3": {
+   "id": 495446,
+   "state": "built-off",
+   "made": {
+    "date": "2026-10-21",
+    "run": "lo_emails",
+    "session": "Post flows 1, Part 2, 2026-10-21"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.11",
+    "inputs": [
+     "manifest-library_onboarding-emails.json@208399939feb"
+    ],
+    "emailSet": "v57"
+   },
+   "verify": "ok",
+   "name": "Library Onboarding 3"
+  },
+  "library_onboarding_4": {
+   "id": 495447,
+   "state": "built-off",
+   "made": {
+    "date": "2026-10-21",
+    "run": "lo_emails",
+    "session": "Post flows 1, Part 2, 2026-10-21"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.11",
+    "inputs": [
+     "manifest-library_onboarding-emails.json@208399939feb"
+    ],
+    "emailSet": "v57"
+   },
+   "verify": "ok",
+   "name": "Library Onboarding 4"
+  }
+ },
+ "flows": {
+  "zz_copy": {
+   "id": 404886,
+   "state": "deleted",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "zz_capture_test_renamed": {
+   "id": 404885,
+   "state": "deleted",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "zz_b1": {
+   "id": 405353,
+   "state": "deleted",
+   "made": "sitting 2026-09-25",
+   "name": "ZZ B1 Lane cleanup · Library → Pack + test",
+   "test": "B1",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "zz_capture_test": {
+   "id": 405354,
+   "state": "deleted",
+   "made": "sitting 2026-09-25",
+   "name": "ZZ Capture Test (rebuilt)",
+   "test": "B2",
+   "steps": {
+    "t1": 1720130,
+    "w1": 1720131,
+    "a1": 1720132,
+    "s1": 1720133
+   },
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "zz_lead_a": {
+   "id": 405355,
+   "state": "deleted",
+   "made": "sitting 2026-09-25",
+   "name": "ZZ zz_lead_a",
+   "test": "B6",
+   "steps": {
+    "t1": 1720134,
+    "x1": 1720135,
+    "a1": 1720136
+   },
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "zz_lead_b": {
+   "id": 405356,
+   "state": "deleted",
+   "made": "sitting 2026-09-25",
+   "name": "ZZ zz_lead_b",
+   "test": "B6",
+   "steps": {
+    "t1": 1720137,
+    "x1": 1720138,
+    "a1": 1720139
+   },
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "zz_b5": {
+   "id": 405359,
+   "state": "deleted",
+   "made": "sitting 2026-09-25",
+   "name": "ZZ B5 Settings",
+   "test": "B5",
+   "steps": {
+    "t1": 1720157,
+    "c1": 1720158,
+    "f1": 1720159,
+    "r1": 1720160,
+    "s1": 1720161
+   },
+   "note": "never switch on",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "zz_b8_start": {
+   "id": 405360,
+   "state": "deleted",
+   "made": "sitting 2026-09-25",
+   "name": "ZZ B8 Start",
+   "test": "B8",
+   "steps": {
+    "t1": 1720164,
+    "a1": 1720165
+   },
+   "status": "deactivated-user since B8 (Joe switched it on and off, 2026-09-25)",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "zz_b8_chain": {
+   "id": 405361,
+   "state": "deleted",
+   "made": "sitting 2026-09-25",
+   "name": "ZZ B8 Chain",
+   "test": "B8",
+   "steps": {
+    "t1": 1720166,
+    "a1": 1720167
+   },
+   "status": "deactivated-user since B8 (Joe switched it on and off, 2026-09-25)",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "zz_r1_bounce": {
+   "id": 405472,
+   "state": "deleted",
+   "made": "re-check 2026-09-26",
+   "name": "ZZ R1 Bounce",
+   "test": "R1",
+   "spec": "tests/specs/r1-bounce.json (builder v0.4)",
+   "steps": {
+    "t1": 1720474,
+    "c1": 1720475,
+    "s1": 1720476,
+    "w1": 1720477,
+    "x1": 1720478
+   },
+   "verify": "build: every check matched except 2 lines, 'link s1 -> w1 has no event listener', 'link s1 -> x1 has no event listener': v0.4's expectation of listener ids on save, disproved by the control; v1.00 expects none on a flow never switched on",
+   "control": "Joe switched it on 13:32 Paris: listener ids 653140, 653141 appeared on both email links; off 13:33: ids kept, status deactivated-user, nobody entered",
+   "status": "deactivated-user since Joe's control (switched on 13:32 Paris, off 13:33, 2026-09-26)",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "lane_cleanup_library": {
+   "id": 405726,
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "lane-library-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "lane-cleanup-library.json@16fb9aaa26cf"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok",
+   "name": "Lane cleanup · Library",
+   "steps": {
+    "t1": 1721515,
+    "f1": 1721516
+   }
+  },
+  "lane_cleanup_pack": {
+   "id": 405727,
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "lane-pack-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "lane-cleanup-pack.json@94e39353d9c9"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok",
+   "name": "Lane cleanup · Templates Pack",
+   "steps": {
+    "t1": 1721520,
+    "f1": 1721521
+   }
+  },
+  "lane_cleanup_library_refund": {
+   "id": 405728,
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "lane-refund-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "lane-cleanup-library-refund.json@1346f695e46e"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok",
+   "name": "Lane cleanup · Library refund",
+   "steps": {
+    "t1": 1721525,
+    "f1": 1721526,
+    "f2": 1721527,
+    "f3": 1721528
+   }
+  },
+  "checkout_abandon_cleanup": {
+   "id": 405729,
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "stuck-cleanup-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "checkout-abandon-cleanup.json@15cca3c55798"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok",
+   "name": "Checkout Abandon · stuck-contact cleanup",
+   "steps": {
+    "t1": 1721531,
+    "w1": 1721532,
+    "c1": 1721533,
+    "r1": 1721534,
+    "c2": 1721535,
+    "f1": 1721536
+   }
+  },
+  "checkout_abandon": {
+   "id": 409556,
+   "state": "built-off",
+   "made": {
+    "date": "2026-10-20",
+    "run": "checkout-abandon-1",
+    "session": "Encharge Sitting 3, sitting 2b, 2026-10-20 (Product & Arch)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.07",
+    "inputs": [
+     "checkout-abandon.json@3f0573a32a06"
+    ],
+    "emailSet": "v55"
+   },
+   "verify": "ok",
+   "name": "Checkout Abandon",
+   "steps": {
+    "t1": 1743385,
+    "c1": 1743386,
+    "c2": 1743387,
+    "x1": 1743388,
+    "a1": 1743389,
+    "c3": 1743390,
+    "a2": 1743391,
+    "r1": 1743392,
+    "x2": 1743393,
+    "w1": 1743394,
+    "c4": 1743395,
+    "r2": 1743396,
+    "x3": 1743397,
+    "c5": 1743398,
+    "a3": 1743399,
+    "r3": 1743400,
+    "x4": 1743401,
+    "a4": 1743402,
+    "f1": 1743403,
+    "f2": 1743404,
+    "s1": 1743405,
+    "f3": 1743406,
+    "r4": 1743407,
+    "x5": 1743408,
+    "f4": 1743409,
+    "w2": 1743410,
+    "c6": 1743411,
+    "a5": 1743412,
+    "f5": 1743413,
+    "r5": 1743414,
+    "x6": 1743415,
+    "s2": 1743416,
+    "f6": 1743417,
+    "w3": 1743418,
+    "c7": 1743419,
+    "a6": 1743420,
+    "f7": 1743421,
+    "r6": 1743422,
+    "x7": 1743423,
+    "s3": 1743424,
+    "f8": 1743425,
+    "f9": 1743426,
+    "r7": 1743427,
+    "x8": 1743428
+   }
+  },
+  "zz_a12_check": {
+   "id": 409563,
+   "state": "deleted",
+   "made": {
+    "date": "2026-10-20",
+    "run": "zz-a12-check-1",
+    "session": "Encharge Sitting 3, gap A12 check test, 2026-10-20 (Product & Arch)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.07",
+    "inputs": [
+     "zz-a12-check.json@6247c19ddc3e"
+    ]
+   },
+   "verify": "ok",
+   "name": "ZZ A12 Check",
+   "steps": {
+    "t1": 1743447,
+    "c1": 1743448,
+    "a1": 1743449,
+    "a2": 1743450
+   },
+   "deleted": "2026-10-20",
+   "deletedJoeSaid": "i did cleanup and disabled flow"
+  },
+  "library_onboarding": {
+   "id": 409773,
+   "state": "built-off",
+   "made": {
+    "date": "2026-10-21",
+    "run": "lo_flow",
+    "session": "Post flows 1, Part 2, 2026-10-21"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.11",
+    "inputs": [
+     "library-onboarding.json@66d2c1e43d52"
+    ],
+    "emailSet": "v57"
+   },
+   "verify": "ok",
+   "name": "Library Onboarding",
+   "steps": {
+    "t1": 1744182,
+    "c1": 1744183,
+    "w1": 1744184,
+    "c2": 1744185,
+    "x1": 1744186,
+    "a1": 1744187,
+    "s1": 1744188,
+    "r1": 1744189,
+    "x2": 1744190,
+    "w2": 1744191,
+    "c3": 1744192,
+    "r2": 1744193,
+    "x3": 1744194,
+    "s2": 1744195,
+    "w3": 1744196,
+    "c4": 1744197,
+    "r3": 1744198,
+    "x4": 1744199,
+    "s3": 1744200,
+    "w4": 1744201,
+    "c5": 1744202,
+    "r4": 1744203,
+    "x5": 1744204,
+    "s4": 1744205,
+    "r5": 1744206,
+    "x6": 1744207
+   }
+  }
+ },
+ "segments": {
+  "people_in_flow": {
+   "id": 1257090
+  },
+  "people_not_in_flow": {
+   "id": 1257089
+  },
+  "has_any_product": {
+   "id": 1057634
+  },
+  "abandoners_active_24h": {
+   "id": 1059368
+  },
+  "refunded_any": {
+   "id": 1057637
+  },
+  "zz_capture_segment": {
+   "id": 1257212,
+   "state": "deleted",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "zz_b3_segment": {
+   "id": 1257417,
+   "state": "deleted",
+   "made": "sitting 2026-09-25",
+   "name": "ZZ B3 Segment",
+   "test": "B3",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "zz_b3_product_1": {
+   "id": 1257418,
+   "state": "deleted",
+   "made": "sitting 2026-09-25",
+   "name": "ZZ B3 Product 1",
+   "test": "B3",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "zz_b3_product_1_flowmattic": {
+   "id": 1257419,
+   "state": "deleted",
+   "made": "sitting 2026-09-25",
+   "name": "ZZ B3 Product 1 FlowMattic",
+   "test": "B3",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  }
+ },
+ "fields": {
+  "zz_b3_date": {
+   "made": "sitting 2026-09-25",
+   "type": "date",
+   "test": "B3",
+   "state": "deleted",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "zz_b3_text": {
+   "made": "sitting 2026-09-25",
+   "type": "text",
+   "test": "B3",
+   "state": "deleted",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "zz_capture_field": {
+   "made": "by Joe in the app, capture 2, 2026-09-23",
+   "type": "text",
+   "note": "a test object; on the delete list",
+   "state": "deleted",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "zz_capture_date": {
+   "made": "by Joe in the app, capture 2, 2026-09-23",
+   "type": "date",
+   "note": "a test object; on the delete list",
+   "state": "deleted",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "flow_lane_library": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok",
+   "type": "text"
+  },
+  "flow_lane_pack": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok",
+   "type": "text"
+  },
+  "flow_lane_bundle": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok",
+   "type": "text"
+  },
+  "library_offer_code": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok",
+   "type": "text"
+  },
+  "last_pitch_at": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok",
+   "type": "date"
+  },
+  "canva_library_abandoned_at": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok",
+   "type": "date"
+  }
+ },
+ "tags": {
+  "zz_b3_tag": {
+   "made": "sitting 2026-09-25",
+   "test": "B3",
+   "state": "deleted",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "zz_b8_start": {
+   "made": "sitting 2026-09-25",
+   "test": "B8",
+   "state": "deleted",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "zz_b8_chain": {
+   "made": "sitting 2026-09-25",
+   "test": "B8",
+   "state": "deleted",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "zz_b8_done": {
+   "made": "sitting 2026-09-25",
+   "test": "B8",
+   "state": "deleted",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "zz_r3_tag": {
+   "made": "re-check 2026-09-26",
+   "test": "R3",
+   "verify": "ok",
+   "state": "deleted",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "zz_capture": {
+   "made": "by Joe in the app, capture 1, 2026-09-23",
+   "note": "a test object; on the delete list",
+   "state": "deleted",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "zz_capture_2": {
+   "made": "by Joe in the app, capture 2, 2026-09-23",
+   "note": "a test object; on the delete list",
+   "state": "deleted",
+   "deleted": "2026-09-28",
+   "deletedJoeSaid": "i deleted all u asked for in order."
+  },
+  "test_rr_product": {
+   "state": "deleted",
+   "made": "by FlowMattic router test data, 2026-09 (the routing table test row)",
+   "note": "optional on the 28 Sep delete list; the session read it at start and the next reconcile found it gone",
+   "putJoeSaid": "i deleted all u asked for in order.",
+   "put": "2026-09-28"
+  },
+  "test_rr_refunded": {
+   "state": "deleted",
+   "made": "by FlowMattic router test data, 2026-09 (the routing table test row)",
+   "note": "optional on the 28 Sep delete list; the session read it at start and the next reconcile found it gone",
+   "putJoeSaid": "i deleted all u asked for in order.",
+   "put": "2026-09-28"
+  },
+  "lead_canva_font_codes": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok"
+  },
+  "lead_canva_element_codes": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok"
+  },
+  "lead_social_instagram": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok"
+  },
+  "lead_welcome_fonts_complete": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok"
+  },
+  "lead_welcome_elements_complete": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok"
+  },
+  "lead_welcome_template_complete": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok"
+  },
+  "pack_to_library_complete": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok"
+  },
+  "crash_to_library_complete": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok"
+  },
+  "viewed_library_sales": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok"
+  },
+  "pitch_pending_library": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok"
+  },
+  "pitch_pending_pack": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok"
+  },
+  "in_flow_salespage_abandon": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok"
+  },
+  "in_flow_library_onboarding": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok"
+  },
+  "in_flow_library_to_pack": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok"
+  },
+  "in_flow_pack_onboarding": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok"
+  },
+  "in_flow_pack_to_library": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok"
+  },
+  "in_flow_lw_fonts": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok"
+  },
+  "in_flow_lw_elements": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok"
+  },
+  "in_flow_lw_template": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok"
+  },
+  "in_flow_crash_delivery": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok"
+  },
+  "in_flow_crash_to_library": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok"
+  },
+  "template_requested": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok"
+  },
+  "in_flow_template_delivery": {
+   "state": "built-off",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "manifest.json@1ec94045d8f3"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok"
+  },
+  "zz_a12_test": {
+   "state": "deleted",
+   "made": {
+    "date": "2026-10-20",
+    "run": "zz-a12-tags-1",
+    "session": "Encharge Sitting 3, gap A12 check test, 2026-10-20 (Product & Arch)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.07",
+    "inputs": [
+     "manifest-zz-a12.json@317c28b9e7e0"
+    ],
+    "emailSet": "test-a12-2026-10-20"
+   },
+   "verify": "ok",
+   "deleted": "2026-10-20",
+   "deletedJoeSaid": "i did cleanup and disabled flow"
+  },
+  "zz_a12_yes": {
+   "state": "deleted",
+   "made": {
+    "date": "2026-10-20",
+    "run": "zz-a12-tags-1",
+    "session": "Encharge Sitting 3, gap A12 check test, 2026-10-20 (Product & Arch)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.07",
+    "inputs": [
+     "manifest-zz-a12.json@317c28b9e7e0"
+    ],
+    "emailSet": "test-a12-2026-10-20"
+   },
+   "verify": "ok",
+   "deleted": "2026-10-20",
+   "deletedJoeSaid": "i did cleanup and disabled flow"
+  },
+  "zz_a12_no": {
+   "state": "deleted",
+   "made": {
+    "date": "2026-10-20",
+    "run": "zz-a12-tags-1",
+    "session": "Encharge Sitting 3, gap A12 check test, 2026-10-20 (Product & Arch)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.07",
+    "inputs": [
+     "manifest-zz-a12.json@317c28b9e7e0"
+    ],
+    "emailSet": "test-a12-2026-10-20"
+   },
+   "verify": "ok",
+   "deleted": "2026-10-20",
+   "deletedJoeSaid": "i did cleanup and disabled flow"
+  }
+ },
+ "edited": {
+  "segment:1257212": {
+   "name": "ZZ Capture Segment",
+   "change": "row 'has tag zz_capture' swapped for 'has tag zz_b3_tag'",
+   "permission": "Joe's words, recorded in the 2026-09-25 session (its workspace file kit/live/permissions.json does not carry over)",
+   "snapshot": "segment-1257212-before-b3.json, taken in the 2026-09-25 session's workspace, which does not carry over",
+   "made": "sitting 2026-09-25"
+  },
+  "segment:1257090": {
+   "change": "added 11 rows (tag has): in_flow_salespage_abandon, in_flow_library_onboarding, in_flow_library_to_pack, in_flow_pack_onboarding, in_flow_pack_to_library, in_flow_crash_delivery, in_flow_crash_to_library, in_flow_lw_fonts, in_flow_lw_elements, in_flow_lw_template, in_flow_template_delivery; none removed",
+   "permission": "but yes u have pemrission to proceed with add rows to segments and work on abandned tag.",
+   "made": {
+    "date": "2026-09-28",
+    "run": "objects-1"
+   },
+   "snapshot": {
+    "file": "snapshot-people-in-flow-before-objects-1.json",
+    "sha256": "58d1934573215e492b8f3e2c0ce04b37790662c12a339fdfafecdedca5466f7b",
+    "content": {
+     "ok": true,
+     "segments": [
+      {
+       "id": 1257090,
+       "name": "People IN FLOW",
+       "accountId": 146791,
+       "version": 2,
+       "color": "#d15252",
+       "objectName": "person",
+       "conditions": {
+        "type": "group",
+        "operator": "or",
+        "conditions": [
+         {
+          "type": "tag",
+          "uuid": "38d63a3a-be7f-4be2-830d-9b0220060dfc",
+          "value": "in_flow_checkout_abandon",
+          "condition": "has"
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  "email:488125": {
+   "change": "Joe by hand in Encharge's editor (D6): the letter block, row 1 block 2, changed from a Text block to an HTML block holding only LETTER GOES HERE; the letter's path is now body.rows[0].columns[0].contents[1].values.html (was .values.text). Encharge version 449957, 2026-10-19 17:46:16 UTC, Joe's login. Read back by sitting 2a, 2026-10-19: masterCheck ok, LETTER GOES HERE and PREVIEW TEXT GOES HERE once each in the HTML; logo, divider and footer unchanged by this save; the builder never edits the master",
+   "permission": "The master, VDH Master · Letter (488125), was changed on 19 Oct in Encharge's own editor: row 1, block 2 is now an HTML block holding only LETTER GOES HERE (letter path body.rows.0.columns.0.contents.1.values.html), and the footer text and links are now #6B6B6B. Read it back, and add a ledger note for both changes with the builder's own ledger command, not by hand.",
+   "made": {
+    "date": "2026-10-19"
+   }
+  },
+  "email:488125#2": {
+   "change": "Joe by hand in Encharge's editor: the footer text block (row 2, block 2) text colour and link colour changed from #95a5a6 to #6b6b6b (Encharge stores it lower case); nothing else changed (letter block, placeholders and HTML length 9,986 the same as the version before). Encharge version 449975, 2026-10-19 18:04:54 UTC, Joe's login. Read back by sitting 2a, 2026-10-19; the builder never edits the master",
+   "permission": "The master, VDH Master · Letter (488125), was changed on 19 Oct in Encharge's own editor: row 1, block 2 is now an HTML block holding only LETTER GOES HERE (letter path body.rows.0.columns.0.contents.1.values.html), and the footer text and links are now #6B6B6B. Read it back, and add a ledger note for both changes with the builder's own ledger command, not by hand.",
+   "made": {
+    "date": "2026-10-19"
+   }
+  },
+  "email:488125#3": {
+   "change": "Claude by hand in Encharge's editor, on Joe's instruction: the logo image (row 1, block 1) Image URL changed from https://d231yrez0cpae9.cloudfront.net/1790608303587-vdh-email-logo-240w-white.png to https://visualdesignhacks.com/wp-content/uploads/Resizsed-Logo-shadow-1.png (the PNG with the soft shadow that the Better Notifications emails use, for dark mode); Encharge recorded the new PNG's own size, 200x85 (was 240x98). Width 21%, link https://visualdesignhacks.com, alt text, letter block, both placeholders and footer unchanged; the HTML differs only in the img src. Encharge version 450981, 2026-10-20 10:57:56 UTC. Read back by sitting 2a against version 449975. Note: visualdesignhacks.com refuses this PNG when a web page on another site asks for it with a referrer (hotlink protection), so it shows broken in some Encharge editor views; mail apps and Gmail's image proxy fetch it without one",
+   "permission": "with better we had to have a png … with blur … we need to find the file from better and use that. … surely u can do this. the whole point is you need to be comfortable editing master. stop asking me to do ur work.",
+   "made": {
+    "date": "2026-10-20"
+   }
+  }
+ },
+ "_note": "The sitting ledger (builder v1.00 reads it: pagecmd.py refs and reconcile, compile.py --ledger). Updated 2026-09-26 after v1.00: the ZZ tags, fields and master email Joe made by hand are listed, so v1.00's reconcile, which compares tags and fields too, knows them."
+}

@@ -1,0 +1,34 @@
+{
+ "spec": 1,
+ "flow": {
+  "key": "lane_cleanup_pack",
+  "name": "Lane cleanup · Templates Pack",
+  "status": "gated"
+ },
+ "settings": {
+  "reentry": "always",
+  "duplicateSend": false
+ },
+ "trigger": {
+  "key": "t1",
+  "op": "TAG ADDED",
+  "tag": "product_canva_templates_best_of_hacks",
+  "next": "f1"
+ },
+ "steps": [
+  {
+   "key": "f1",
+   "op": "SET FIELD",
+   "field": "flow_lane_pack",
+   "value": "none",
+   "next": null
+  }
+ ],
+ "notes": [
+  {
+   "type": "note",
+   "text": "Lane cleanup · Templates Pack · email set v57, built from its spec (decision 114). the Best of Hacks Pack’s tag, the only Pack at launch, named 20 Oct (decision 134); a later Pack needs a trigger of its own. Built 28 Sep as 405727 on the Pack’s old tag name: rebuild it new on this spec, and delete 405727 with Joe’s words",
+   "near": "t1"
+  }
+ ]
+}

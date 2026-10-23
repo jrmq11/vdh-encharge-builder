@@ -1,0 +1,102 @@
+{
+ "spec": 1,
+ "flow": {
+  "key": "crash_delivery",
+  "name": "Crash PDF Delivery",
+  "status": "gated"
+ },
+ "settings": {
+  "reentry": "once",
+  "duplicateSend": false
+ },
+ "trigger": {
+  "key": "t1",
+  "op": "TAG ADDED",
+  "tag": "product_canva_crash_pdf",
+  "next": "c1"
+ },
+ "steps": [
+  {
+   "key": "c1",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "tag",
+      "product_canva_crash_pdf",
+      "present"
+     ]
+    ]
+   },
+   "yes": "f1",
+   "no": null
+  },
+  {
+   "key": "f1",
+   "op": "SET FIELD",
+   "field": "library_offer_code",
+   "value": "CRASHCREDIT17",
+   "next": "a1"
+  },
+  {
+   "key": "a1",
+   "op": "ADD TAG",
+   "tags": [
+    "in_flow_crash_delivery"
+   ],
+   "next": "s1"
+  },
+  {
+   "key": "s1",
+   "op": "SEND",
+   "email": "crash_delivery_1",
+   "next": "r2",
+   "onBounced": "r1"
+  },
+  {
+   "key": "r1",
+   "op": "REMOVE TAG",
+   "tags": [
+    "in_flow_crash_delivery"
+   ],
+   "next": "x1"
+  },
+  {
+   "key": "x1",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "r2",
+   "op": "REMOVE TAG",
+   "tags": [
+    "in_flow_crash_delivery"
+   ],
+   "next": "x2"
+  },
+  {
+   "key": "x2",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "n1",
+   "op": "EXITS",
+   "text": "every branch ends REMOVE TAG → End Flow, and each Send Email step’s On bounced link leads to the same cleanup (V2): the spec carries it as onBounced, and the builder draws it (v52). A branch that just stops keeps in_flow_crash_delivery, and that person never gets another broadcast. Send a test contact down each exit before switching the flow on."
+  },
+  {
+   "key": "n2",
+   "op": "GREETING",
+   "text": "the export writes the greeting with the name rule: joe and JOE read Joe, JoAnn stays JoAnn, mcH reads McH, an empty name reads there (decision 123). The emails come from the master, so nothing is typed by hand"
+  }
+ ],
+ "notes": [
+  {
+   "type": "note",
+   "text": "Crash PDF Delivery · email set v57, built from its spec (decision 114)",
+   "near": "t1"
+  }
+ ]
+}

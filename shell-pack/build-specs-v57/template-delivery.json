@@ -1,0 +1,131 @@
+{
+ "spec": 1,
+ "flow": {
+  "key": "template_delivery",
+  "name": "Free Template Delivery",
+  "status": "gated"
+ },
+ "settings": {
+  "reentry": "always",
+  "duplicateSend": true
+ },
+ "trigger": {
+  "key": "t1",
+  "op": "TAG ADDED",
+  "tag": "template_requested",
+  "next": "c1"
+ },
+ "steps": [
+  {
+   "key": "c1",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "tag",
+      "template_requested",
+      "present"
+     ]
+    ]
+   },
+   "yes": "c2",
+   "no": null
+  },
+  {
+   "key": "c2",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "field",
+      "requested_template_url",
+      "filled"
+     ],
+     [
+      "field",
+      "requested_template_name",
+      "filled"
+     ]
+    ]
+   },
+   "yes": "a1",
+   "no": "r1"
+  },
+  {
+   "key": "r1",
+   "op": "REMOVE TAG",
+   "tags": [
+    "template_requested"
+   ],
+   "next": "x1"
+  },
+  {
+   "key": "x1",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "a1",
+   "op": "ADD TAG",
+   "tags": [
+    "in_flow_template_delivery"
+   ],
+   "next": "s1"
+  },
+  {
+   "key": "s1",
+   "op": "SEND",
+   "email": "template_delivery_1",
+   "next": "r3",
+   "onBounced": "r2"
+  },
+  {
+   "key": "r2",
+   "op": "REMOVE TAG",
+   "tags": [
+    "template_requested",
+    "in_flow_template_delivery"
+   ],
+   "next": "x2"
+  },
+  {
+   "key": "x2",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "r3",
+   "op": "REMOVE TAG",
+   "tags": [
+    "template_requested",
+    "in_flow_template_delivery"
+   ],
+   "next": "x3"
+  },
+  {
+   "key": "x3",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "n1",
+   "op": "EXITS",
+   "text": "every branch ends REMOVE TAG → End Flow, and each Send Email step’s On bounced link leads to the same cleanup (V2): the spec carries it as onBounced, and the builder draws it (v52). A branch that just stops keeps in_flow_template_delivery, and that person never gets another broadcast. Send a test contact down each exit before switching the flow on."
+  },
+  {
+   "key": "n2",
+   "op": "GREETING",
+   "text": "the export writes the greeting with the name rule: joe and JOE read Joe, JoAnn stays JoAnn, mcH reads McH, an empty name reads there (decision 123). The emails come from the master, so nothing is typed by hand"
+  }
+ ],
+ "notes": [
+  {
+   "type": "note",
+   "text": "Free Template Delivery · email set v57, built from its spec (decision 114)",
+   "near": "t1"
+  }
+ ]
+}

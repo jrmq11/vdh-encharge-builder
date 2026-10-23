@@ -1,0 +1,137 @@
+{
+ "spec": 1,
+ "flow": {
+  "key": "pack_onboarding",
+  "name": "Pack Onboarding",
+  "status": "gated"
+ },
+ "settings": {
+  "reentry": "once",
+  "duplicateSend": false
+ },
+ "trigger": {
+  "key": "t1",
+  "op": "TAG ADDED",
+  "tag": "product_canva_templates_best_of_hacks",
+  "next": "c1"
+ },
+ "steps": [
+  {
+   "key": "c1",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "tagGroup",
+      "template_pack_owner",
+      "any"
+     ]
+    ]
+   },
+   "yes": "a1",
+   "no": null
+  },
+  {
+   "key": "a1",
+   "op": "ADD TAG",
+   "tags": [
+    "in_flow_pack_onboarding"
+   ],
+   "next": "s1"
+  },
+  {
+   "key": "s1",
+   "op": "SEND",
+   "email": "pack_onboarding_1",
+   "next": "w1",
+   "onBounced": "r1"
+  },
+  {
+   "key": "r1",
+   "op": "REMOVE TAG",
+   "tags": [
+    "in_flow_pack_onboarding"
+   ],
+   "next": "x1"
+  },
+  {
+   "key": "x1",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "w1",
+   "op": "WAIT",
+   "days": 3,
+   "next": "c2"
+  },
+  {
+   "key": "c2",
+   "op": "CHECK",
+   "if": {
+    "all": [
+     [
+      "tagGroup",
+      "template_pack_owner",
+      "any"
+     ]
+    ]
+   },
+   "yes": "s2",
+   "no": "r2"
+  },
+  {
+   "key": "r2",
+   "op": "REMOVE TAG",
+   "tags": [
+    "in_flow_pack_onboarding"
+   ],
+   "next": "x2"
+  },
+  {
+   "key": "x2",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "s2",
+   "op": "SEND",
+   "email": "pack_onboarding_2",
+   "next": "r3",
+   "onBounced": "r1"
+  },
+  {
+   "key": "r3",
+   "op": "REMOVE TAG",
+   "tags": [
+    "in_flow_pack_onboarding"
+   ],
+   "next": "x3"
+  },
+  {
+   "key": "x3",
+   "op": "END",
+   "flow": "self",
+   "next": null
+  },
+  {
+   "key": "n1",
+   "op": "EXITS",
+   "text": "every branch ends REMOVE TAG → End Flow, and each Send Email step’s On bounced link leads to the same cleanup (V2): the spec carries it as onBounced, and the builder draws it (v52). A branch that just stops keeps in_flow_pack_onboarding, and that person never gets another broadcast. Send a test contact down each exit before switching the flow on."
+  },
+  {
+   "key": "n2",
+   "op": "GREETING",
+   "text": "the export writes the greeting with the name rule: joe and JOE read Joe, JoAnn stays JoAnn, mcH reads McH, an empty name reads there (decision 123). The emails come from the master, so nothing is typed by hand"
+  }
+ ],
+ "notes": [
+  {
+   "type": "note",
+   "text": "Pack Onboarding · email set v57, built from its spec (decision 114)",
+   "near": "t1"
+  }
+ ]
+}

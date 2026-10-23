@@ -1,0 +1,34 @@
+{
+ "spec": 1,
+ "flow": {
+  "key": "lane_cleanup_library",
+  "name": "Lane cleanup · Library",
+  "status": "ship"
+ },
+ "settings": {
+  "reentry": "always",
+  "duplicateSend": false
+ },
+ "trigger": {
+  "key": "t1",
+  "op": "TAG ADDED",
+  "tag": "product_canva_hacks_library",
+  "next": "f1"
+ },
+ "steps": [
+  {
+   "key": "f1",
+   "op": "SET FIELD",
+   "field": "flow_lane_library",
+   "value": "none",
+   "next": null
+  }
+ ],
+ "notes": [
+  {
+   "type": "note",
+   "text": "Lane cleanup · Library · email set v57, built from its spec (decision 114)",
+   "near": "t1"
+  }
+ ]
+}

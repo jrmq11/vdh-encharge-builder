@@ -1,0 +1,793 @@
+{
+ "emailSet": "v57",
+ "master": {
+  "key": "vdh_master_letter",
+  "id": 488125,
+  "name": "VDH Master · Letter",
+  "previewPath": "body.values.preheaderText",
+  "letterPath": "body.rows.0.columns.0.contents.1.values.html",
+  "note": "Made by hand in Encharge (decisions 115 and 122): logo, one HTML block holding LETTER GOES HERE, a divider, the footer (text and links #6B6B6B, 19 Oct). The preheader holds PREVIEW TEXT GOES HERE. Each email copies it and swaps both."
+ },
+ "note": "Every email in the map as a finished letter (decisions 122, 123 and 126), in the builder's shape plus flow, status, ready and missing. ready means every link is known and no placeholder is left; only ready emails of flows that are not parked go in manifest.json shared.emails. 30 emails to build, 19 ready. The greeting is the name rule (decision 123), {template_name} is {{ person.requested_template_name }}, and Liquid inside a link uses single quotes.",
+ "emails": [
+  {
+   "key": "checkout_abandon_1",
+   "name": "Checkout Abandon 1",
+   "subject": "Did you forget the Canva Hacks Library?",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "Watermark removal, letter frames, glass panels and more."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Your cart for the Canva Hacks Library is still open if you want to come back to it.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">It's 150+ Canva hacks, each covering one technique from start to finish, and 110+ of them come with a polished video walkthrough.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">You see the finished result first, then clean steps that match the Canva screen in front of you, with a tip wherever people usually get stuck.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">When a Canva update breaks a step, the hack gets updated.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Search for what you need, or filter by what a hack does, the Canva feature it uses, or difficulty. Or start with one of these:</p><!--[if mso]><style>.vdh-ul li { margin-left: 27px !important; mso-special-format: bullet; } .vdh-ul-wrap { margin-left: -25px !important; }</style><![endif]--><div class=\"vdh-ul-wrap\"><ul class=\"vdh-ul\" type=\"disc\" style=\"margin: 0 0 16px 25px; padding: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><li style=\"margin: 0 0 8px 0;\">Remove Watermarks from Photos with Magic Eraser</li><li style=\"margin: 0 0 8px 0;\">Create a Blurred Glass Panel Effect</li><li style=\"margin: 0 0 8px 0;\">Create a Scrolling Film Strip Effect Video</li><li style=\"margin: 0 0 8px 0;\">Split a Subject Apart into Letter Frames</li><li style=\"margin: 0 0 8px 0;\">Video Letter Frames with an Overflowing Clip</li></ul></div><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"https://checkout.visualdesignhacks.com/canva-hacks/{% if person.library_offer_code and person.library_offer_code != '' %}?coupon={{ person.library_offer_code }}{% endif %}\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->Finish checkout<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">All the best,<br>Joe</p>"
+    }
+   ],
+   "flow": "checkout_abandon",
+   "status": "ship",
+   "ready": true,
+   "missing": []
+  },
+  {
+   "key": "checkout_abandon_2",
+   "name": "Checkout Abandon 2",
+   "subject": "3 questions people ask before buying the Hacks Library",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "YouTube, skill level and free Canva, answered."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>1. \"Can't I find this on YouTube for free?\"</strong><br>A few of them, maybe, scattered across thousands of videos, many made for an older version of Canva.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">The Canva Hacks Library puts 150+ hacks in one place, with cleaner steps and demos built on real designs, each one updated whenever a Canva change breaks a step.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>2. \"Is it for me?\"</strong><br>If you use Canva for content, client work or in-house design, yes. The hacks help you make designs that look more professional, finish them faster, and find the tools Canva tucks a few clicks deep.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Every hack is graded from Foundations to Advanced, so beginners and heavy users can both filter straight to their level.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>3. \"Does it work in free Canva?\"</strong><br>Most hacks do. Each one is marked Free or Pro, so you can filter to the ones that work on your plan.</p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"https://visualdesignhacks.com/\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->Have a look at the Hacks Library<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">If you've got a question I haven't covered, hit reply.</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Hope that helps,<br>Joe</p>"
+    }
+   ],
+   "flow": "checkout_abandon",
+   "status": "ship",
+   "ready": true,
+   "missing": []
+  },
+  {
+   "key": "checkout_abandon_3",
+   "name": "Checkout Abandon 3",
+   "subject": "Last note on the Hacks Library and its 14-day guarantee",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "14 days to change your mind, and one reply to do it."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">The Canva Hacks Library in three lines:</p><!--[if mso]><style>.vdh-ul li { margin-left: 27px !important; mso-special-format: bullet; } .vdh-ul-wrap { margin-left: -25px !important; }</style><![endif]--><div class=\"vdh-ul-wrap\"><ul class=\"vdh-ul\" type=\"disc\" style=\"margin: 0 0 16px 25px; padding: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><li style=\"margin: 0 0 8px 0;\">150+ Canva hacks, 110+ with a polished video walkthrough</li><li style=\"margin: 0 0 8px 0;\">Lifetime access, with every hack added later included</li><li style=\"margin: 0 0 8px 0;\">A 14-day money-back guarantee</li></ul></div><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Buy it, try every hack you want, and if it hasn't earned its cost within 14 days, reply to your receipt for a full refund.</p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"https://checkout.visualdesignhacks.com/canva-hacks/{% if person.library_offer_code and person.library_offer_code != '' %}?coupon={{ person.library_offer_code }}{% endif %}\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->Finish checkout<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Thanks,<br>Joe</p>"
+    }
+   ],
+   "flow": "checkout_abandon",
+   "status": "ship",
+   "ready": true,
+   "missing": []
+  },
+  {
+   "key": "salespage_abandon_1",
+   "name": "Sales-Page Abandon 1",
+   "subject": "Still weighing up the Canva Hacks Library?",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "Whatever's keeping you on the fence, reply and ask."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">A sales page can only tell you so much. If something about the Canva Hacks Library was unclear, or you're weighing whether it fits how you use Canva, reply and ask. It comes straight to me.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">A few things people usually want to settle before deciding:</p><!--[if mso]><style>.vdh-ul li { margin-left: 27px !important; mso-special-format: bullet; } .vdh-ul-wrap { margin-left: -25px !important; }</style><![endif]--><div class=\"vdh-ul-wrap\"><ul class=\"vdh-ul\" type=\"disc\" style=\"margin: 0 0 16px 25px; padding: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><li style=\"margin: 0 0 8px 0;\">It's a one-time payment, not a subscription. Lifetime access, and every hack added later is included.</li><li style=\"margin: 0 0 8px 0;\">Most hacks work in free Canva, and the ones that need Pro are flagged on the hack page. A good chunk of the hacks are about getting Pro-looking results without paying for Pro.</li><li style=\"margin: 0 0 8px 0;\">There's a 14-day money-back guarantee, so trying it carries no real risk.</li></ul></div><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"https://visualdesignhacks.com/\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->Take another look at the Hacks Library<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">All the best,<br>Joe</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">P.S. Not sure the Hacks Library covers one specific thing you want to do? Reply with it and get a straight yes or no.</p>"
+    }
+   ],
+   "flow": "salespage_abandon",
+   "status": "gated",
+   "ready": true,
+   "missing": []
+  },
+  {
+   "key": "library_onboarding_1",
+   "name": "Library Onboarding 1",
+   "subject": "You're in. Here's your Hacks Library login.",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "You're in, plus one hack worth ninety seconds today."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Welcome to the Canva Hacks Library. You've got lifetime access now.</p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"https://visualdesignhacks.com/login/\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->Log in to the Hacks Library<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">New here? Use the Set your password button in your welcome email first, and you'll go straight to your dashboard. If that link has expired, reset your password <a href=\"https://visualdesignhacks.com/lostpassword/\" target=\"_blank\" style=\"color: #933bc9; text-decoration: underline;\">here</a>.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Worth ninety seconds today: <a href=\"https://visualdesignhacks.com/canva-hacks/background-foreground/\" target=\"_blank\" style=\"color: #933bc9; text-decoration: underline;\">Adjust Foreground and Background Separately in Photos</a>. It makes a subject pop without touching the rest of the photo.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Thanks,<br>Joe</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>P.S.</strong> What are you hoping to do in Canva? Shoot me a line.</p>"
+    }
+   ],
+   "flow": "library_onboarding",
+   "status": "ship",
+   "ready": true,
+   "missing": []
+  },
+  {
+   "key": "library_onboarding_2",
+   "name": "Library Onboarding 2",
+   "subject": "Three more hacks worth your time",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "A colour swap, a headline glow, and video inside letters."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><a href=\"https://visualdesignhacks.com/canva-hacks/edit-color-hues/\" target=\"_blank\" style=\"color: #933bc9; text-decoration: underline;\">Edit Colors with Hue Adjust (best for photos)</a>. Change one colour in a photo, a jacket, a sky, a product, without touching the rest. It sits a few clicks deep in the image editor, so it's easy to miss.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><a href=\"https://visualdesignhacks.com/canva-hacks/text-glow/\" target=\"_blank\" style=\"color: #933bc9; text-decoration: underline;\">Emphasize Text with a Colored Glow</a>. A soft glow behind a headline so it lifts off a busy photo. Thirty seconds, and it fixes the most common readability problem in Canva.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><a href=\"https://visualdesignhacks.com/canva-hacks/stretch-video-letter-frames/\" target=\"_blank\" style=\"color: #933bc9; text-decoration: underline;\">Stretch a Video Across Letter Frames</a>. One clip playing inside the letters of a word. Looks like motion-graphics work, and it is a few steps here.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">That's a good first hour. The rest of the Canva Hacks Library is there when you want it.</p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"https://visualdesignhacks.com/canva-hacks/\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->Open the Hacks Library<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Have fun with these,<br>Joe</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>P.S.</strong> If a hack ever doesn't behave the way the video shows, it could be a Pro-only step (flagged on the hack page).</p>"
+    }
+   ],
+   "flow": "library_onboarding",
+   "status": "ship",
+   "ready": true,
+   "missing": []
+  },
+  {
+   "key": "library_onboarding_3",
+   "name": "Library Onboarding 3",
+   "subject": "Getting more out of the Hacks Library",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "Search, filters, and the fastest way to work through it."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>1. Search by effect or technique.</strong><br>The search bar keys off the effect or technique, so try a keyword like portrait, glass effect, animation, or match and move. You don't need the exact title, near enough usually surfaces it.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>2. Use the filters to narrow down.</strong><br>Filter by what a hack does, the Canva feature it uses, difficulty, or Free and Pro, so on free Canva you see only the hacks you can do today.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>3. Browse without a target.</strong><br>Scroll the hacks page with the filters off, past the ones you didn't come looking for. That's how you find techniques you'd never have thought to search for.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>4. Don't just watch, recreate.</strong><br>A hack sticks when you do it, not when you watch it. Open Canva alongside one and recreate the steps on your own design. Minutes spent designing in Canva beat an hour watching.</p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"https://visualdesignhacks.com/canva-hacks/\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->Open the hacks page<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">All the best,<br>Joe</p>"
+    }
+   ],
+   "flow": "library_onboarding",
+   "status": "ship",
+   "ready": true,
+   "missing": []
+  },
+  {
+   "key": "library_onboarding_4",
+   "name": "Library Onboarding 4",
+   "subject": "Anything stand out in the Hacks Library?",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "What's missing, and what's earned a place."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Is there a hack you'd expect to find in the Hacks Library that isn't there yet? Or one that's already become a go-to?</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Every reply is read and responded to.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">This is the last of the welcome emails. The reply button still works though, so if a hack's ever playing up, that's the place to flag it.</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Take care,<br>Joe</p>"
+    }
+   ],
+   "flow": "library_onboarding",
+   "status": "ship",
+   "ready": true,
+   "missing": []
+  },
+  {
+   "key": "library_to_pack_1",
+   "name": "Library → Pack 1",
+   "subject": "The templates that put your hacks to work",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "Swap in your own content and post."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">The Best of Hacks Templates Pack takes the most striking effects in the Canva Hacks Library and builds them into 15 polished templates: covers, reels and posts.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">It doesn't re-explain the hacks. It skips the build step on the days you don't have an hour to design from scratch.</p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"TBD: the Pack sales page\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->See what's in the Pack<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Thanks,<br>Joe</p>"
+    }
+   ],
+   "flow": "library_to_pack",
+   "status": "ship",
+   "ready": false,
+   "missing": [
+    "button \"See what's in the Pack\": TBD: the Pack sales page"
+   ]
+  },
+  {
+   "key": "library_to_pack_2",
+   "name": "Library → Pack 2",
+   "subject": "Here's the Scrolling Film Strip from the Templates Pack",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "One template, fully built. Drop your photos in and download."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">[INSERT SCREENSHOT: Scrolling Film Strip template render]</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">If you remember \"Create a Scrolling Film Strip Effect Video\" from the Canva Hacks Library, this is that hack already built into a template: frames of photos rolling past like a strip of film, with the motion animated and looped for Reels.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">You drop your photos into the frames and download it as a video.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">That's the difference between the Hacks Library and the Pack. The Hacks Library teaches you to make things. The Pack ships the things, already built.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">It's one of 15 templates in the Best of Hacks Templates Pack, each built around a hack you'll recognise.</p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"TBD: the Pack sales page\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->See the full Pack<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">All the best,<br>Joe</p>"
+    }
+   ],
+   "flow": "library_to_pack",
+   "status": "ship",
+   "ready": false,
+   "missing": [
+    "placeholder [INSERT SCREENSHOT: Scrolling Film Strip template render]",
+    "button \"See the full Pack\": TBD: the Pack sales page"
+   ]
+  },
+  {
+   "key": "library_to_pack_3",
+   "name": "Library → Pack 3",
+   "subject": "Last note on the Best of Hacks Templates Pack",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "15 templates built around the hacks you know."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">What's in the Best of Hacks Templates Pack:</p><!--[if mso]><style>.vdh-ul li { margin-left: 27px !important; mso-special-format: bullet; } .vdh-ul-wrap { margin-left: -25px !important; }</style><![endif]--><div class=\"vdh-ul-wrap\"><ul class=\"vdh-ul\" type=\"disc\" style=\"margin: 0 0 16px 25px; padding: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><li style=\"margin: 0 0 8px 0;\">15 templates, each built around a hack you already know</li><li style=\"margin: 0 0 8px 0;\">Reels, story covers, post layouts, video covers</li><li style=\"margin: 0 0 8px 0;\">Ready to edit, nothing re-taught</li><li style=\"margin: 0 0 8px 0;\">Lifetime access and a 14-day money-back guarantee, same as the Canva Hacks Library</li></ul></div><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">If you've spent time in the Hacks Library these past weeks and found yourself wishing you could jump straight to a finished design on a busy day, this is the Pack for that.</p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"TBD: the Pack checkout\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->Add the Pack<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Skip it if you'd rather keep building from scratch.</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Take care,<br>Joe</p>"
+    }
+   ],
+   "flow": "library_to_pack",
+   "status": "ship",
+   "ready": false,
+   "missing": [
+    "button \"Add the Pack\": TBD: the Pack checkout"
+   ]
+  },
+  {
+   "key": "library_to_pack_3b",
+   "name": "Library → Pack 3b",
+   "flow": "library_to_pack",
+   "status": "ship",
+   "sentWhen": "thrivecart_code_verified",
+   "master": "vdh_master_letter",
+   "ready": false,
+   "missing": [
+    "the b version is in the flow file only, not in the map"
+   ]
+  },
+  {
+   "key": "pack_onboarding_1",
+   "name": "Pack Onboarding 1",
+   "subject": "Your Best of Hacks templates are ready",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "Access inside, plus the fastest first win."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Here's your Pack.</p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"TBD: the Pack access location\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->Open your templates<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Inside: 15 polished templates, each built around a striking Canva technique. Reels, story covers, post layouts, video covers, all ready to edit.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Fastest first win: open [STARTER_TEMPLATE], drop your own clips in, publish. Under ten minutes, nothing to learn first.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Every template comes in two versions, styled and blank. The blank ones are where the real value is. More on that in a couple of days.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Have fun with it,<br>Joe</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>P.S.</strong> Access trouble? Reply and it gets sorted.</p>"
+    }
+   ],
+   "flow": "pack_onboarding",
+   "status": "gated",
+   "ready": false,
+   "missing": [
+    "placeholder [STARTER_TEMPLATE]",
+    "button \"Open your templates\": TBD: the Pack access location"
+   ]
+  },
+  {
+   "key": "pack_onboarding_2",
+   "name": "Pack Onboarding 2",
+   "subject": "The blank versions are the real Templates Pack",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "Styled shows what's possible. Blank is what you'll use."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">As promised, the blank versions.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Every template in your Pack ships in two forms. The styled version shows the finished look: the fonts, the colours, the technique applied.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">The blank version keeps the structure, the timing, and the masking, with the styling stripped back so your own photos, clips, and brand colours drop straight in.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">The workflow: duplicate the blank version, swap your media, apply your colours, done. The structure carries the design weight, so it looks built from scratch without the hour of building from scratch.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">One habit worth starting this week: batch. Pick three templates and make your next three covers in one sitting. The Pack works hardest as a rotation, not a special-occasion tool.</p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"TBD: the Pack access location\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->Open your templates<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">All the best,<br>Joe</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>P.S.</strong> Brand colours fighting one of the styled looks? Reply with which template.</p>"
+    }
+   ],
+   "flow": "pack_onboarding",
+   "status": "gated",
+   "ready": false,
+   "missing": [
+    "button \"Open your templates\": TBD: the Pack access location"
+   ]
+  },
+  {
+   "key": "templates_pack_to_canva_hacks_library_1",
+   "name": "Pack → Library 1",
+   "subject": "The techniques behind your Templates Pack",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "Finished templates now, and how to build your own."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Every template in your Pack is built on specific Canva techniques: layering tricks, transparency effects, foreground and background masking. The Pack gives you the finished result, ready to edit.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">The Canva Hacks Library is where those techniques live. 150+ hacks, each one teaching a specific Canva technique step by step, so you can build the effects and layouts the Pack doesn't include.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">You don't need the Hacks Library if you're happy editing the Pack templates as-is. If you've found yourself wondering how to build your own, that's the answer.</p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"https://visualdesignhacks.com/\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->See what's in the Hacks Library<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Thanks,<br>Joe</p>"
+    }
+   ],
+   "flow": "templates_pack_to_canva_hacks_library",
+   "status": "ship",
+   "ready": true,
+   "missing": []
+  },
+  {
+   "key": "templates_pack_to_canva_hacks_library_2",
+   "name": "Pack → Library 2",
+   "subject": "Last note on the Canva Hacks Library",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "150+ techniques behind every template you've used."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">What's in the Canva Hacks Library:</p><!--[if mso]><style>.vdh-ul li { margin-left: 27px !important; mso-special-format: bullet; } .vdh-ul-wrap { margin-left: -25px !important; }</style><![endif]--><div class=\"vdh-ul-wrap\"><ul class=\"vdh-ul\" type=\"disc\" style=\"margin: 0 0 16px 25px; padding: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><li style=\"margin: 0 0 8px 0;\">150+ Canva hacks, each one a step-by-step technique</li><li style=\"margin: 0 0 8px 0;\">Searchable, indexed by technique and feature</li><li style=\"margin: 0 0 8px 0;\">Lifetime access, no subscription, no renewals</li><li style=\"margin: 0 0 8px 0;\">14-day money-back guarantee</li><li style=\"margin: 0 0 8px 0;\">Updated when a Canva change breaks a step</li></ul></div><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">You bought the Pack for finished designs, ready to use. The Hacks Library is what you'd reach for next, to build your own instead of editing existing ones.</p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"https://checkout.visualdesignhacks.com/canva-hacks/{% if person.library_offer_code and person.library_offer_code != '' %}?coupon={{ person.library_offer_code }}{% endif %}\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->Add the Hacks Library<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">The Pack covers plenty on its own if the timing's off.</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Take care,<br>Joe</p>"
+    }
+   ],
+   "flow": "templates_pack_to_canva_hacks_library",
+   "status": "ship",
+   "ready": true,
+   "missing": []
+  },
+  {
+   "key": "crash_delivery_1",
+   "name": "Crash PDF Delivery 1",
+   "subject": "Your Canva Crash Course is inside",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "Download link, plus where to start."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Here's the Crash Course.</p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"TBD: the Crash Course delivery link\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->Download the Canva Crash Course<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">It's built to be read in order, from the foundations up to the signature effects, each technique setting up the next.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">If you've only got ten minutes today, skim the foundations and try the first quick win.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Thanks,<br>Joe</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>P.S.</strong> Download trouble? Reply and a fresh link comes back.</p>"
+    }
+   ],
+   "flow": "crash_delivery",
+   "status": "gated",
+   "ready": false,
+   "missing": [
+    "button \"Download the Canva Crash Course\": TBD: the Crash Course delivery link"
+   ]
+  },
+  {
+   "key": "canva_crash_pdf_to_canva_hacks_library_1",
+   "name": "Crash PDF → Library 1",
+   "subject": "The reference behind the Crash Course",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "What to reach for after the walkthrough."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">The Crash Course is the structured walkthrough: the foundational techniques, start to finish, in order.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">The Canva Hacks Library is the reference behind it. 150+ hacks, indexed by technique and feature, for when you want an effect or technique the PDF doesn't cover.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">You don't need the Hacks Library if the Crash Course gave you what you came for. If you've found yourself wanting to look something up that wasn't in the PDF, that's where to find it.</p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"https://visualdesignhacks.com/\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->See what's in the Hacks Library<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Thanks,<br>Joe</p>"
+    }
+   ],
+   "flow": "canva_crash_pdf_to_canva_hacks_library",
+   "status": "gated",
+   "ready": true,
+   "missing": []
+  },
+  {
+   "key": "canva_crash_pdf_to_canva_hacks_library_2",
+   "name": "Crash PDF → Library 2",
+   "subject": "Your $17 Crash Course credit on the Hacks Library",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "The full $17 you paid for the Crash Course comes off the price."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">What's in the Canva Hacks Library:</p><!--[if mso]><style>.vdh-ul li { margin-left: 27px !important; mso-special-format: bullet; } .vdh-ul-wrap { margin-left: -25px !important; }</style><![endif]--><div class=\"vdh-ul-wrap\"><ul class=\"vdh-ul\" type=\"disc\" style=\"margin: 0 0 16px 25px; padding: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><li style=\"margin: 0 0 8px 0;\">150+ Canva hacks, each one a step-by-step technique</li><li style=\"margin: 0 0 8px 0;\">Searchable, indexed by technique and feature</li><li style=\"margin: 0 0 8px 0;\">Lifetime access, no subscription, no renewals</li><li style=\"margin: 0 0 8px 0;\">14-day money-back guarantee</li><li style=\"margin: 0 0 8px 0;\">Updated when a Canva change breaks a step</li></ul></div><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Here's the part that makes this simple: what you paid for the Crash Course counts toward the Hacks Library. The full $17 comes straight off.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Use code <strong>CRASHCREDIT17</strong> at checkout and you pay the difference, $62 instead of $79, and you keep the Crash Course you already have.</p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"https://checkout.visualdesignhacks.com/canva-hacks/?coupon=CRASHCREDIT17\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->Use the Crash Course buyer price<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">The credit is a thank-you for buying the Crash Course first. Nothing changes if you pass: the Crash Course still covers the foundation.</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Take care,<br>Joe</p>"
+    }
+   ],
+   "flow": "canva_crash_pdf_to_canva_hacks_library",
+   "status": "gated",
+   "ready": true,
+   "missing": []
+  },
+  {
+   "key": "multipack_bundle_1",
+   "name": "Multi-Pack → Bundle 1",
+   "subject": "Heads up about the bundle",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "A couple of Packs in. Quick maths on the bundle."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">You've picked up a couple of Template Packs now, so this is worth knowing: the All Templates bundle costs less than buying the remaining Packs separately.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">The breakeven sits at around 3 Packs. Past that, buying individually costs more than the bundle would have.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">If a third or fourth Pack was on the cards, the bundle is the cheaper path.</p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"TBD: the bundle page\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->See the bundle<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Thanks,<br>Joe</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">P.S. Lifetime access on the bundle, same as your individual Packs.</p>"
+    }
+   ],
+   "flow": "multipack_bundle",
+   "status": "parked",
+   "ready": false,
+   "missing": [
+    "button \"See the bundle\": TBD: the bundle page"
+   ]
+  },
+  {
+   "key": "multipack_bundle_2",
+   "name": "Multi-Pack → Bundle 2",
+   "subject": "What you don't have yet",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "A look at the Packs you don't own, and why the bundle covers gaps."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Following up on the bundle.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Quick look at what each Pack covers:</p><!--[if mso]><style>.vdh-ul li { margin-left: 27px !important; mso-special-format: bullet; } .vdh-ul-wrap { margin-left: -25px !important; }</style><![endif]--><div class=\"vdh-ul-wrap\"><ul class=\"vdh-ul\" type=\"disc\" style=\"margin: 0 0 16px 25px; padding: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><li style=\"margin: 0 0 8px 0;\">Pack 1: [PACK_1_THEME]</li><li style=\"margin: 0 0 8px 0;\">Pack 2: [PACK_2_THEME]</li><li style=\"margin: 0 0 8px 0;\">Pack 3: [PACK_3_THEME]</li><li style=\"margin: 0 0 8px 0;\">Pack 4: [PACK_4_THEME]</li><li style=\"margin: 0 0 8px 0;\">Pack 5: [PACK_5_THEME]</li></ul></div><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">You've got some of these already. The bundle gets you the rest. Every design context covered, not just the ones you bought first.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">The pattern I see most: buyer picks up a second Pack because they hit a design context the first didn't cover. Then a third, for the same reason. The bundle removes the next-time-this-comes-up problem permanently. One purchase, every context covered, no more \"do I need to buy another Pack for this?\" decision later.</p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"TBD: the bundle page\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->See what's in the bundle<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">All the best,<br>Joe</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">P.S. One-off pricing on the bundle, same as the individual Packs.</p>"
+    }
+   ],
+   "flow": "multipack_bundle",
+   "status": "parked",
+   "ready": false,
+   "missing": [
+    "placeholder [PACK_1_THEME]",
+    "placeholder [PACK_2_THEME]",
+    "placeholder [PACK_3_THEME]",
+    "placeholder [PACK_4_THEME]",
+    "placeholder [PACK_5_THEME]",
+    "button \"See what's in the bundle\": TBD: the bundle page"
+   ]
+  },
+  {
+   "key": "multipack_bundle_3",
+   "name": "Multi-Pack → Bundle 3",
+   "subject": "Last note on the All Templates bundle",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "5 Packs in one."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">What's in the All Templates bundle:</p><!--[if mso]><style>.vdh-ul li { margin-left: 27px !important; mso-special-format: bullet; } .vdh-ul-wrap { margin-left: -25px !important; }</style><![endif]--><div class=\"vdh-ul-wrap\"><ul class=\"vdh-ul\" type=\"disc\" style=\"margin: 0 0 16px 25px; padding: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><li style=\"margin: 0 0 8px 0;\">All 5 Template Packs, every design context covered</li><li style=\"margin: 0 0 8px 0;\">Lifetime access, no subscription, no renewals</li><li style=\"margin: 0 0 8px 0;\">14-day money-back guarantee</li><li style=\"margin: 0 0 8px 0;\">Costs less than buying the remaining Packs separately</li></ul></div><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">You've already bought into the Packs as a category. The bundle is the most cost-efficient way to get the rest. If a third or fourth Pack was likely anyway, the bundle saves money on the remaining purchases.</p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"TBD: the bundle checkout\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->Get the bundle<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Your existing Packs cover a lot without it.</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Take care,<br>Joe</p>"
+    }
+   ],
+   "flow": "multipack_bundle",
+   "status": "parked",
+   "ready": false,
+   "missing": [
+    "button \"Get the bundle\": TBD: the bundle checkout"
+   ]
+  },
+  {
+   "key": "multipack_bundle_3b",
+   "name": "Multi-Pack → Bundle 3b",
+   "flow": "multipack_bundle",
+   "status": "parked",
+   "sentWhen": "thrivecart_code_verified",
+   "master": "vdh_master_letter",
+   "ready": false,
+   "missing": [
+    "the b version is in the flow file only, not in the map"
+   ]
+  },
+  {
+   "key": "pack_abandon_1",
+   "name": "Pack Checkout Abandon 1",
+   "subject": "Did you forget the Best of Hacks Templates Pack?",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "15 templates, ready to edit in Canva."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Your cart for the Best of Hacks Templates Pack is still open if you want to come back to it.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">It's 15 templates for reels, story covers, posts and video covers, each built around a striking Canva technique. Every template comes in two versions: styled, to post the finished look, and blank, to drop in your own photos, clips and colours.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">You get lifetime access, and a 14-day money-back guarantee.</p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"TBD: the Pack checkout\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->Finish checkout<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">All the best,<br>Joe</p>"
+    }
+   ],
+   "flow": "pack_abandon",
+   "status": "parked",
+   "ready": false,
+   "missing": [
+    "button \"Finish checkout\": TBD: the Pack checkout"
+   ]
+  },
+  {
+   "key": "crash_abandon_1",
+   "name": "Crash PDF Checkout Abandon 1",
+   "subject": "Did you forget the Canva Crash Course?",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "One PDF, from the foundations up."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Your cart for the Canva Crash Course is still open if you want to come back to it.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">It's a step-by-step PDF that starts with the foundations and works up to the effects built on them, each technique setting up the next. You learn Canva in order instead of one search at a time.</p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"TBD: the Crash Course checkout\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->Finish checkout<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Take care,<br>Joe</p>"
+    }
+   ],
+   "flow": "crash_abandon",
+   "status": "parked",
+   "ready": false,
+   "missing": [
+    "button \"Finish checkout\": TBD: the Crash Course checkout"
+   ]
+  },
+  {
+   "key": "lw_fonts_1",
+   "name": "Font Codes Delivery + Follow-up 1",
+   "subject": "Your hidden Canva font codes are inside",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "PDF link below, plus the one to try first."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Here's the PDF.</p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"TBD: the Hidden Canva Font Codes PDF link\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->Download Hidden Canva Font Codes<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Inside: 15 codes you paste into Canva's font search to surface fonts that almost no one finds by browsing. Each one is verified working as of [BUILD_DATE].</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">If you only try one today, try this:</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>[CODE_1_NAME]</strong>: paste this into your Canva font search and you'll get [CODE_1_REASON]. It's the one I send to anyone who says \"Canva fonts all look the same.\"</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Quick context on how the codes work: Canva's font search has a long tail. Fonts that don't surface for \"bold\" or \"script\" or any normal search term do surface when you paste these specific strings.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Most of them are licensed for commercial use, but each entry in the PDF flags the licensing.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Thanks,<br>Joe</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">P.S. If any code doesn't work, reply and it gets re-verified.</p>"
+    }
+   ],
+   "flow": "lw_fonts",
+   "status": "gated",
+   "ready": false,
+   "missing": [
+    "placeholder [BUILD_DATE]",
+    "placeholder [CODE_1_NAME]",
+    "placeholder [CODE_1_REASON]",
+    "button \"Download Hidden Canva Font Codes\": TBD: the Hidden Canva Font Codes PDF link"
+   ]
+  },
+  {
+   "key": "lw_fonts_2",
+   "name": "Font Codes Delivery + Follow-up 2",
+   "subject": "3 more font codes worth trying",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "A display font, a script, and a workhorse. All hidden in Canva."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>1. [CODE_2_NAME]</strong> (display font)</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">[CODE_2_REASON]. Best used for headlines, social tile covers, and anywhere you want the type to do the talking.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>2. [CODE_3_NAME]</strong> (script font)</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">[CODE_3_REASON]. Most \"script\" fonts in Canva are either too wedding or too generic. This one is in the middle, which is rarer than you'd think.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>3. [CODE_4_NAME]</strong> (body workhorse)</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">[CODE_4_REASON]. Most font searches surface display fonts because they're more visually striking. Workhorse body fonts are harder to find. This is one of the cleanest.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Three codes, three different jobs.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Have fun with these,<br>Joe</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">P.S. The PDF sorts by font type rather than alphabetically, since you know the kind of font you need before you know its name.</p>"
+    }
+   ],
+   "flow": "lw_fonts",
+   "status": "gated",
+   "ready": false,
+   "missing": [
+    "placeholder [CODE_2_NAME]",
+    "placeholder [CODE_2_REASON]",
+    "placeholder [CODE_3_NAME]",
+    "placeholder [CODE_3_REASON]",
+    "placeholder [CODE_4_NAME]",
+    "placeholder [CODE_4_REASON]"
+   ]
+  },
+  {
+   "key": "lw_fonts_3",
+   "name": "Font Codes Delivery + Follow-up 3",
+   "subject": "Why so many Canva designs look alike",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "It isn't for lack of fonts. Canva has over 3,000."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Most people pick from the fonts Canva puts in front of them, so the same few turn up everywhere.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">The codes in your PDF are the way round that. They don't add anything to Canva; they surface fonts that were there all along.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">The same goes for the rest of Canva: frame tricks, text on a path, transparency masks, effects that never show up in the menus.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">The codes started as a private note of finds that took too long to hunt down. The Canva Hacks Library is that note, grown to 150+ hacks and organised so anyone can use it.</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">All the best,<br>Joe</p>"
+    }
+   ],
+   "flow": "lw_fonts",
+   "status": "gated",
+   "ready": true,
+   "missing": []
+  },
+  {
+   "key": "lw_fonts_4",
+   "name": "Font Codes Delivery + Follow-up 4",
+   "subject": "The Canva Hacks Library for $69",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "150+ hacks, curated the same way as the font codes."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">If the font codes have been useful, the Canva Hacks Library takes you further: 150+ hacks across the rest of Canva.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">What's inside:</p><!--[if mso]><style>.vdh-ul li { margin-left: 27px !important; mso-special-format: bullet; } .vdh-ul-wrap { margin-left: -25px !important; }</style><![endif]--><div class=\"vdh-ul-wrap\"><ul class=\"vdh-ul\" type=\"disc\" style=\"margin: 0 0 16px 25px; padding: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><li style=\"margin: 0 0 8px 0;\">Techniques, layouts, animations, asset discovery, AI tricks and workflow shortcuts.</li><li style=\"margin: 0 0 8px 0;\">Searchable, indexed by technique and Canva feature.</li><li style=\"margin: 0 0 8px 0;\">Updated when a Canva change breaks a step.</li><li style=\"margin: 0 0 8px 0;\">Lifetime access: buy once, no subscription.</li><li style=\"margin: 0 0 8px 0;\">14-day refund, no questions.</li></ul></div><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Since you picked up the font codes, the Hacks Library is $69 instead of $79. Code: <strong>FONTLEAD10</strong></p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"https://checkout.visualdesignhacks.com/canva-hacks/?coupon=FONTLEAD10\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->Get the Canva Hacks Library<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">If now's not the right time, the font codes are yours to keep either way.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Take care,<br>Joe</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">P.S. 110+ of the hacks come with a polished video walkthrough, so you can watch the design being made before you try it yourself.</p>"
+    }
+   ],
+   "flow": "lw_fonts",
+   "status": "gated",
+   "ready": true,
+   "missing": []
+  },
+  {
+   "key": "lw_elements_1",
+   "name": "Element Codes Delivery + Follow-up 1",
+   "subject": "Your hidden Canva element codes are inside",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "PDF link below, plus the one to try first."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Here's the PDF.</p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"TBD: the Hidden Canva Element Codes PDF link\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->Download Hidden Canva Element Codes<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Inside: 10 codes you paste into Canva's element search to surface frames, decorative graphics, and illustration sets that almost no one finds by browsing. Each one is verified working as of [BUILD_DATE].</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">If you only try one today, try this:</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>[CODE_1_NAME]</strong>: paste this into your Canva element search and you'll get [CODE_1_REASON]. It's the one I send to anyone who says \"I can't find good elements in Canva.\"</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Quick context on how the codes work: Canva's element search has a long tail. Elements that don't surface for \"frame\" or \"decoration\" or any normal search term do surface when you paste these specific strings.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Most of them are licensed for commercial use, but each entry in the PDF flags the licensing.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Thanks,<br>Joe</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">P.S. If any code doesn't work, reply and it gets re-verified.</p>"
+    }
+   ],
+   "flow": "lw_elements",
+   "status": "gated",
+   "ready": false,
+   "missing": [
+    "placeholder [BUILD_DATE]",
+    "placeholder [CODE_1_NAME]",
+    "placeholder [CODE_1_REASON]",
+    "button \"Download Hidden Canva Element Codes\": TBD: the Hidden Canva Element Codes PDF link"
+   ]
+  },
+  {
+   "key": "lw_elements_2",
+   "name": "Element Codes Delivery + Follow-up 2",
+   "subject": "3 more element codes worth trying",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "A frame, a decorative set, and an illustration pack. All hidden in Canva."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>1. [CODE_2_NAME]</strong> (frame)</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">[CODE_2_REASON]. Best used when you want a structured photo or graphic container that isn't the same circle/square/heart that everyone uses.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>2. [CODE_3_NAME]</strong> (decorative set)</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">[CODE_3_REASON]. Most \"decorative\" element searches in Canva surface generic stars, sparkles, and dividers. This set is more specific and visually cohesive.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>3. [CODE_4_NAME]</strong> (illustration pack)</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">[CODE_4_REASON]. Most element searches surface single illustrations that don't match each other. Cohesive packs are harder to find. This is one of the cleanest.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Three codes, three different jobs.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Have fun with these,<br>Joe</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">P.S. The PDF sorts by element type rather than alphabetically, since you know the kind of element you need before you know its name.</p>"
+    }
+   ],
+   "flow": "lw_elements",
+   "status": "gated",
+   "ready": false,
+   "missing": [
+    "placeholder [CODE_2_NAME]",
+    "placeholder [CODE_2_REASON]",
+    "placeholder [CODE_3_NAME]",
+    "placeholder [CODE_3_REASON]",
+    "placeholder [CODE_4_NAME]",
+    "placeholder [CODE_4_REASON]"
+   ]
+  },
+  {
+   "key": "lw_elements_3",
+   "name": "Element Codes Delivery + Follow-up 3",
+   "subject": "Why so many Canva designs look alike",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "It isn't for lack of elements. Canva has millions."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Most people pick from the elements Canva puts in front of them, so the same few turn up everywhere.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">The codes in your PDF are the way round that. They don't add anything to Canva; they surface elements that were there all along.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">The same goes for the rest of Canva: frame tricks, text on a path, transparency masks, effects that never show up in the menus.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">The codes started as a private note of finds that took too long to hunt down. The Canva Hacks Library is that note, grown to 150+ hacks and organised so anyone can use it.</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">All the best,<br>Joe</p>"
+    }
+   ],
+   "flow": "lw_elements",
+   "status": "gated",
+   "ready": true,
+   "missing": []
+  },
+  {
+   "key": "lw_elements_4",
+   "name": "Element Codes Delivery + Follow-up 4",
+   "subject": "The Canva Hacks Library for $69",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "150+ hacks, curated the same way as the element codes."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">If the element codes have been useful, the Canva Hacks Library takes you further: 150+ hacks across the rest of Canva.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">What's inside:</p><!--[if mso]><style>.vdh-ul li { margin-left: 27px !important; mso-special-format: bullet; } .vdh-ul-wrap { margin-left: -25px !important; }</style><![endif]--><div class=\"vdh-ul-wrap\"><ul class=\"vdh-ul\" type=\"disc\" style=\"margin: 0 0 16px 25px; padding: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><li style=\"margin: 0 0 8px 0;\">Techniques, layouts, animations, asset discovery, AI tricks and workflow shortcuts.</li><li style=\"margin: 0 0 8px 0;\">Searchable, indexed by technique and Canva feature.</li><li style=\"margin: 0 0 8px 0;\">Updated when a Canva change breaks a step.</li><li style=\"margin: 0 0 8px 0;\">Lifetime access: buy once, no subscription.</li><li style=\"margin: 0 0 8px 0;\">14-day refund, no questions.</li></ul></div><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Since you picked up the element codes, the Hacks Library is $69 instead of $79. Code: <strong>ELEMENTLEAD10</strong></p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"https://checkout.visualdesignhacks.com/canva-hacks/?coupon=ELEMENTLEAD10\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->Get the Canva Hacks Library<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">If now's not the right time, the element codes are yours to keep either way.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Take care,<br>Joe</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">P.S. 110+ of the hacks come with a polished video walkthrough, so you can watch the design being made before you try it yourself.</p>"
+    }
+   ],
+   "flow": "lw_elements",
+   "status": "gated",
+   "ready": true,
+   "missing": []
+  },
+  {
+   "key": "template_delivery_1",
+   "name": "Free Template Delivery 1",
+   "subject": "Your free {{ person.requested_template_name }} template is inside",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "Template link below, plus 3 ways to make it look like yours."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Here's the template.</p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"{{ person.requested_template_url }}\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->Open the {{ person.requested_template_name }} template in Canva<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">That link opens the template directly in your Canva account as a copy. Edit it, save it, post it. No download, no licensing fuss.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">A few quick ways to make it feel like yours rather than a generic template:</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>1. Drop in your own photos or clips.</strong></p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Drag them from Uploads onto the template's frames and they crop to fit. Short video clips work too, so a template built for photos can move.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>2. Change the font to one you already use.</strong></p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Swap the template's font for the one on your own brand and the whole thing instantly stops looking like a stock template.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>3. Recolour it in one go.</strong></p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Select anything in the template's main colour, pick your brand colour, then choose Change all. Every element in that colour updates at once.</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Have fun with it,<br>Joe</p>"
+    }
+   ],
+   "flow": "template_delivery",
+   "status": "gated",
+   "ready": true,
+   "missing": []
+  },
+  {
+   "key": "lw_template_1",
+   "name": "Free Template Follow-up 1",
+   "subject": "Turn one template into a month of posts",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "What to change each week so it never looks like a repeat."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Keep the layout. Rotate three things:</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>1. The shot.</strong> New photos or clips each week, and vary the kind of shot too. A close-up one week, a wide shot the next. Same template, different feel.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>2. The colour.</strong> Give each week one of your brand colours as the main colour. Two or three colours across a month still read as one set.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>3. The headline length.</strong> A three-word headline and a ten-word one make the same template look like two designs.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">What stays fixed is what people recognise you by: the layout, the font, the rhythm. That's what makes a feed look designed rather than assembled.</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">All the best,<br>Joe</p>"
+    }
+   ],
+   "flow": "lw_template",
+   "status": "gated",
+   "ready": true,
+   "missing": []
+  },
+  {
+   "key": "lw_template_2",
+   "name": "Free Template Follow-up 2",
+   "subject": "How to spot a template worth keeping",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "Three quick tests. Most templates fail the first one."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Most templates are made for the preview image. They look great until the first edit, when the font won't change everywhere and the photo won't crop.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Three tests show whether a template is worth keeping:</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>1. It survives your edits.</strong></p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Swap the font, the photo and the main colour. If everything updates cleanly and nothing breaks, it was built to be used, not just shown.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>2. It stretches to a month of posts.</strong></p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">A template that only works for one post is a one-off. A good one carries a post a week without looking repetitive.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><strong>3. It shows why it works.</strong></p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Clear hierarchy, colours you can rotate, an obvious place for the eye to land. You come away knowing a little more about design, not just holding one finished post.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">The template you got passes all three. So does every template in the Best of Hacks Templates Pack.</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Take it easy,<br>Joe</p>"
+    }
+   ],
+   "flow": "lw_template",
+   "status": "gated",
+   "ready": true,
+   "missing": []
+  },
+  {
+   "key": "lw_template_3",
+   "name": "Free Template Follow-up 3",
+   "subject": "The Best of Hacks Templates Pack for $20",
+   "master": "vdh_master_letter",
+   "swaps": [
+    {
+     "path": "body.values.preheaderText",
+     "html": "Reels, story covers and posts, ready to edit in Canva."
+    },
+    {
+     "path": "body.rows.0.columns.0.contents.1.values.html",
+     "html": "<p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">{% assign fn = person.firstName | strip %}{% assign up = fn | upcase %}Hi {% if fn == blank %}there{% elsif fn == up %}{{ fn | capitalize }}{% else %}{{ fn | slice: 0 | upcase }}{{ fn | slice: 1, 100 }}{% endif %},</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">If the free template has been useful, the Best of Hacks Templates Pack is 15 templates built to the same standard, all passing the three tests from the last email.</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">What's inside:</p><!--[if mso]><style>.vdh-ul li { margin-left: 27px !important; mso-special-format: bullet; } .vdh-ul-wrap { margin-left: -25px !important; }</style><![endif]--><div class=\"vdh-ul-wrap\"><ul class=\"vdh-ul\" type=\"disc\" style=\"margin: 0 0 16px 25px; padding: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\"><li style=\"margin: 0 0 8px 0;\">Reels, story covers, post layouts and video covers, each built around a striking Canva technique.</li><li style=\"margin: 0 0 8px 0;\">A styled version of every template, to show what's possible, and a blank one for your own brand.</li><li style=\"margin: 0 0 8px 0;\">Editable in Canva: each template opens as a copy in your account. No downloads, no licensing fuss.</li><li style=\"margin: 0 0 8px 0;\">14-day refund, no questions.</li></ul></div><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Since you started with a free template, the Pack is $20 instead of $25. Code: <strong>TEMPLATELEAD5</strong></p><p style=\"margin: 0; font-size: 16px; line-height: 16px;\">&nbsp;</p><a href=\"TBD: the Pack checkout (?coupon=TEMPLATELEAD5)\" target=\"_blank\" style=\"display: inline-block; background-color: #933bc9; color: #ffffff; font-family: helvetica,sans-serif; font-size: 16px; font-weight: bold; line-height: 120%; text-decoration: none; padding: 14px 24px; border-radius: 8px; mso-padding-alt: 0; text-underline-color: #933bc9;\"><!--[if mso]><i style=\"mso-font-width:150%;mso-text-raise:175%\" hidden>&emsp;</i><span style=\"mso-text-raise:88%;\"><![endif]-->Get the Pack<!--[if mso]></span><i style=\"mso-font-width:150%;\" hidden>&emsp;&#8203;</i><![endif]--></a><p style=\"margin: 0; font-size: 16px; line-height: 32px;\">&nbsp;</p><p style=\"margin: 0 0 16px; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">If now's not the right time, the free template is yours to keep either way.</p><p style=\"margin: 0; font-family: helvetica,arial,sans-serif; font-size: 16px; line-height: 160%; color: #2b2b2b;\">Thanks,<br>Joe</p>"
+    }
+   ],
+   "flow": "lw_template",
+   "status": "gated",
+   "ready": false,
+   "missing": [
+    "button \"Get the Pack\": TBD: the Pack checkout (?coupon=TEMPLATELEAD5)"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,4143 @@
+{
+ "catalogue": 1,
+ "source": "GET /v1/services → services[id=encharge].data.schema.paths, capture 1 (2026-09-23 10:50:08 UTC). Unedited schemas.",
+ "note": "The runner never relies on these schemas: it takes the schema Encharge returns when a step is created and sets values in it, as the app does. compile.py uses them to check that every value path exists.",
+ "operations": {
+  "/ab-test": {
+   "type": "condition",
+   "encharge_type": "filter",
+   "summary": "A/B Test",
+   "description": "A/B split lets you test automation sequences against each another. ",
+   "x-encharge-operation": {
+    "type": "filter",
+    "linkConditions": {
+     "conditions": [
+      {
+       "label": "A",
+       "condition": "A"
+      },
+      {
+       "label": "B",
+       "condition": "B"
+      }
+     ]
+    }
+   },
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "variants": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "required": [
+        "percent"
+       ],
+       "properties": {
+        "name": {
+         "type": "string",
+         "description": "Percentage of people who enter this step and will proceed to this variant."
+        },
+        "percent": {
+         "type": "number",
+         "default": 0
+        }
+       }
+      },
+      "title": "",
+      "value": [
+       {
+        "name": "Variant A",
+        "percent": 50
+       },
+       {
+        "name": "Variant B",
+        "percent": 50
+       }
+      ],
+      "x-encharge-ui": {
+       "items": {
+        "name": {
+         "ui:field": "labelField"
+        },
+        "percent": {
+         "displayLabel": false
+        },
+        "ui:order": [
+         "name",
+         "percent"
+        ]
+       },
+       "ui:field": "abTestVariantsField",
+       "ui:options": {
+        "addable": true,
+        "removable": true
+       },
+       "displayLabel": false,
+       "addItemButtonLabel": "Add Variant"
+      }
+     }
+    }
+   },
+   "inputs": [
+    "variants"
+   ]
+  },
+  "/add-tag": {
+   "type": "action",
+   "encharge_type": "action",
+   "summary": "Add tag",
+   "description": "Add one or multple tags to people who reach this step",
+   "x-encharge-operation": {
+    "type": "action",
+    "consumesEndUsers": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "required": [
+     "tags"
+    ],
+    "properties": {
+     "tags": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      },
+      "title": "Tags",
+      "x-encharge-ui": {
+       "ui:field": "tagsPicker"
+      }
+     }
+    }
+   },
+   "inputs": [
+    "tags"
+   ]
+  },
+  "/added-tag": {
+   "type": "trigger",
+   "encharge_type": "trigger",
+   "summary": "Added Tag",
+   "description": "Triggers when a tag is added to a person",
+   "x-encharge-operation": {
+    "type": "trigger",
+    "triggerType": "event",
+    "producesEndUsers": true,
+    "neededEndUserFields": [
+     "id"
+    ]
+   },
+   "inputSchema": {
+    "type": "object",
+    "required": [
+     "tag"
+    ],
+    "properties": {
+     "tag": {
+      "type": "string",
+      "title": "Tag",
+      "x-encharge-ui": {
+       "ui:widget": "tagPicker"
+      }
+     }
+    }
+   },
+   "inputs": [
+    "tag"
+   ]
+  },
+  "/annualTrigger": {
+   "type": "trigger",
+   "encharge_type": "trigger",
+   "summary": "Birthday/Annual Trigger",
+   "description": "Trigger each year based on a date and time field.",
+   "x-encharge-operation": {
+    "type": "trigger",
+    "helpDocs": {
+     "markdown": "Triggers based on a date field.  \n\n"
+    },
+    "triggerType": "polling",
+    "needsContext": true,
+    "producesEndUsers": true,
+    "skipPollingDeduplication": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "title": "Wait",
+    "required": [
+     "fieldName",
+     "type"
+    ],
+    "properties": {
+     "type": {
+      "enum": [
+       "before",
+       "on",
+       "after"
+      ],
+      "type": "string",
+      "value": "on"
+     },
+     "yearly": {
+      "type": "boolean",
+      "const": true,
+      "value": false
+     },
+     "interval": {
+      "type": "number",
+      "value": 1
+     },
+     "fieldName": {
+      "type": "string",
+      "title": "Field",
+      "x-encharge-ui": {
+       "ui:widget": "fieldPicker"
+      },
+      "x-encharge-recipe": {
+       "resourceType": "field"
+      }
+     },
+     "triggerTime": {
+      "type": "string"
+     },
+     "intervalType": {
+      "enum": [
+       "hours",
+       "days",
+       "workdays"
+      ],
+      "type": "string",
+      "value": "days"
+     }
+    },
+    "x-encharge-ui": {
+     "ui:field": "dateTriggerField"
+    }
+   },
+   "inputs": [
+    "fieldName",
+    "interval",
+    "intervalType",
+    "triggerTime",
+    "type",
+    "yearly"
+   ]
+  },
+  "/archive": {
+   "type": "action",
+   "encharge_type": "action",
+   "summary": "Archive Person",
+   "description": "Archives people who enter this step. People who are archived will not count towards your active subscribers but can't enter flow steps.",
+   "x-encharge-operation": {
+    "type": "action",
+    "linkConditions": {
+     "linkFromDisabled": true
+    },
+    "consumesEndUsers": true,
+    "alwaysShowInputFields": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "x-encharge-ui": {
+     "hideSaveButton": true
+    }
+   },
+   "inputs": []
+  },
+  "/change-field": {
+   "type": "action",
+   "encharge_type": "action",
+   "summary": "Update field",
+   "description": "Updates the value of a person's field.",
+   "x-encharge-operation": {
+    "type": "action",
+    "consumesEndUsers": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "required": [
+     "fieldName"
+    ],
+    "properties": {
+     "fieldName": {
+      "type": "string",
+      "title": "Field",
+      "x-encharge-ui": {
+       "ui:widget": "fieldPicker"
+      },
+      "x-encharge-recipe": {
+       "resourceType": "field"
+      }
+     },
+     "fieldValue": {
+      "type": "string",
+      "title": "New value",
+      "x-encharge-ui": {
+       "textarea": true,
+       "ui:widget": "textWithLiquidTags"
+      }
+     }
+    }
+   },
+   "inputs": [
+    "fieldName",
+    "fieldValue"
+   ]
+  },
+  "/change-field-trigger": {
+   "type": "trigger",
+   "encharge_type": "trigger",
+   "summary": "Change Field Trigger",
+   "description": "Triggers when a field is changed for a person.",
+   "x-encharge-operation": {
+    "type": "trigger",
+    "triggerType": "event",
+    "producesEndUsers": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "required": [
+     "fieldName"
+    ],
+    "properties": {
+     "fieldName": {
+      "type": "string",
+      "title": "Field",
+      "x-encharge-ui": {
+       "ui:widget": "fieldPicker",
+       "omitFields": [
+        "lastActivity",
+        "updatedAt"
+       ]
+      }
+     }
+    }
+   },
+   "inputs": [
+    "fieldName"
+   ]
+  },
+  "/change-numeric-field": {
+   "type": "action",
+   "encharge_type": "action",
+   "summary": "Change Numeric Field",
+   "description": "Perform math on a numeric field.",
+   "x-encharge-operation": {
+    "type": "action",
+    "consumesEndUsers": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "fieldName": {
+      "type": "string",
+      "title": "Field",
+      "x-encharge-ui": {
+       "fieldType": [
+        "number",
+        "integer"
+       ],
+       "ui:widget": "fieldPicker"
+      },
+      "x-encharge-recipe": {
+       "resourceType": "field"
+      }
+     },
+     "operation": {
+      "type": "string",
+      "oneOf": [
+       {
+        "enum": [
+         "increase"
+        ],
+        "title": "Increase by"
+       },
+       {
+        "enum": [
+         "decrease"
+        ],
+        "title": "Decrease by"
+       },
+       {
+        "enum": [
+         "set"
+        ],
+        "title": "Set to"
+       },
+       {
+        "enum": [
+         "multiply"
+        ],
+        "title": "Multiply by"
+       },
+       {
+        "enum": [
+         "divide"
+        ],
+        "title": "Divide by"
+       },
+       {
+        "enum": [
+         "modulo"
+        ],
+        "title": "Modulo by"
+       },
+       {
+        "enum": [
+         "round"
+        ],
+        "title": "Round"
+       },
+       {
+        "enum": [
+         "floor"
+        ],
+        "title": "Round down"
+       },
+       {
+        "enum": [
+         "ceil"
+        ],
+        "title": "Round up"
+       },
+       {
+        "enum": [
+         "abs"
+        ],
+        "title": "Absolute value"
+       },
+       {
+        "enum": [
+         "sqrt"
+        ],
+        "title": "Square root"
+       },
+       {
+        "enum": [
+         "pow"
+        ],
+        "title": "Power of"
+       }
+      ],
+      "title": "Operation",
+      "default": "increase"
+     },
+     "fieldValue": {
+      "title": "Value",
+      "value": 1
+     }
+    },
+    "dependencies": {
+     "operation": {
+      "oneOf": [
+       {
+        "required": [
+         "fieldName",
+         "operation"
+        ],
+        "properties": {
+         "operation": {
+          "enum": [
+           "round",
+           "floor",
+           "ceil",
+           "abs",
+           "sqrt"
+          ]
+         }
+        }
+       },
+       {
+        "required": [
+         "fieldName",
+         "operation",
+         "fieldValue"
+        ],
+        "properties": {
+         "operation": {
+          "enum": [
+           "increase",
+           "decrease",
+           "set",
+           "multiply",
+           "divide",
+           "modulo",
+           "pow"
+          ]
+         },
+         "fieldValue": {
+          "type": "number"
+         }
+        }
+       }
+      ]
+     }
+    },
+    "x-encharge-ui": {
+     "ui:order": [
+      "fieldName",
+      "operation",
+      "*"
+     ]
+    }
+   },
+   "inputs": [
+    "fieldName",
+    "fieldValue",
+    "operation"
+   ]
+  },
+  "/check-field": {
+   "type": "condition",
+   "encharge_type": "filter",
+   "summary": "Check Condition",
+   "description": null,
+   "x-encharge-operation": {
+    "type": "filter",
+    "linkConditions": {
+     "conditions": [
+      {
+       "label": "Yes",
+       "condition": "yes"
+      },
+      {
+       "label": "No",
+       "condition": "no"
+      }
+     ]
+    }
+   },
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "conditions": {
+      "type": "string",
+      "title": "Check if person satisfies:",
+      "x-encharge-ui": {
+       "ui:widget": "fieldsCondition"
+      }
+     }
+    }
+   },
+   "inputs": [
+    "conditions"
+   ]
+  },
+  "/dateFieldTrigger": {
+   "type": "trigger",
+   "encharge_type": "trigger",
+   "summary": "Date Trigger",
+   "description": "Trigger based on a date and time field.",
+   "x-encharge-operation": {
+    "type": "trigger",
+    "helpDocs": {
+     "markdown": "Triggers based on a date field.  \n\n"
+    },
+    "triggerType": "polling",
+    "needsContext": true,
+    "producesEndUsers": true,
+    "skipPollingDeduplication": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "title": "Wait",
+    "required": [
+     "fieldName",
+     "type"
+    ],
+    "properties": {
+     "type": {
+      "enum": [
+       "before",
+       "on",
+       "after"
+      ],
+      "type": "string",
+      "value": "on"
+     },
+     "yearly": {
+      "type": "boolean",
+      "value": false
+     },
+     "interval": {
+      "type": "number",
+      "value": 1
+     },
+     "fieldName": {
+      "type": "string",
+      "title": "Field",
+      "x-encharge-ui": {
+       "ui:widget": "fieldPicker"
+      },
+      "x-encharge-recipe": {
+       "resourceType": "field"
+      }
+     },
+     "triggerTime": {
+      "type": "string"
+     },
+     "intervalType": {
+      "enum": [
+       "hours",
+       "days",
+       "workdays"
+      ],
+      "type": "string",
+      "value": "days"
+     }
+    },
+    "x-encharge-ui": {
+     "ui:field": "dateTriggerField"
+    }
+   },
+   "inputs": [
+    "fieldName",
+    "interval",
+    "intervalType",
+    "triggerTime",
+    "type",
+    "yearly"
+   ]
+  },
+  "/delay": {
+   "type": "action",
+   "encharge_type": "action",
+   "summary": "Wait",
+   "description": "Waits before continuing to the next steps",
+   "x-encharge-operation": {
+    "type": "action",
+    "consumesEndUsers": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "period": {
+      "type": "object",
+      "title": "Wait for",
+      "required": [
+       "quantity",
+       "unit"
+      ],
+      "properties": {
+       "unit": {
+        "enum": [
+         "minutes",
+         "hours",
+         "days"
+        ],
+        "type": "string",
+        "default": "days",
+        "x-encharge-ui": {
+         "displayLabel": false
+        }
+       },
+       "quantity": {
+        "type": "integer",
+        "value": 1,
+        "x-encharge-ui": {
+         "displayLabel": false
+        }
+       }
+      },
+      "x-encharge-ui": {
+       "ui:order": [
+        "quantity",
+        "unit"
+       ]
+      }
+     }
+    }
+   },
+   "inputs": [
+    "period"
+   ]
+  },
+  "/delay-v2": {
+   "type": "action",
+   "encharge_type": "action",
+   "summary": "Wait",
+   "description": "Waits before continuing to the next steps",
+   "x-encharge-operation": {
+    "type": "action",
+    "consumesEndUsers": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "title": "Wait",
+    "required": [
+     "period",
+     "time"
+    ],
+    "x-comment": "Nested dependencies don't currently work in RJSF",
+    "properties": {
+     "time": {
+      "type": "object",
+      "properties": {
+       "day": {
+        "type": "object",
+        "title": "Day of week",
+        "properties": {
+         "friday": {
+          "type": "boolean",
+          "title": "Friday",
+          "value": true
+         },
+         "monday": {
+          "type": "boolean",
+          "title": "Monday",
+          "value": true
+         },
+         "sunday": {
+          "type": "boolean",
+          "title": "Sunday"
+         },
+         "tuesday": {
+          "type": "boolean",
+          "title": "Tuesday",
+          "value": true
+         },
+         "saturday": {
+          "type": "boolean",
+          "title": "Saturday"
+         },
+         "thursday": {
+          "type": "boolean",
+          "title": "Thursday",
+          "value": true
+         },
+         "wednesday": {
+          "type": "boolean",
+          "title": "Wednesday",
+          "value": true
+         }
+        },
+        "x-encharge-ui": {
+         "ui:order": [
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday",
+          "saturday",
+          "sunday"
+         ]
+        }
+       },
+       "date": {
+        "type": "string",
+        "title": "Date",
+        "format": "date"
+       },
+       "hour": {
+        "type": "object",
+        "title": "Time",
+        "required": [
+         "type",
+         "from"
+        ],
+        "properties": {
+         "to": {
+          "type": "string",
+          "title": "to"
+         },
+         "from": {
+          "type": "string",
+          "title": "from"
+         },
+         "type": {
+          "enum": [
+           "exactly",
+           "between"
+          ],
+          "type": "string",
+          "value": "exactly"
+         },
+         "useAccountTimezone": {
+          "type": "boolean",
+          "title": "Use account timezone"
+         }
+        },
+        "dependencies": {
+         "type": {
+          "oneOf": [
+           {
+            "required": [
+             "type",
+             "from"
+            ],
+            "properties": {
+             "type": {
+              "enum": [
+               "exactly"
+              ]
+             }
+            }
+           },
+           {
+            "required": [
+             "type",
+             "from",
+             "to"
+            ],
+            "properties": {
+             "type": {
+              "enum": [
+               "between"
+              ]
+             }
+            }
+           }
+          ]
+         }
+        }
+       },
+       "enabled": {
+        "type": "boolean",
+        "title": "And then wait until a specific time"
+       }
+      }
+     },
+     "period": {
+      "type": "object",
+      "properties": {
+       "unit": {
+        "enum": [
+         "minutes",
+         "hours",
+         "days"
+        ],
+        "type": "string",
+        "value": "days"
+       },
+       "enabled": {
+        "type": "boolean",
+        "title": "For a specific period",
+        "value": true
+       },
+       "quantity": {
+        "type": "integer",
+        "value": 1
+       }
+      },
+      "dependencies": {
+       "enabled": {
+        "oneOf": [
+         {
+          "properties": {
+           "enabled": {
+            "enum": [
+             false
+            ]
+           }
+          }
+         },
+         {
+          "required": [
+           "quantity"
+          ],
+          "properties": {
+           "enabled": {
+            "enum": [
+             true
+            ]
+           }
+          }
+         }
+        ]
+       }
+      }
+     }
+    },
+    "x-encharge-ui": {
+     "ui:field": "waitField",
+     "ui:order": [
+      "period",
+      "time"
+     ]
+    },
+    "x-unused-dependencies": {
+     "period": {
+      "oneOf": [
+       {
+        "properties": {
+         "period": {
+          "properties": {
+           "enabled": {
+            "enum": [
+             true
+            ]
+           }
+          }
+         }
+        }
+       },
+       {
+        "properties": {
+         "time": {
+          "properties": {
+           "enabled": {
+            "enum": [
+             true
+            ]
+           }
+          }
+         }
+        }
+       }
+      ]
+     }
+    }
+   },
+   "inputs": [
+    "period",
+    "time"
+   ]
+  },
+  "/email-activity": {
+   "type": "condition",
+   "encharge_type": "filter",
+   "summary": "Email Activity",
+   "description": "Filter on activity related to one of the emails you have sent. Connect to other steps to select on which activity to filter.",
+   "x-encharge-operation": {
+    "type": "filter",
+    "linkConditions": {
+     "conditions": [
+      {
+       "label": "Delivered",
+       "condition": "delivered"
+      },
+      {
+       "label": "Not delivered",
+       "condition": "not-delivered"
+      },
+      {
+       "label": "Opened",
+       "condition": "open"
+      },
+      {
+       "label": "Not opened",
+       "condition": "not-open"
+      },
+      {
+       "label": "Clicked",
+       "condition": "click"
+      },
+      {
+       "label": "Not clicked",
+       "condition": "not-click"
+      },
+      {
+       "label": "Reply received",
+       "condition": "reply"
+      },
+      {
+       "label": "No reply received",
+       "condition": "not-reply"
+      },
+      {
+       "label": "Bounced",
+       "condition": "bounce"
+      }
+     ],
+     "multipleConditions": true
+    }
+   },
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "emailId": {
+      "type": "number",
+      "title": "Email",
+      "x-encharge-ui": {
+       "ui:widget": "emailPicker"
+      },
+      "x-encharge-recipe": {
+       "resourceType": "email"
+      }
+     }
+    }
+   },
+   "inputs": [
+    "emailId"
+   ]
+  },
+  "/email-notification": {
+   "type": "action",
+   "encharge_type": "action",
+   "summary": "Send Internal Notification",
+   "description": "Send an internal email notification to your team",
+   "x-encharge-operation": {
+    "type": "action",
+    "consumesEndUsers": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "required": [
+     "recipient",
+     "subject",
+     "message"
+    ],
+    "properties": {
+     "message": {
+      "type": "string",
+      "title": "Message",
+      "x-encharge-ui": {
+       "rows": 6,
+       "textarea": true,
+       "ui:widget": "textWithLiquidTags"
+      }
+     },
+     "subject": {
+      "type": "string",
+      "title": "Subject",
+      "description": "Subject of the email notification"
+     },
+     "recipient": {
+      "type": "string",
+      "title": "Recipient",
+      "default": "{{account.email}}",
+      "description": "Email addresses of team members to receive this notification. Use commas to separate recipients (up to 5).",
+      "x-encharge-ui": {
+       "ui:widget": "teamMembersEmails"
+      }
+     },
+     "senderEmail": {
+      "type": "string",
+      "title": "Send from (verified email)",
+      "description": "A sending address on a verified domain for your account. Newer accounts must set a verified sender to send notifications; add and verify a domain in Settings.",
+      "x-encharge-ui": {
+       "ui:widget": "verifiedSenders"
+      }
+     }
+    },
+    "x-encharge-ui": {
+     "ui:order": [
+      "recipient",
+      "senderEmail",
+      "subject",
+      "message",
+      "*"
+     ]
+    }
+   },
+   "inputs": [
+    "message",
+    "recipient",
+    "senderEmail",
+    "subject"
+   ]
+  },
+  "/email-trigger": {
+   "type": "trigger",
+   "encharge_type": "trigger",
+   "summary": "Email Activity",
+   "description": "Triggers when an activity related to the email occurs.",
+   "x-encharge-operation": {
+    "type": "trigger",
+    "triggerType": "event",
+    "producesEndUsers": true,
+    "neededEndUserFields": [
+     "id"
+    ]
+   },
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "emailId": {
+      "type": "number",
+      "title": "Trigger when",
+      "x-encharge-ui": {
+       "ui:widget": "emailPicker"
+      },
+      "x-encharge-recipe": {
+       "resourceType": "email"
+      }
+     },
+     "linkURL": {
+      "title": "on link",
+      "description": "Leave empty to trigger on click on any link. \\n\\n Note that you must use the exact link you have in your email. For, example https://encharge.io/pricing-page?plan=growth",
+      "x-encharge-ui": {
+       "hideRequired": true,
+       "ui:placeholder": "Link URL"
+      }
+     },
+     "activity": {
+      "type": "string",
+      "oneOf": [
+       {
+        "enum": [
+         "delivered"
+        ],
+        "title": "Delivered"
+       },
+       {
+        "enum": [
+         "bounce"
+        ],
+        "title": "Bounced"
+       },
+       {
+        "enum": [
+         "open"
+        ],
+        "title": "Opened"
+       },
+       {
+        "enum": [
+         "click"
+        ],
+        "title": "Clicked"
+       },
+       {
+        "enum": [
+         "reply"
+        ],
+        "title": "Replied to"
+       }
+      ],
+      "title": "is",
+      "default": "delivered"
+     }
+    },
+    "dependencies": {
+     "activity": {
+      "oneOf": [
+       {
+        "properties": {
+         "linkURL": {
+          "type": "string"
+         },
+         "activity": {
+          "enum": [
+           "click"
+          ]
+         }
+        }
+       },
+       {
+        "properties": {
+         "activity": {
+          "enum": [
+           "delivered",
+           "bounce",
+           "open",
+           "reply"
+          ]
+         }
+        }
+       }
+      ]
+     }
+    },
+    "x-encharge-ui": {
+     "ui:order": [
+      "emailId",
+      "activity",
+      "*"
+     ]
+    }
+   },
+   "inputs": [
+    "activity",
+    "emailId",
+    "linkURL"
+   ]
+  },
+  "/email-trigger-v2": {
+   "type": "trigger",
+   "encharge_type": "trigger",
+   "summary": "Email Activity",
+   "description": "Triggers when an activity related to the email occurs.",
+   "x-encharge-operation": {
+    "type": "trigger",
+    "triggerType": "event",
+    "producesEndUsers": true,
+    "neededEndUserFields": [
+     "id"
+    ]
+   },
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "emailId": {
+      "type": "number",
+      "title": "Trigger when",
+      "x-encharge-ui": {
+       "ui:widget": "emailPicker"
+      },
+      "x-encharge-recipe": {
+       "resourceType": "email"
+      }
+     },
+     "linkURL": {
+      "x-encharge-ui": {
+       "ui:label": false,
+       "hideRequired": true
+      }
+     },
+     "activity": {
+      "type": "string",
+      "oneOf": [
+       {
+        "enum": [
+         "delivered"
+        ],
+        "title": "Delivered"
+       },
+       {
+        "enum": [
+         "bounce"
+        ],
+        "title": "Bounced"
+       },
+       {
+        "enum": [
+         "open"
+        ],
+        "title": "Opened"
+       },
+       {
+        "enum": [
+         "click"
+        ],
+        "title": "Clicked"
+       },
+       {
+        "enum": [
+         "reply"
+        ],
+        "title": "Replied to"
+       }
+      ],
+      "title": "is",
+      "default": "delivered"
+     },
+     "linkURLCondition": {
+      "oneOf": [
+       {
+        "enum": [
+         "is any"
+        ],
+        "title": "is any"
+       },
+       {
+        "enum": [
+         "is"
+        ],
+        "title": "is exactly"
+       },
+       {
+        "enum": [
+         "is not"
+        ],
+        "title": "is not exactly"
+       },
+       {
+        "enum": [
+         "contains"
+        ],
+        "title": "contains"
+       },
+       {
+        "enum": [
+         "does not contain"
+        ],
+        "title": "does not contain"
+       },
+       {
+        "enum": [
+         "starts with"
+        ],
+        "title": "starts with"
+       },
+       {
+        "enum": [
+         "does not start with"
+        ],
+        "title": "does not start with"
+       },
+       {
+        "enum": [
+         "ends with"
+        ],
+        "title": "ends with"
+       },
+       {
+        "enum": [
+         "does not end with"
+        ],
+        "title": "does not end with"
+       }
+      ],
+      "title": "and link",
+      "default": "is any",
+      "x-encharge-ui": {
+       "hideRequired": true
+      }
+     }
+    },
+    "dependencies": {
+     "activity": {
+      "oneOf": [
+       {
+        "properties": {
+         "activity": {
+          "enum": [
+           "click"
+          ]
+         },
+         "linkURLCondition": {
+          "type": "string"
+         }
+        }
+       },
+       {
+        "properties": {
+         "activity": {
+          "enum": [
+           "delivered",
+           "bounce",
+           "open",
+           "reply"
+          ]
+         }
+        }
+       }
+      ]
+     },
+     "linkURLCondition": {
+      "oneOf": [
+       {
+        "properties": {
+         "linkURLCondition": {
+          "enum": [
+           "is any"
+          ],
+          "type": "string"
+         }
+        }
+       },
+       {
+        "properties": {
+         "linkURL": {
+          "type": "string"
+         },
+         "linkURLCondition": {
+          "enum": [
+           "is",
+           "is not",
+           "contains",
+           "does not contain",
+           "starts with",
+           "does not start with",
+           "ends with",
+           "does not end with"
+          ],
+          "type": "string"
+         }
+        }
+       }
+      ]
+     }
+    },
+    "x-encharge-ui": {
+     "ui:order": [
+      "emailId",
+      "activity",
+      "linkURLCondition",
+      "linkURL"
+     ]
+    }
+   },
+   "inputs": [
+    "activity",
+    "emailId",
+    "linkURL",
+    "linkURLCondition"
+   ]
+  },
+  "/end-flow": {
+   "type": "action",
+   "encharge_type": "action",
+   "summary": "End Flow",
+   "description": "Removes person from this flow. Person can re-enter later.",
+   "x-encharge-operation": {
+    "type": "action",
+    "linkConditions": {
+     "linkFromDisabled": true
+    },
+    "consumesEndUsers": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "flowId": {
+      "type": "integer",
+      "value": "{{encharge.flowId}}",
+      "x-encharge-ui": {
+       "ui:widget": "hidden"
+      }
+     }
+    },
+    "x-encharge-ui": {
+     "hideSaveButton": true
+    }
+   },
+   "inputs": [
+    "flowId"
+   ]
+  },
+  "/end-flow-v2": {
+   "type": "action",
+   "encharge_type": "action",
+   "summary": "End Flow",
+   "description": "Removes person from selected flows (person can re-enter later).",
+   "x-encharge-operation": {
+    "type": "action",
+    "consumesEndUsers": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "required": [
+     "flowIds"
+    ],
+    "properties": {
+     "flowIds": {
+      "type": "string",
+      "title": "Flows to end",
+      "value": "{{encharge.flowId}}",
+      "x-encharge-ui": {
+       "ui:widget": "flowsPickerToEnd"
+      }
+     }
+    }
+   },
+   "inputs": [
+    "flowIds"
+   ]
+  },
+  "/entered-segment": {
+   "type": "trigger",
+   "encharge_type": "trigger",
+   "summary": "Entered Segment",
+   "description": "Triggers when a person enters a segment",
+   "x-encharge-operation": {
+    "type": "trigger",
+    "triggerType": "polling",
+    "needsContext": true,
+    "producesEndUsers": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "required": [
+     "segment",
+     "includePeople"
+    ],
+    "properties": {
+     "segment": {
+      "type": "integer",
+      "title": "Segment",
+      "x-encharge-ui": {
+       "ui:widget": "segmentPicker"
+      },
+      "x-encharge-recipe": {
+       "resourceType": "segment"
+      }
+     },
+     "includePeople": {
+      "type": "string",
+      "oneOf": [
+       {
+        "enum": [
+         "future"
+        ],
+        "title": "Who enter this segment in the future."
+       },
+       {
+        "enum": [
+         "currentAndFuture"
+        ],
+        "title": "Who are currently in this segment, and who enter this segment in the future."
+       }
+      ],
+      "title": "Include people:",
+      "default": "future",
+      "x-encharge-ui": {
+       "ui:widget": "radio"
+      }
+     }
+    }
+   },
+   "inputs": [
+    "includePeople",
+    "segment"
+   ]
+  },
+  "/event": {
+   "type": "trigger",
+   "encharge_type": "trigger",
+   "summary": "Event Trigger",
+   "description": "Triggers when an event is received via API or Javascript tracking.",
+   "x-encharge-operation": {
+    "type": "trigger",
+    "events": {
+     "type": "operation",
+     "operation": "/event/name"
+    },
+    "triggerType": "event",
+    "isUserInitiated": true,
+    "producesEndUsers": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "required": [
+     "name"
+    ],
+    "properties": {
+     "name": {
+      "type": "string",
+      "title": "Event name",
+      "description": "Trigger when event name is",
+      "x-encharge-ui": {
+       "ui:widget": "eventSchemaPicker"
+      }
+     },
+     "filterProperties": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "required": [
+        "propertyName"
+       ],
+       "properties": {
+        "condition": {
+         "enum": [
+          "is",
+          "is not",
+          "contains",
+          "does not contain",
+          "starts with",
+          "does not start with",
+          "ends with",
+          "does not end with",
+          "is more than",
+          "is less than",
+          "is empty",
+          "is not empty",
+          "is any",
+          "at least",
+          "after",
+          "before",
+          "on",
+          "after period",
+          "before period",
+          "on period"
+         ],
+         "type": "string",
+         "title": "and value:",
+         "default": "is"
+        },
+        "propertyName": {
+         "type": "string",
+         "title": "When property name is:"
+        }
+       },
+       "dependencies": {
+        "condition": {
+         "oneOf": [
+          {
+           "required": [
+            "propertyName",
+            "propertyValue"
+           ],
+           "properties": {
+            "condition": {
+             "enum": [
+              "is",
+              "is not",
+              "contains",
+              "does not contain",
+              "starts with",
+              "does not start with",
+              "ends with",
+              "does not end with",
+              "is more than",
+              "is less than",
+              "at least",
+              "after",
+              "before",
+              "on",
+              "after period",
+              "before period",
+              "on period"
+             ]
+            },
+            "propertyName": {
+             "type": "string",
+             "title": "When property name is:"
+            },
+            "propertyValue": {
+             "type": [
+              "string",
+              "number"
+             ]
+            }
+           }
+          },
+          {
+           "properties": {
+            "condition": {
+             "enum": [
+              "is empty",
+              "is not empty",
+              "is any"
+             ]
+            },
+            "propertyName": {
+             "type": "string",
+             "title": "When property name is:"
+            }
+           }
+          }
+         ]
+        }
+       }
+      },
+      "title": "",
+      "x-encharge-ui": {
+       "items": {
+        "ui:order": [
+         "propertyName",
+         "condition",
+         "propertyValue"
+        ],
+        "condition": {
+         "ui:field": "eventConditionPicker"
+        },
+        "propertyName": {
+         "ui:field": "eventPropertyPicker"
+        },
+        "propertyValue": {
+         "ui:field": "eventPropertyValuePicker"
+        }
+       },
+       "ui:options": {
+        "addable": true,
+        "removable": true
+       },
+       "addButtonComponent": "segmentAddPropertyFilterButton",
+       "removeButtonComponent": "segmentRemovePropertyFilterButton"
+      }
+     }
+    }
+   },
+   "inputs": [
+    "filterProperties",
+    "name"
+   ]
+  },
+  "/event/name": {
+   "type": "helper",
+   "encharge_type": "event",
+   "summary": "Retrive event name for this event trigger",
+   "description": null,
+   "x-encharge-operation": {
+    "type": "event"
+   },
+   "inputSchema": {
+    "type": "object",
+    "additionalProperties": false
+   },
+   "inputs": []
+  },
+  "/flow-goal": {
+   "type": "action",
+   "encharge_type": "action",
+   "summary": "Goal",
+   "description": "With a Goal step, you can track how many people who enter the flow complete the flow.",
+   "x-encharge-operation": {
+    "type": "action",
+    "needsContext": true,
+    "consumesEndUsers": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "required": [
+     "shouldEndFlow"
+    ],
+    "properties": {
+     "shouldEndFlow": {
+      "type": "boolean",
+      "title": "End the flow for a person when they reach this goal",
+      "value": false,
+      "x-encharge-ui": {
+       "ui:field": "toggle"
+      }
+     }
+    }
+   },
+   "inputs": [
+    "shouldEndFlow"
+   ]
+  },
+  "/has-tag": {
+   "type": "condition",
+   "encharge_type": "filter",
+   "summary": "Has Tag",
+   "description": "Check if person has a tag",
+   "x-encharge-operation": {
+    "type": "filter",
+    "linkConditions": {
+     "conditions": [
+      {
+       "label": "Yes",
+       "condition": "yes"
+      },
+      {
+       "label": "No",
+       "condition": "no"
+      }
+     ]
+    }
+   },
+   "inputSchema": {
+    "type": "object",
+    "required": [
+     "tag"
+    ],
+    "properties": {
+     "tag": {
+      "type": "string",
+      "title": "Tag",
+      "x-encharge-ui": {
+       "ui:widget": "tagPicker"
+      }
+     }
+    }
+   },
+   "inputs": [
+    "tag"
+   ]
+  },
+  "/lead-score": {
+   "type": "action",
+   "encharge_type": "action",
+   "summary": "Change Lead Score",
+   "description": "Use Lead Scoring to measure how likely people are to convert.",
+   "x-encharge-operation": {
+    "type": "action",
+    "consumesEndUsers": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "required": [
+     "type",
+     "count"
+    ],
+    "properties": {
+     "type": {
+      "enum": [
+       "Increase",
+       "Decrease"
+      ],
+      "type": "string",
+      "title": "Lead Score",
+      "default": "Increase",
+      "x-encharge-ui": {
+       "ui:label": false
+      }
+     },
+     "count": {
+      "type": "number",
+      "title": "by",
+      "default": 1
+     }
+    }
+   },
+   "inputs": [
+    "count",
+    "type"
+   ]
+  },
+  "/left-segment": {
+   "type": "trigger",
+   "encharge_type": "trigger",
+   "summary": "Left Segment",
+   "description": "Triggers when a person leaves a segment",
+   "x-encharge-operation": {
+    "type": "trigger",
+    "triggerType": "polling",
+    "needsContext": true,
+    "producesEndUsers": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "required": [
+     "segment",
+     "includePeople"
+    ],
+    "properties": {
+     "segment": {
+      "type": "integer",
+      "title": "Segment",
+      "x-encharge-ui": {
+       "ui:widget": "segmentPicker"
+      },
+      "x-encharge-recipe": {
+       "resourceType": "segment"
+      }
+     }
+    }
+   },
+   "inputs": [
+    "segment"
+   ]
+  },
+  "/native-form-submitted": {
+   "type": "trigger",
+   "encharge_type": "trigger",
+   "summary": "Encharge Form Submitted",
+   "description": "Triggers when a <a href=\"/forms\"> form</a> is submitted.",
+   "x-encharge-operation": {
+    "type": "trigger",
+    "triggerType": "event",
+    "isUserInitiated": true,
+    "producesEndUsers": true,
+    "neededEndUserFields": [
+     "formId"
+    ]
+   },
+   "inputSchema": {
+    "type": "object",
+    "required": [
+     "formId"
+    ],
+    "properties": {
+     "formId": {
+      "type": "string",
+      "title": "Form",
+      "description": "This step only supports <a href=\"/forms\">Encharge Forms</a>.",
+      "x-encharge-ui": {
+       "ui:widget": "nativeFormPicker"
+      }
+     }
+    }
+   },
+   "inputs": [
+    "formId"
+   ]
+  },
+  "/page-visited-filter": {
+   "type": "condition",
+   "encharge_type": "filter",
+   "summary": "Page Visited",
+   "description": "Check if a person has visited a page on your site.",
+   "x-encharge-operation": {
+    "type": "filter",
+    "linkConditions": {
+     "conditions": [
+      {
+       "label": "Has visited",
+       "condition": "yes"
+      },
+      {
+       "label": "Has not visited",
+       "condition": "no"
+      }
+     ]
+    }
+   },
+   "inputSchema": {
+    "type": "object",
+    "required": [
+     "page",
+     "utm"
+    ],
+    "properties": {
+     "utm": {
+      "type": "object",
+      "properties": {
+       "term": {
+        "title": "UTM Term",
+        "x-encharge-ui": {
+         "ui:placeholder": "e.g. marketing automation"
+        }
+       },
+       "medium": {
+        "title": "UTM Medium",
+        "x-encharge-ui": {
+         "ui:placeholder": "e.g. email"
+        }
+       },
+       "source": {
+        "title": "UTM Source",
+        "x-encharge-ui": {
+         "ui:placeholder": "e.g. newsletter"
+        }
+       },
+       "content": {
+        "title": "UTM Content",
+        "x-encharge-ui": {
+         "ui:placeholder": "e.g. top banner"
+        }
+       },
+       "enabled": {
+        "type": "boolean",
+        "title": "and check for UTM parameters",
+        "default": false
+       },
+       "campaign": {
+        "title": "UTM Campaign",
+        "x-encharge-ui": {
+         "ui:placeholder": "e.g. product launch"
+        }
+       }
+      },
+      "dependencies": {
+       "enabled": {
+        "oneOf": [
+         {
+          "properties": {
+           "enabled": {
+            "enum": [
+             false
+            ]
+           }
+          }
+         },
+         {
+          "properties": {
+           "term": {
+            "type": "string"
+           },
+           "medium": {
+            "type": "string"
+           },
+           "source": {
+            "type": "string"
+           },
+           "content": {
+            "type": "string"
+           },
+           "enabled": {
+            "enum": [
+             true
+            ]
+           },
+           "campaign": {
+            "type": "string"
+           }
+          }
+         }
+        ]
+       }
+      },
+      "x-encharge-ui": {
+       "ui:order": [
+        "enabled",
+        "campaign",
+        "medium",
+        "source",
+        "content",
+        "term"
+       ],
+       "ui:title": "SKIP-TITLE"
+      }
+     },
+     "page": {
+      "type": "object",
+      "required": [
+       "condition",
+       "text"
+      ],
+      "properties": {
+       "text": {
+        "type": "string",
+        "x-encharge-ui": {
+         "ui:label": false,
+         "ui:placeholder": "your page URL"
+        }
+       },
+       "condition": {
+        "enum": [
+         "contains",
+         "does not contain",
+         "starts with",
+         "is exactly"
+        ],
+        "type": "string",
+        "title": "Has visited page that",
+        "default": "contains"
+       }
+      },
+      "x-encharge-ui": {
+       "ui:order": [
+        "condition",
+        "text"
+       ],
+       "ui:title": "SKIP-TITLE"
+      }
+     }
+    },
+    "x-encharge-ui": {
+     "ui:order": [
+      "page",
+      "utm"
+     ],
+     "ui:options": {
+      "label": false
+     }
+    }
+   },
+   "inputs": [
+    "page",
+    "utm"
+   ]
+  },
+  "/page-visited-trigger": {
+   "type": "trigger",
+   "encharge_type": "trigger",
+   "summary": "Page Visited",
+   "description": "Triggers when a person visits a page on your site.",
+   "x-encharge-operation": {
+    "type": "trigger",
+    "triggerType": "event",
+    "producesEndUsers": true,
+    "neededEndUserFields": [
+     "id"
+    ]
+   },
+   "inputSchema": {
+    "type": "object",
+    "required": [
+     "page",
+     "utm"
+    ],
+    "properties": {
+     "utm": {
+      "type": "object",
+      "properties": {
+       "term": {
+        "title": "UTM Term",
+        "x-encharge-ui": {
+         "ui:placeholder": "e.g. marketing automation"
+        }
+       },
+       "medium": {
+        "title": "UTM Medium",
+        "x-encharge-ui": {
+         "ui:placeholder": "e.g. email"
+        }
+       },
+       "source": {
+        "title": "UTM Source",
+        "x-encharge-ui": {
+         "ui:placeholder": "e.g. newsletter"
+        }
+       },
+       "content": {
+        "title": "UTM Content",
+        "x-encharge-ui": {
+         "ui:placeholder": "e.g. top banner"
+        }
+       },
+       "enabled": {
+        "type": "boolean",
+        "title": "and check for UTM parameters",
+        "default": false
+       },
+       "campaign": {
+        "title": "UTM Campaign",
+        "x-encharge-ui": {
+         "ui:placeholder": "e.g. product launch"
+        }
+       }
+      },
+      "dependencies": {
+       "enabled": {
+        "oneOf": [
+         {
+          "properties": {
+           "enabled": {
+            "enum": [
+             false
+            ]
+           }
+          }
+         },
+         {
+          "properties": {
+           "term": {
+            "type": "string"
+           },
+           "medium": {
+            "type": "string"
+           },
+           "source": {
+            "type": "string"
+           },
+           "content": {
+            "type": "string"
+           },
+           "enabled": {
+            "enum": [
+             true
+            ]
+           },
+           "campaign": {
+            "type": "string"
+           }
+          }
+         }
+        ]
+       }
+      },
+      "x-encharge-ui": {
+       "ui:order": [
+        "enabled",
+        "campaign",
+        "medium",
+        "source",
+        "content",
+        "term"
+       ],
+       "ui:title": "SKIP-TITLE"
+      }
+     },
+     "page": {
+      "type": "object",
+      "required": [
+       "condition",
+       "text"
+      ],
+      "properties": {
+       "text": {
+        "type": "string",
+        "x-encharge-ui": {
+         "ui:label": false,
+         "ui:placeholder": "your page URL"
+        }
+       },
+       "condition": {
+        "enum": [
+         "contains",
+         "does not contain",
+         "starts with",
+         "is exactly"
+        ],
+        "type": "string",
+        "title": "Trigger when page",
+        "default": "contains"
+       }
+      },
+      "x-encharge-ui": {
+       "ui:order": [
+        "condition",
+        "text"
+       ],
+       "ui:title": "SKIP-TITLE"
+      }
+     }
+    },
+    "x-encharge-ui": {
+     "ui:order": [
+      "page",
+      "utm"
+     ],
+     "ui:options": {
+      "label": false
+     }
+    }
+   },
+   "inputs": [
+    "page",
+    "utm"
+   ]
+  },
+  "/recurring-time-trigger": {
+   "type": "trigger",
+   "encharge_type": "trigger",
+   "summary": "Recurring Time Trigger",
+   "description": "Triggers multiple times according to a recurring schedule",
+   "x-encharge-operation": {
+    "type": "trigger",
+    "triggerType": "polling",
+    "needsContext": true,
+    "producesEndUsers": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "required": [
+     "segment",
+     "schedule"
+    ],
+    "properties": {
+     "segment": {
+      "type": "integer",
+      "title": "Segment",
+      "description": "Add people from this segment to the flow",
+      "x-encharge-ui": {
+       "ui:widget": "segmentPicker"
+      },
+      "x-encharge-recipe": {
+       "resourceType": "segment"
+      }
+     },
+     "schedule": {
+      "type": "object",
+      "title": "Schedule",
+      "required": [
+       "type",
+       "time"
+      ],
+      "properties": {
+       "day": {
+        "type": "object",
+        "title": "Day of week",
+        "properties": {
+         "friday": {
+          "type": "boolean",
+          "title": "Friday"
+         },
+         "monday": {
+          "type": "boolean",
+          "title": "Monday",
+          "value": true
+         },
+         "sunday": {
+          "type": "boolean",
+          "title": "Sunday"
+         },
+         "tuesday": {
+          "type": "boolean",
+          "title": "Tuesday"
+         },
+         "saturday": {
+          "type": "boolean",
+          "title": "Saturday"
+         },
+         "thursday": {
+          "type": "boolean",
+          "title": "Thursday"
+         },
+         "wednesday": {
+          "type": "boolean",
+          "title": "Wednesday"
+         }
+        },
+        "x-encharge-ui": {
+         "ui:order": [
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday",
+          "saturday",
+          "sunday"
+         ]
+        }
+       },
+       "date": {
+        "type": "array",
+        "items": {
+         "enum": [
+          "First Monday of the month",
+          "First Tuesday of the month",
+          "First Wednesday of the month",
+          "First Thursday of the month",
+          "First Friday of the month",
+          "First Saturday of the month",
+          "First Sunday of the month",
+          "Last day of the month",
+          "Second to last day of the month",
+          "Third to last day of the month",
+          "Fourth to last day of the month",
+          "Fifth to last day of the month",
+          "Sixth to last day of the month",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "30",
+          "31"
+         ],
+         "type": "string",
+         "value": "First Monday of the month"
+        }
+       },
+       "time": {
+        "type": "string",
+        "value": "09:00"
+       },
+       "type": {
+        "enum": [
+         "daily",
+         "weekly",
+         "monthly",
+         "yearly",
+         "custom"
+        ],
+        "type": "string",
+        "value": "daily",
+        "x-encharge-ui": {
+         "ui:widget": "select"
+        }
+       },
+       "month": {
+        "type": "object",
+        "title": "Month",
+        "properties": {
+         "may": {
+          "type": "boolean",
+          "title": "May"
+         },
+         "july": {
+          "type": "boolean",
+          "title": "July"
+         },
+         "june": {
+          "type": "boolean",
+          "title": "June"
+         },
+         "april": {
+          "type": "boolean",
+          "title": "April"
+         },
+         "march": {
+          "type": "boolean",
+          "title": "March"
+         },
+         "august": {
+          "type": "boolean",
+          "title": "August"
+         },
+         "january": {
+          "type": "boolean",
+          "title": "January",
+          "value": true
+         },
+         "october": {
+          "type": "boolean",
+          "title": "October"
+         },
+         "december": {
+          "type": "boolean",
+          "title": "December"
+         },
+         "february": {
+          "type": "boolean",
+          "title": "February"
+         },
+         "november": {
+          "type": "boolean",
+          "title": "November"
+         },
+         "september": {
+          "type": "boolean",
+          "title": "September"
+         }
+        },
+        "x-encharge-ui": {
+         "ui:order": [
+          "january",
+          "february",
+          "march",
+          "april",
+          "may",
+          "june",
+          "july",
+          "august",
+          "september",
+          "october",
+          "november",
+          "december"
+         ]
+        }
+       },
+       "custom": {
+        "type": "object",
+        "properties": {
+         "unit": {
+          "enum": [
+           "days",
+           "weeks",
+           "months"
+          ],
+          "type": "string",
+          "value": "weeks"
+         },
+         "quantity": {
+          "type": "integer",
+          "value": 2
+         }
+        }
+       },
+       "startDate": {
+        "type": "string",
+        "title": "Start date",
+        "format": "date",
+        "description": "Optional date to start counting from. If not provided, counting starts from today."
+       }
+      },
+      "x-encharge-ui": {
+       "ui:field": "recurringTimeField",
+       "ui:order": [
+        "type",
+        "time",
+        "startDate",
+        "day",
+        "date",
+        "month",
+        "custom"
+       ]
+      }
+     }
+    },
+    "x-encharge-ui": {
+     "ui:order": [
+      "segment",
+      "schedule"
+     ]
+    }
+   },
+   "inputs": [
+    "schedule",
+    "segment"
+   ]
+  },
+  "/remove-tag": {
+   "type": "action",
+   "encharge_type": "action",
+   "summary": "Remove tag",
+   "description": "Remove one or multiple tags from people who reach this step",
+   "x-encharge-operation": {
+    "type": "action",
+    "consumesEndUsers": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "required": [
+     "tags"
+    ],
+    "properties": {
+     "tags": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      },
+      "title": "Tags",
+      "x-encharge-ui": {
+       "ui:field": "tagsPicker"
+      }
+     }
+    }
+   },
+   "inputs": [
+    "tags"
+   ]
+  },
+  "/removed-tag": {
+   "type": "trigger",
+   "encharge_type": "trigger",
+   "summary": "Removed Tag",
+   "description": "Triggers when a tag is removed from a person",
+   "x-encharge-operation": {
+    "type": "trigger",
+    "triggerType": "event",
+    "producesEndUsers": true,
+    "neededEndUserFields": [
+     "id"
+    ]
+   },
+   "inputSchema": {
+    "type": "object",
+    "required": [
+     "tag"
+    ],
+    "properties": {
+     "tag": {
+      "type": "string",
+      "title": "Tag",
+      "x-encharge-ui": {
+       "ui:widget": "tagPicker"
+      }
+     }
+    }
+   },
+   "inputs": [
+    "tag"
+   ]
+  },
+  "/segment-filter": {
+   "type": "condition",
+   "encharge_type": "filter",
+   "summary": "Is in Segment",
+   "description": "Check if a person in a segment",
+   "x-encharge-operation": {
+    "type": "filter",
+    "linkConditions": {
+     "conditions": [
+      {
+       "label": "Yes",
+       "condition": "yes"
+      },
+      {
+       "label": "No",
+       "condition": "no"
+      }
+     ]
+    }
+   },
+   "inputSchema": {
+    "type": "object",
+    "required": [
+     "segment"
+    ],
+    "properties": {
+     "segment": {
+      "type": "integer",
+      "title": "Segment",
+      "x-encharge-ui": {
+       "ui:widget": "segmentPicker"
+      },
+      "x-encharge-recipe": {
+       "resourceType": "segment"
+      }
+     }
+    }
+   },
+   "inputs": [
+    "segment"
+   ]
+  },
+  "/send": {
+   "type": "action",
+   "encharge_type": "action",
+   "summary": "Send Email",
+   "description": "Send an email",
+   "x-encharge-operation": {
+    "type": "action",
+    "linkConditions": {
+     "conditions": [
+      {
+       "label": "On delivered",
+       "condition": "email-delivered"
+      },
+      {
+       "label": "On open",
+       "condition": "email-open"
+      },
+      {
+       "label": "On bounced",
+       "condition": "email-bounce"
+      },
+      {
+       "label": "On click",
+       "condition": "email-click"
+      },
+      {
+       "label": "On reply",
+       "condition": "email-reply"
+      }
+     ],
+     "multipleConditions": true,
+     "registerEventListener": true
+    },
+    "consumesEndUsers": true,
+    "neededEndUserFields": [
+     "name",
+     "unsubscribed",
+     "validationResult",
+     "CommunicationCategories"
+    ]
+   },
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "email": {
+      "type": "object",
+      "required": [
+       "id"
+      ],
+      "properties": {
+       "id": {
+        "type": "number",
+        "x-encharge-recipe": {
+         "resourceType": "email"
+        }
+       },
+       "html": {
+        "type": "string"
+       },
+       "flowId": {
+        "type": "number"
+       },
+       "stepId": {
+        "type": "number"
+       },
+       "subject": {
+        "type": "string"
+       },
+       "fromName": {
+        "type": "string",
+        "x-encharge-recipe": {
+         "clearValue": true
+        }
+       },
+       "accountId": {
+        "type": "number"
+       },
+       "fromEmail": {
+        "type": "string",
+        "x-encharge-recipe": {
+         "clearValue": true
+        }
+       },
+       "replyName": {
+        "type": "string"
+       },
+       "replyEmail": {
+        "type": "string"
+       }
+      }
+     },
+     "broadcastId": {
+      "type": "number"
+     },
+     "trackReplies": {
+      "type": "boolean"
+     },
+     "abTestVariantId": {
+      "type": "string"
+     },
+     "sendABTestWinner": {
+      "type": "boolean"
+     },
+     "userCanReceiveMoreThanOnce": {
+      "type": "boolean"
+     }
+    }
+   },
+   "inputs": [
+    "abTestVariantId",
+    "broadcastId",
+    "email",
+    "sendABTestWinner",
+    "trackReplies",
+    "userCanReceiveMoreThanOnce"
+   ]
+  },
+  "/send-webhook": {
+   "type": "action",
+   "encharge_type": "action",
+   "summary": "Send webhook",
+   "description": "Send a request to a URL",
+   "x-encharge-operation": {
+    "type": "action",
+    "consumesEndUsers": true,
+    "producesEndUsers": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "required": [
+     "url",
+     "method"
+    ],
+    "properties": {
+     "url": {
+      "type": "string",
+      "title": "URL",
+      "description": "URL to send the request to.",
+      "x-encharge-ui": {}
+     },
+     "data": {
+      "title": "Webhook Data",
+      "properties": {},
+      "description": "These are key-value pairs that will be sent along with the request. You can use <a href=\"https://shopify.github.io/liquid/basics/introduction/\">Liquid tags</a> here, for example {{ person.firstName }} will be replaced with the first name of the people who enter this step.",
+      "x-encharge-ui": {
+       "classNames": "segment-integration-field-mapping",
+       "addButtonComponent": "segmentAddOutputMappingPropertyButton",
+       "additionalProperties": {
+        "ui:label": false,
+        "ui:placeholder": "Property Value",
+        "removeButtonComponent": "segmentRemoveOutputMappingPropertyButton"
+       },
+       "additionalPropertiesKeyName": "Property Name"
+      },
+      "additionalProperties": {
+       "type": "string"
+      }
+     },
+     "method": {
+      "enum": [
+       "POST",
+       "GET",
+       "PUT",
+       "PATCH",
+       "DELETE"
+      ],
+      "type": "string",
+      "title": "Method",
+      "default": "POST",
+      "description": "Method to use. If unsure, use POST."
+     },
+     "headers": {
+      "type": "object",
+      "title": "Headers",
+      "description": "The headers for the request (as key-value pairs).",
+      "x-encharge-ui": {
+       "classNames": "segment-integration-field-mapping",
+       "addButtonComponent": "segmentAddOutputMappingPropertyButton",
+       "additionalProperties": {
+        "ui:label": false,
+        "removeButtonComponent": "segmentRemoveOutputMappingPropertyButton",
+        "additionalPropertiesKeyName": "Header Value"
+       },
+       "additionalPropertiesKeyName": "Header-Name"
+      },
+      "additionalProperties": {
+       "type": "string"
+      }
+     },
+     "textData": {
+      "title": "Webhook JSON data",
+      "description": "The JSON data that will be sent along with the request. You can use <a href=\"https://shopify.github.io/liquid/basics/introduction/\">Liquid tags</a> here, for example {{ person.firstName }} will be replaced with the first name of the people who enter this step.",
+      "x-encharge-ui": {
+       "textarea": true,
+       "ui:widget": "textWithLiquidTags",
+       "ui:placeholder": "{\n  \"name\": \"{{person.firstName}}\"\n}\n"
+      }
+     },
+     "payloadType": {
+      "enum": [
+       "JSON",
+       "Form",
+       "Text as JSON"
+      ],
+      "type": "string",
+      "title": "Content Type",
+      "default": "JSON",
+      "description": "How to format the request data. Applies only when method is POST, PUT or PATCH. If unsure, use 'JSON'."
+     }
+    },
+    "dependencies": {
+     "payloadType": {
+      "oneOf": [
+       {
+        "properties": {
+         "textData": {
+          "type": "string"
+         },
+         "payloadType": {
+          "enum": [
+           "Text as JSON"
+          ]
+         }
+        }
+       },
+       {
+        "properties": {
+         "data": {
+          "type": "object"
+         },
+         "payloadType": {
+          "enum": [
+           "JSON",
+           "Form"
+          ]
+         }
+        }
+       }
+      ]
+     }
+    },
+    "x-encharge-ui": {
+     "ui:order": [
+      "url",
+      "method",
+      "payloadType",
+      "data",
+      "headers",
+      "*"
+     ]
+    }
+   },
+   "inputs": [
+    "data",
+    "headers",
+    "method",
+    "payloadType",
+    "textData",
+    "url"
+   ]
+  },
+  "/site-form-submitted": {
+   "type": "trigger",
+   "encharge_type": "trigger",
+   "summary": "Tracked Form Submitted",
+   "description": "Triggers when a <a href=\"/settings/site-tracking/forms\">tracked form</a> on your site is submitted.",
+   "x-encharge-operation": {
+    "type": "trigger",
+    "triggerType": "event",
+    "isUserInitiated": true,
+    "producesEndUsers": true,
+    "neededEndUserFields": [
+     "id"
+    ]
+   },
+   "inputSchema": {
+    "type": "object",
+    "required": [
+     "formHash"
+    ],
+    "properties": {
+     "formHash": {
+      "type": "string",
+      "title": "Form",
+      "description": "If your form doesn't appear here, you need to add it in <a href=\"/settings/site-tracking/forms\">Form Tracking</a>. <br/> If the form is tracked on all pages, this step will trigger for all submissions of the form.",
+      "x-encharge-ui": {
+       "ui:widget": "trackedFormPicker"
+      }
+     }
+    }
+   },
+   "inputs": [
+    "formHash"
+   ]
+  },
+  "/submitted-form": {
+   "type": "trigger",
+   "encharge_type": "trigger",
+   "summary": "External Form Submitted",
+   "description": "Triggers when an еxternal form is submitted",
+   "x-encharge-operation": {
+    "type": "trigger",
+    "triggerType": "hook",
+    "isUserInitiated": true,
+    "producesEndUsers": true,
+    "alwaysMapOutputFields": true,
+    "skipLiquidTagReplacement": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "name": {
+      "type": "string",
+      "title": "Name",
+      "description": "For your reference only"
+     },
+     "hookId": {
+      "type": "string",
+      "title": "Webhook URL",
+      "description": "Use this webhook URL to send form submissions",
+      "x-encharge-ui": {
+       "ui:widget": "webhookURL"
+      },
+      "x-encharge-recipe": {
+       "clearValue": true
+      }
+     },
+     "formService": {
+      "type": "string",
+      "title": "Form created with",
+      "x-encharge-ui": {
+       "ui:field": "formServicePicker"
+      }
+     }
+    },
+    "x-encharge-ui": {
+     "ui:order": [
+      "formService",
+      "hookId",
+      "name"
+     ]
+    }
+   },
+   "inputs": [
+    "formService",
+    "hookId",
+    "name"
+   ]
+  },
+  "/time": {
+   "type": "trigger",
+   "encharge_type": "trigger",
+   "summary": "Time Trigger",
+   "description": "Triggers once on time and date",
+   "x-encharge-operation": {
+    "type": "trigger",
+    "runOnce": true,
+    "triggerType": "polling",
+    "producesEndUsers": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "required": [
+     "datetime",
+     "segment"
+    ],
+    "properties": {
+     "segment": {
+      "type": "integer",
+      "title": "Segment",
+      "description": "Add people from this segment to the flow",
+      "x-encharge-ui": {
+       "ui:widget": "segmentPicker"
+      },
+      "x-encharge-recipe": {
+       "resourceType": "segment"
+      }
+     },
+     "datetime": {
+      "type": "string",
+      "title": "Trigger on",
+      "format": "date-time",
+      "description": "Date and time (in your current timezone) to trigger this step.",
+      "x-encharge-ui": {
+       "ui:widget": "datetime"
+      }
+     }
+    }
+   },
+   "inputs": [
+    "datetime",
+    "segment"
+   ]
+  },
+  "/trialEnds": {
+   "type": "trigger",
+   "encharge_type": "trigger",
+   "summary": "Trial Ends",
+   "description": "Triggers before or after the end of one of your users trial period.",
+   "x-encharge-operation": {
+    "type": "trigger",
+    "helpDocs": {
+     "markdown": "This step triggers based on the `Trial End` field.  \n\nThis can be set automatically if you have connected your payment system (Chargebee, Paddle, etc. ). Alternatively, you can set this field the various [Encharge APIs](https://docs.encharge.io/getting-started/connecting-your-app-to-encharge).\n\n"
+    },
+    "triggerType": "polling",
+    "needsContext": true,
+    "producesEndUsers": true,
+    "skipPollingDeduplication": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "days": {
+      "title": "Days",
+      "value": 1,
+      "default": 1
+     },
+     "condition": {
+      "type": "string",
+      "oneOf": [
+       {
+        "enum": [
+         "before"
+        ],
+        "title": "Before trial ends"
+       },
+       {
+        "enum": [
+         "on"
+        ],
+        "title": "When trial ends"
+       },
+       {
+        "enum": [
+         "after"
+        ],
+        "title": "After trial ends"
+       }
+      ],
+      "title": "Trigger when",
+      "value": "before",
+      "default": "before"
+     }
+    },
+    "dependencies": {
+     "condition": {
+      "oneOf": [
+       {
+        "required": [
+         "condition",
+         "days"
+        ],
+        "properties": {
+         "days": {
+          "type": "number",
+          "title": "Days before trial ends"
+         },
+         "condition": {
+          "enum": [
+           "before"
+          ]
+         }
+        }
+       },
+       {
+        "required": [
+         "condition",
+         "days"
+        ],
+        "properties": {
+         "days": {
+          "type": "number",
+          "title": "Days after trial ends",
+          "default": 1
+         },
+         "condition": {
+          "enum": [
+           "after"
+          ]
+         }
+        }
+       },
+       {
+        "required": [
+         "condition"
+        ],
+        "properties": {
+         "condition": {
+          "enum": [
+           "on"
+          ]
+         }
+        }
+       }
+      ]
+     }
+    },
+    "x-encharge-ui": {
+     "ui:order": [
+      "condition",
+      "*"
+     ]
+    }
+   },
+   "inputs": [
+    "condition",
+    "days"
+   ]
+  },
+  "/trialEndsChargebee": {
+   "type": "trigger",
+   "encharge_type": "trigger",
+   "summary": "Trial Ends",
+   "description": "Triggers before or after the end of one of your users trial period.",
+   "x-encharge-operation": {
+    "type": "trigger",
+    "helpDocs": {
+     "markdown": "This step triggers based on the `Trial End` field.  \n\nThis can be set automatically if you have connected your payment system (Chargebee, Paddle, etc. ). Alternatively, you can set this field the various [Encharge APIs](https://docs.encharge.io/getting-started/connecting-your-app-to-encharge).\n\n"
+    },
+    "triggerType": "polling",
+    "needsContext": true,
+    "producesEndUsers": true,
+    "skipPollingDeduplication": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "days": {
+      "title": "Days",
+      "value": 1,
+      "default": 1
+     },
+     "condition": {
+      "type": "string",
+      "oneOf": [
+       {
+        "enum": [
+         "before"
+        ],
+        "title": "Before trial ends"
+       },
+       {
+        "enum": [
+         "on"
+        ],
+        "title": "When trial ends"
+       },
+       {
+        "enum": [
+         "after"
+        ],
+        "title": "After trial ends"
+       }
+      ],
+      "title": "Trigger when",
+      "value": "before",
+      "default": "before"
+     }
+    },
+    "dependencies": {
+     "condition": {
+      "oneOf": [
+       {
+        "required": [
+         "condition",
+         "days"
+        ],
+        "properties": {
+         "days": {
+          "type": "number",
+          "title": "Days before trial ends"
+         },
+         "condition": {
+          "enum": [
+           "before"
+          ]
+         }
+        }
+       },
+       {
+        "required": [
+         "condition",
+         "days"
+        ],
+        "properties": {
+         "days": {
+          "type": "number",
+          "title": "Days after trial ends",
+          "default": 1
+         },
+         "condition": {
+          "enum": [
+           "after"
+          ]
+         }
+        }
+       },
+       {
+        "required": [
+         "condition"
+        ],
+        "properties": {
+         "condition": {
+          "enum": [
+           "on"
+          ]
+         }
+        }
+       }
+      ]
+     }
+    },
+    "x-encharge-ui": {
+     "ui:order": [
+      "condition",
+      "*"
+     ]
+    }
+   },
+   "inputs": [
+    "condition",
+    "days"
+   ]
+  },
+  "/trialEndsChargify": {
+   "type": "trigger",
+   "encharge_type": "trigger",
+   "summary": "Trial Ends",
+   "description": "Triggers before or after the end of one of your users trial period.",
+   "x-encharge-operation": {
+    "type": "trigger",
+    "helpDocs": {
+     "markdown": "This step triggers based on the `Trial End` field.  \n\nThis can be set automatically if you have connected your payment system (Chargebee, Paddle, etc. ). Alternatively, you can set this field the various [Encharge APIs](https://docs.encharge.io/getting-started/connecting-your-app-to-encharge).\n\n"
+    },
+    "triggerType": "polling",
+    "needsContext": true,
+    "producesEndUsers": true,
+    "skipPollingDeduplication": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "days": {
+      "title": "Days",
+      "value": 1,
+      "default": 1
+     },
+     "condition": {
+      "type": "string",
+      "oneOf": [
+       {
+        "enum": [
+         "before"
+        ],
+        "title": "Before trial ends"
+       },
+       {
+        "enum": [
+         "on"
+        ],
+        "title": "When trial ends"
+       },
+       {
+        "enum": [
+         "after"
+        ],
+        "title": "After trial ends"
+       }
+      ],
+      "title": "Trigger when",
+      "value": "before",
+      "default": "before"
+     }
+    },
+    "dependencies": {
+     "condition": {
+      "oneOf": [
+       {
+        "required": [
+         "condition",
+         "days"
+        ],
+        "properties": {
+         "days": {
+          "type": "number",
+          "title": "Days before trial ends"
+         },
+         "condition": {
+          "enum": [
+           "before"
+          ]
+         }
+        }
+       },
+       {
+        "required": [
+         "condition",
+         "days"
+        ],
+        "properties": {
+         "days": {
+          "type": "number",
+          "title": "Days after trial ends",
+          "default": 1
+         },
+         "condition": {
+          "enum": [
+           "after"
+          ]
+         }
+        }
+       },
+       {
+        "required": [
+         "condition"
+        ],
+        "properties": {
+         "condition": {
+          "enum": [
+           "on"
+          ]
+         }
+        }
+       }
+      ]
+     }
+    },
+    "x-encharge-ui": {
+     "ui:order": [
+      "condition",
+      "*"
+     ]
+    }
+   },
+   "inputs": [
+    "condition",
+    "days"
+   ]
+  },
+  "/trialEndsPaddle": {
+   "type": "trigger",
+   "encharge_type": "trigger",
+   "summary": "Trial Ends",
+   "description": "Triggers before or after the end of one of your users trial period.",
+   "x-encharge-operation": {
+    "type": "trigger",
+    "helpDocs": {
+     "markdown": "This step triggers based on the `Trial End` field.  \n\nThis can be set automatically if you have connected your payment system (Chargebee, Paddle, etc. ). Alternatively, you can set this field the various [Encharge APIs](https://docs.encharge.io/getting-started/connecting-your-app-to-encharge).\n\n"
+    },
+    "triggerType": "polling",
+    "needsContext": true,
+    "producesEndUsers": true,
+    "skipPollingDeduplication": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "days": {
+      "title": "Days",
+      "value": 1,
+      "default": 1
+     },
+     "condition": {
+      "type": "string",
+      "oneOf": [
+       {
+        "enum": [
+         "before"
+        ],
+        "title": "Before trial ends"
+       },
+       {
+        "enum": [
+         "on"
+        ],
+        "title": "When trial ends"
+       },
+       {
+        "enum": [
+         "after"
+        ],
+        "title": "After trial ends"
+       }
+      ],
+      "title": "Trigger when",
+      "value": "before",
+      "default": "before"
+     }
+    },
+    "dependencies": {
+     "condition": {
+      "oneOf": [
+       {
+        "required": [
+         "condition",
+         "days"
+        ],
+        "properties": {
+         "days": {
+          "type": "number",
+          "title": "Days before trial ends"
+         },
+         "condition": {
+          "enum": [
+           "before"
+          ]
+         }
+        }
+       },
+       {
+        "required": [
+         "condition",
+         "days"
+        ],
+        "properties": {
+         "days": {
+          "type": "number",
+          "title": "Days after trial ends",
+          "default": 1
+         },
+         "condition": {
+          "enum": [
+           "after"
+          ]
+         }
+        }
+       },
+       {
+        "required": [
+         "condition"
+        ],
+        "properties": {
+         "condition": {
+          "enum": [
+           "on"
+          ]
+         }
+        }
+       }
+      ]
+     }
+    },
+    "x-encharge-ui": {
+     "ui:order": [
+      "condition",
+      "*"
+     ]
+    }
+   },
+   "inputs": [
+    "condition",
+    "days"
+   ]
+  },
+  "/trialEndsRecurly": {
+   "type": "trigger",
+   "encharge_type": "trigger",
+   "summary": "Trial Ends",
+   "description": "Triggers before or after the end of one of your users trial period.",
+   "x-encharge-operation": {
+    "type": "trigger",
+    "helpDocs": {
+     "markdown": "This step triggers based on the `Trial End` field.  \n\nThis can be set automatically if you have connected your payment system (Chargebee, Paddle, etc. ). Alternatively, you can set this field the various [Encharge APIs](https://docs.encharge.io/getting-started/connecting-your-app-to-encharge).\n\n"
+    },
+    "triggerType": "polling",
+    "needsContext": true,
+    "producesEndUsers": true,
+    "skipPollingDeduplication": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "days": {
+      "title": "Days",
+      "value": 1,
+      "default": 1
+     },
+     "condition": {
+      "type": "string",
+      "oneOf": [
+       {
+        "enum": [
+         "before"
+        ],
+        "title": "Before trial ends"
+       },
+       {
+        "enum": [
+         "on"
+        ],
+        "title": "When trial ends"
+       },
+       {
+        "enum": [
+         "after"
+        ],
+        "title": "After trial ends"
+       }
+      ],
+      "title": "Trigger when",
+      "value": "before",
+      "default": "before"
+     }
+    },
+    "dependencies": {
+     "condition": {
+      "oneOf": [
+       {
+        "required": [
+         "condition",
+         "days"
+        ],
+        "properties": {
+         "days": {
+          "type": "number",
+          "title": "Days before trial ends"
+         },
+         "condition": {
+          "enum": [
+           "before"
+          ]
+         }
+        }
+       },
+       {
+        "required": [
+         "condition",
+         "days"
+        ],
+        "properties": {
+         "days": {
+          "type": "number",
+          "title": "Days after trial ends",
+          "default": 1
+         },
+         "condition": {
+          "enum": [
+           "after"
+          ]
+         }
+        }
+       },
+       {
+        "required": [
+         "condition"
+        ],
+        "properties": {
+         "condition": {
+          "enum": [
+           "on"
+          ]
+         }
+        }
+       }
+      ]
+     }
+    },
+    "x-encharge-ui": {
+     "ui:order": [
+      "condition",
+      "*"
+     ]
+    }
+   },
+   "inputs": [
+    "condition",
+    "days"
+   ]
+  },
+  "/trialEndsStripe": {
+   "type": "trigger",
+   "encharge_type": "trigger",
+   "summary": "Trial Ends",
+   "description": "Triggers before or after the end of one of your users trial period.",
+   "x-encharge-operation": {
+    "type": "trigger",
+    "helpDocs": {
+     "markdown": "This step triggers based on the `Trial End` field.  \n\nThis can be set automatically if you have connected your payment system (Chargebee, Paddle, etc. ). Alternatively, you can set this field the various [Encharge APIs](https://docs.encharge.io/getting-started/connecting-your-app-to-encharge).\n\n"
+    },
+    "triggerType": "polling",
+    "needsContext": true,
+    "producesEndUsers": true,
+    "skipPollingDeduplication": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "days": {
+      "title": "Days",
+      "value": 1,
+      "default": 1
+     },
+     "condition": {
+      "type": "string",
+      "oneOf": [
+       {
+        "enum": [
+         "before"
+        ],
+        "title": "Before trial ends"
+       },
+       {
+        "enum": [
+         "on"
+        ],
+        "title": "When trial ends"
+       },
+       {
+        "enum": [
+         "after"
+        ],
+        "title": "After trial ends"
+       }
+      ],
+      "title": "Trigger when",
+      "value": "before",
+      "default": "before"
+     }
+    },
+    "dependencies": {
+     "condition": {
+      "oneOf": [
+       {
+        "required": [
+         "condition",
+         "days"
+        ],
+        "properties": {
+         "days": {
+          "type": "number",
+          "title": "Days before trial ends"
+         },
+         "condition": {
+          "enum": [
+           "before"
+          ]
+         }
+        }
+       },
+       {
+        "required": [
+         "condition",
+         "days"
+        ],
+        "properties": {
+         "days": {
+          "type": "number",
+          "title": "Days after trial ends",
+          "default": 1
+         },
+         "condition": {
+          "enum": [
+           "after"
+          ]
+         }
+        }
+       },
+       {
+        "required": [
+         "condition"
+        ],
+        "properties": {
+         "condition": {
+          "enum": [
+           "on"
+          ]
+         }
+        }
+       }
+      ]
+     }
+    },
+    "x-encharge-ui": {
+     "ui:order": [
+      "condition",
+      "*"
+     ]
+    }
+   },
+   "inputs": [
+    "condition",
+    "days"
+   ]
+  },
+  "/webhook-trigger": {
+   "type": "trigger",
+   "encharge_type": "trigger",
+   "summary": "Webhook Trigger",
+   "description": "Triggers when a webhook is received",
+   "x-encharge-operation": {
+    "type": "trigger",
+    "triggerType": "hook",
+    "producesEndUsers": true,
+    "alwaysMapOutputFields": true,
+    "skipLiquidTagReplacement": true
+   },
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "name": {
+      "type": "string",
+      "title": "Name",
+      "description": "For your reference only"
+     },
+     "hookId": {
+      "type": "string",
+      "title": "Webhook URL",
+      "description": "Send data to this webhook URL to trigger this step.",
+      "x-encharge-ui": {
+       "ui:widget": "webhookURL"
+      },
+      "x-encharge-recipe": {
+       "clearValue": true
+      }
+     }
+    },
+    "x-encharge-ui": {
+     "ui:order": [
+      "hookId",
+      "name"
+     ]
+    }
+   },
+   "inputs": [
+    "hookId",
+    "name"
+   ]
+  }
+ },
+ "byType": {
+  "trigger": [
+   "/added-tag",
+   "/annualTrigger",
+   "/change-field-trigger",
+   "/dateFieldTrigger",
+   "/email-trigger",
+   "/email-trigger-v2",
+   "/entered-segment",
+   "/event",
+   "/left-segment",
+   "/native-form-submitted",
+   "/page-visited-trigger",
+   "/recurring-time-trigger",
+   "/removed-tag",
+   "/site-form-submitted",
+   "/submitted-form",
+   "/time",
+   "/trialEnds",
+   "/trialEndsChargebee",
+   "/trialEndsChargify",
+   "/trialEndsPaddle",
+   "/trialEndsRecurly",
+   "/trialEndsStripe",
+   "/webhook-trigger"
+  ],
+  "condition": [
+   "/ab-test",
+   "/check-field",
+   "/email-activity",
+   "/has-tag",
+   "/page-visited-filter",
+   "/segment-filter"
+  ],
+  "action": [
+   "/add-tag",
+   "/archive",
+   "/change-field",
+   "/change-numeric-field",
+   "/delay",
+   "/delay-v2",
+   "/email-notification",
+   "/end-flow",
+   "/end-flow-v2",
+   "/flow-goal",
+   "/lead-score",
+   "/remove-tag",
+   "/send",
+   "/send-webhook"
+  ],
+  "helper": [
+   "/event/name"
+  ]
+ },
+ "createdAs": {
+  "captured": {
+   "/added-tag": {
+    "configStep": true
+   },
+   "/delay-v2": {
+    "configStep": false
+   },
+   "/send": {
+    "configStep": true
+   },
+   "/add-tag": {
+    "configStep": true
+   },
+   "/end-flow-v2": {},
+   "/check-field": {
+    "configStep": true,
+    "mapOutputFields": false
+   }
+  },
+  "default": {
+   "configStep": true
+  },
+  "status": "PROVEN for the captured types; other types use the default (UNVERIFIED). The configure call that follows replaces it. In the account, steps still flagged configStep true exist only in flow 309188, which has never been switched on"
+ },
+ "configuredAs": {
+  "captured": {
+   "/added-tag": {
+    "configStep": false,
+    "mapInputFields": false
+   },
+   "/delay-v2": {
+    "configStep": false
+   },
+   "/send": {
+    "configStep": false,
+    "mapInputFields": false
+   },
+   "/add-tag": {
+    "configStep": false,
+    "mapInputFields": false
+   },
+   "/end-flow-v2": {
+    "mapInputFields": false,
+    "configStep": false
+   },
+   "/check-field": {
+    "configStep": false,
+    "mapOutputFields": false,
+    "mapInputFields": false
+   }
+  },
+  "default": {
+   "configStep": false,
+   "mapInputFields": false
+  },
+  "stored": {
+   "/change-field": {
+    "configStep": false,
+    "mapInputFields": false
+   },
+   "/entered-segment": {
+    "configStep": false,
+    "mapInputFields": false
+   },
+   "/event": {
+    "configStep": false,
+    "mapInputFields": false
+   },
+   "/remove-tag": {
+    "configStep": false,
+    "mapInputFields": false
+   }
+  },
+  "status": "PROVEN for the captured types; STORED for /change-field, /entered-segment, /event and /remove-tag (every configured step of those types in the account's six flows, read by the Flow Reader 2026-09-23 14:06 Paris); other types use the default (UNVERIFIED)",
+  "waitCensus": "2026-09-25, Flow Reader 17:49 Paris: 15 Wait steps in the account. 12 store mustConfig {configStep:false} with only time.hour.type among the time settings (capture 1's shape, the builder's); 3 store {configStep:false, mapInputFields:false} with time.enabled false, hour 09:00-17:00 and useAccountTimezone false, as Joe's hand-made A13 Wait did (why the app writes one shape or the other is not known; UNVERIFIED: opening the Wait's time panel). Both shapes are in the live, working flow 310308. The builder keeps the first."
+ },
+ "values": {
+  "/added-tag": {
+   "tag": "<tag name>"
+  },
+  "/entered-segment": {
+   "segment": "<segment id>",
+   "includePeople": "future | currentAndFuture"
+  },
+  "/event": {
+   "name": "<event name>",
+   "filterProperties": [
+    {
+     "condition": "is",
+     "propertyName": "…",
+     "propertyValue": "…"
+    }
+   ]
+  },
+  "/delay-v2": {
+   "period.enabled": true,
+   "period.quantity": "<n>",
+   "period.unit": "minutes | hours | days"
+  },
+  "/send": {
+   "email.id": "<email id>",
+   "email.html": "",
+   "email.flowId": "{{encharge.flowId}}",
+   "email.stepId": "{{encharge.stepId}}",
+   "email.subject": "",
+   "email.fromName": "",
+   "email.accountId": "{{encharge.accountId}}",
+   "email.fromEmail": "",
+   "userCanReceiveMoreThanOnce": "true when the flow re-enters; otherwise not set"
+  },
+  "/add-tag": {
+   "tags": [
+    "<tag name>"
+   ]
+  },
+  "/remove-tag": {
+   "tags": [
+    "<tag name>"
+   ]
+  },
+  "/check-field": {
+   "conditions": "<JSON string: {\"objectName\":\"person\",\"conditions\":<group>}>"
+  },
+  "/end-flow-v2": {
+   "flowIds": "{{encharge.flowId}} for this flow, or another flow's id as a string"
+  },
+  "/change-field": {
+   "fieldName": "<field>",
+   "fieldValue": "<value; Liquid allowed>"
+  },
+  "status": "PROVEN: /added-tag, /delay-v2, /send, /add-tag, /check-field, /end-flow-v2 (captures); /entered-segment, /event, /remove-tag, /change-field (stored in live flows)"
+ },
+ "defaultsOnCreate": {
+  "/delay-v2": {
+   "period.enabled": true,
+   "period.quantity": 1,
+   "period.unit": "days",
+   "time.day.monday": true,
+   "time.day.tuesday": true,
+   "time.day.wednesday": true,
+   "time.day.thursday": true,
+   "time.day.friday": true,
+   "time.hour.type": "exactly"
+  },
+  "/end-flow-v2": {
+   "flowIds": "{{encharge.flowId}}"
+  },
+  "note": "Encharge fills these when the step is created; a value the spec sets replaces the default. The weekday values only apply when time.enabled is true."
+ },
+ "links": {
+  "plain": null,
+  "conditionYes": {
+   "conditions": [
+    {
+     "label": "Yes",
+     "condition": "yes"
+    }
+   ]
+  },
+  "conditionNo": {
+   "conditions": [
+    {
+     "label": "No",
+     "condition": "no"
+    }
+   ]
+  },
+  "fromSendOnDelivered": {
+   "conditions": [
+    {
+     "label": "On delivered",
+     "condition": "email-delivered"
+    }
+   ],
+   "registerEventListener": true
+  },
+  "fromSendOnBounced": {
+   "conditions": [
+    {
+     "label": "On bounced",
+     "condition": "email-bounce"
+    }
+   ],
+   "registerEventListener": true
+  },
+  "note": "A link out of a Send email step always carries a Proceed-on condition; the app asks for one. Encharge adds eventListenerIds to such a link when the flow is switched on, not when the link is saved, and keeps them after it is switched off; a link made while the flow is off has none (PROVEN 2026-09-26: Encharge flow ZZ R1 Bounce, 405472, built by the builder, had none until Joe switched it on, then 653140 and 653141, kept when he switched it off; 404885's two email links, made in the app while it was off, have none). Whether a link made while a flow is off, after it has been on, gets one at the next switch-on is UNVERIFIED. The On bounced link is its own link, carrying only that condition: gap A13, closed 2026-09-25 (Joe drew one by hand in flow 404885; link 1373730, Send email 1718202 to a Wait, read by the Flow Reader at 16:49 Paris)."
+ },
+ "conditionGrammar": {
+  "group": {
+   "type": "group",
+   "operator": "and | or",
+   "conditions": [
+    "<rows>"
+   ],
+   "uuid": "<uuid>"
+  },
+  "rows": {
+   "tag": {
+    "type": "tag",
+    "condition": [
+     "has",
+     "has not"
+    ],
+    "value": "<tag name>"
+   },
+   "field": {
+    "type": "field",
+    "field": "<name; custom fields as data.<name>>",
+    "condition": [
+     "is",
+     "is not",
+     "is empty",
+     "is not empty",
+     "before period",
+     "after period",
+     "is more than"
+    ],
+    "value": "<value; days for the periods; a number for is more than; text on a Text field, numbers included (\"1\"); for is empty and is not empty the value Encharge stored in the same place (\"\" or 0; it seems to carry nothing; api-map 6.1)>"
+   },
+   "segment": {
+    "type": "segment",
+    "condition": [
+     "in",
+     "not in"
+    ],
+    "value": "<segment id>"
+   }
+  },
+  "meanings": {
+   "before period": "more than N days ago",
+   "after period": "within the last N days",
+   "is more than": "above N, on a Number field (the Build tab says: more than)"
+  },
+  "nesting": "none — one flat group per segment or check",
+  "buildTabNumberMenu": {
+   "source": "Joe's screenshot of the Check condition menu for Login Count (a Number field), 2026-09-23",
+   "labels": [
+    "more than",
+    "less than",
+    "at least",
+    "is",
+    "is not",
+    "is empty",
+    "is not empty",
+    "is any",
+    "is any of",
+    "is not any of"
+   ],
+   "stored": {
+    "more than": "is more than: PROVEN (evidence/reader-2026-09-23.json; the value is stored as a number)",
+    "is / is not": "the same words: PROVEN on Text and True/False fields; not yet seen on a Number field",
+    "is empty / is not empty": "not yet seen on a Number field (gap A7c). On custom Text fields both are PROVEN (is empty only in a check); on custom Date fields is empty is PROVEN; the rest is gap A11 (evidence/reader-2026-09-23-a10.json)",
+    "less than": "not yet seen; Encharge's own Event filter schema lists \"is less than\"",
+    "at least": "not yet seen; the Event filter schema lists \"at least\"",
+    "is any": "not yet seen; the Event filter schema lists \"is any\", with no value",
+    "is any of / is not any of": "not yet seen, and in no captured schema"
+   }
+  },
+  "unverified": [
+   "number: less than, at least, is any, is any of, is not any of; is, is not, is empty and is not empty on a Number field (gap A7c)",
+   "a segment row inside a Check condition step (gap A9; seen only in segments)",
+   "the empty tests not yet seen stored: is empty on a Text field in a segment, is not empty on a Date field, and either test on a field no user created (built-in, system, read-only or integration fields) (gap A11; none needed by v47 as far as known)",
+   "whether a row is \"1\" on a Text field finds contacts whose value a writer stored as the number 1 (gap A12; needed by v47's Abandoners edit; live test B3 counts it for segments; checks need a run with a test contact)"
+  ],
+  "proven": {
+   "segment in": "evidence/reader-2026-09-23.json (ZZ Capture Segment, 1257212)",
+   "number is more than": "evidence/reader-2026-09-23.json (ZZ Capture Test, step 1718247)",
+   "date is empty": "evidence/reader-2026-09-23-a10.json: stored as \"is empty\" with 0, in the check and the segment; ZZ Capture Segment still loads with it (251 people, Joe, 2026-09-24)",
+   "text is not empty": "evidence/reader-2026-09-23-a10.json: stored as \"is not empty\" with 0 in the check and \"\" in ZZ Capture Segment (two older segments hold 0 and no value)",
+   "a number typed on a Text field": "evidence/reader-2026-09-23-a10.json: stored as text, \"1\", in the check and the segment. Flow 310308's checks hold the numbers 1 and 2; how they came to be numbers is not known"
+  },
+  "inCheckStep": "stored as a JSON string of {\"objectName\":\"person\",\"conditions\":<group>}",
+  "provenOnFieldType": {
+   "source": "evidence/reader-2026-09-23-a10.json, conditionCensus: every condition row stored in the account (42 rows, read 2026-09-23 15:38 Paris)",
+   "string": [
+    "is",
+    "is not",
+    "is empty",
+    "is not empty"
+   ],
+   "boolean": [
+    "is",
+    "is not"
+   ],
+   "number": [
+    "is more than"
+   ],
+   "date-time": [
+    "before period",
+    "after period",
+    "is empty"
+   ],
+   "note": "Values for is empty and is not empty on custom fields, as stored: Text is empty \"\" (a check only); Date is empty 0 (check and segment); Text is not empty 0 (a check, and segment Abandoners (historic)), \"\" (ZZ Capture Segment) and no value (segment Subscribers, on the built-in field email). The compiler writes the value stored for the same test, field type and place (compile.py EMPTY_VALUE), only on fields a user created (createdBy \"user\"), as every stored one is; everything else is gap A11"
+  }
+ },
+ "fieldTypes": {
+  "text": {
+   "type": "string",
+   "readOnly": false,
+   "canMapFrom": true,
+   "firstClassField": false,
+   "array": false,
+   "createdBy": "user"
+  },
+  "date": {
+   "type": "string",
+   "format": "date-time",
+   "readOnly": false,
+   "canMapFrom": true,
+   "firstClassField": false,
+   "array": false,
+   "createdBy": "user"
+  },
+  "call": "POST /v1/schemas/person/fields with a JSON array of fields, each also carrying name and title"
+ },
+ "flowSettings": {
+  "always": {},
+  "once": {
+   "canEnterOnce": true
+  },
+  "per30d": {
+   "canEnterOnce": true,
+   "canEnterOncePerPeriod": {
+    "periodType": "days",
+    "periodLength": 30
+   }
+  },
+  "note": "Saved with PATCH /v1/integrations/{id} {id, name, status, data}; the builder sends status \"deactivated\" and only for its own drafts."
+ },
+ "statuses": {
+  "deactivated": "new, never switched on",
+  "on": "running",
+  "deactivated-user": "switched off by a person after being on"
+ },
+ "segment": {
+  "create": {
+   "name": "<name>",
+   "color": "#00805e",
+   "objectName": "person"
+  },
+  "rowsCall": "PATCH /v1/segments/{id} with the created segment plus conditions"
+ },
+ "email": {
+  "copyCall": "POST /v1/emails with the master's fields minus id",
+  "saveCall": "PATCH /v1/emails/{id}",
+  "fields": [
+   "type",
+   "name",
+   "isStandalone",
+   "accountId",
+   "subject",
+   "fromEmail",
+   "fromName",
+   "html",
+   "editor",
+   "previewImage",
+   "archived",
+   "canSpamCompliance",
+   "communicationCategoryId",
+   "isDefaultTemplate"
+  ]
+ },
+ "firstClassFields": {
+  "names": [
+   "MRR",
+   "UTMCampaign",
+   "UTMContent",
+   "UTMMedium",
+   "UTMSource",
+   "UTMTerm",
+   "address",
+   "browser",
+   "city",
+   "company",
+   "country",
+   "createdAt",
+   "deletedAt",
+   "device",
+   "deviceType",
+   "email",
+   "enchargeAnonymousId",
+   "firstName",
+   "firstReferrer",
+   "firstUTMCampaign",
+   "firstUTMContent",
+   "firstUTMMedium",
+   "firstUTMSource",
+   "firstUTMTerm",
+   "groupId",
+   "id",
+   "ip",
+   "isEmailDisposable",
+   "isEmailRole",
+   "landingPage",
+   "lastActivity",
+   "lastName",
+   "leadScore",
+   "name",
+   "originSource",
+   "originSourceLabel",
+   "phone",
+   "platform",
+   "postcode",
+   "referrer",
+   "salutation",
+   "segmentAnonymousId",
+   "state",
+   "timezone",
+   "title",
+   "trialEnd",
+   "trialStart",
+   "unsubscribed",
+   "updatedAt",
+   "userId",
+   "validationConfidence",
+   "validationResult",
+   "website"
+  ],
+  "rule": "first-class fields are written bare in conditions; custom fields as data.<name>",
+  "source": "GET /v1/schemas (person object), capture 2, 2026-09-23 11:35:11 UTC"
+ }
+}
