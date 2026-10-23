@@ -1066,6 +1066,195 @@
     "date": "2026-10-23",
     "joeSaid": "Lane cleanup · Templates Pack: a new flow on product_canva_templates_best_of_hacks (decision 134); old flow 405727 untouched."
    }
+  },
+  "zz_reader_test_1": {
+   "id": 410184,
+   "state": "built-off",
+   "made": {
+    "date": "2026-10-23",
+    "run": "zz",
+    "session": "post-flows-2 reader test"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.11",
+    "inputs": [
+     "zz1.json@c492e8b371e1",
+     "zz2.json@5ff0c16fc3e6",
+     "zz3.json@5b3fc2174363",
+     "zz4.json@d4458d87adec",
+     "zz5.json@fc29234093fc",
+     "zz6.json@a5eacbb43920",
+     "zz7.json@63c8f0e0c871"
+    ]
+   },
+   "verify": "ok",
+   "name": "ZZ reader test 1 - delete",
+   "steps": {
+    "t1": 1746046,
+    "f1": 1746047
+   }
+  },
+  "zz_reader_test_2": {
+   "id": 410185,
+   "state": "built-off",
+   "made": {
+    "date": "2026-10-23",
+    "run": "zz",
+    "session": "post-flows-2 reader test"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.11",
+    "inputs": [
+     "zz1.json@c492e8b371e1",
+     "zz2.json@5ff0c16fc3e6",
+     "zz3.json@5b3fc2174363",
+     "zz4.json@d4458d87adec",
+     "zz5.json@fc29234093fc",
+     "zz6.json@a5eacbb43920",
+     "zz7.json@63c8f0e0c871"
+    ]
+   },
+   "verify": "ok",
+   "name": "ZZ reader test 2 - delete",
+   "steps": {
+    "t1": 1746048,
+    "f1": 1746049
+   }
+  },
+  "zz_reader_test_3": {
+   "id": 410186,
+   "state": "built-off",
+   "made": {
+    "date": "2026-10-23",
+    "run": "zz",
+    "session": "post-flows-2 reader test"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.11",
+    "inputs": [
+     "zz1.json@c492e8b371e1",
+     "zz2.json@5ff0c16fc3e6",
+     "zz3.json@5b3fc2174363",
+     "zz4.json@d4458d87adec",
+     "zz5.json@fc29234093fc",
+     "zz6.json@a5eacbb43920",
+     "zz7.json@63c8f0e0c871"
+    ]
+   },
+   "verify": "ok",
+   "name": "ZZ reader test 3 - delete",
+   "steps": {
+    "t1": 1746050,
+    "f1": 1746051
+   }
+  },
+  "zz_reader_test_4": {
+   "id": 410187,
+   "state": "built-off",
+   "made": {
+    "date": "2026-10-23",
+    "run": "zz",
+    "session": "post-flows-2 reader test"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.11",
+    "inputs": [
+     "zz1.json@c492e8b371e1",
+     "zz2.json@5ff0c16fc3e6",
+     "zz3.json@5b3fc2174363",
+     "zz4.json@d4458d87adec",
+     "zz5.json@fc29234093fc",
+     "zz6.json@a5eacbb43920",
+     "zz7.json@63c8f0e0c871"
+    ]
+   },
+   "verify": "ok",
+   "name": "ZZ reader test 4 - delete",
+   "steps": {
+    "t1": 1746052,
+    "f1": 1746053
+   }
+  },
+  "zz_reader_test_5": {
+   "id": 410188,
+   "state": "built-off",
+   "made": {
+    "date": "2026-10-23",
+    "run": "zz",
+    "session": "post-flows-2 reader test"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.11",
+    "inputs": [
+     "zz1.json@c492e8b371e1",
+     "zz2.json@5ff0c16fc3e6",
+     "zz3.json@5b3fc2174363",
+     "zz4.json@d4458d87adec",
+     "zz5.json@fc29234093fc",
+     "zz6.json@a5eacbb43920",
+     "zz7.json@63c8f0e0c871"
+    ]
+   },
+   "verify": "ok",
+   "name": "ZZ reader test 5 - delete",
+   "steps": {
+    "t1": 1746054,
+    "f1": 1746055
+   }
+  },
+  "zz_reader_test_6": {
+   "id": 410190,
+   "state": "built-off",
+   "made": {
+    "date": "2026-10-23",
+    "run": "zz",
+    "session": "post-flows-2 reader test"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.11",
+    "inputs": [
+     "zz1.json@c492e8b371e1",
+     "zz2.json@5ff0c16fc3e6",
+     "zz3.json@5b3fc2174363",
+     "zz4.json@d4458d87adec",
+     "zz5.json@fc29234093fc",
+     "zz6.json@a5eacbb43920",
+     "zz7.json@63c8f0e0c871"
+    ]
+   },
+   "verify": "ok",
+   "name": "ZZ reader test 6 - delete",
+   "steps": {
+    "t1": 1746056,
+    "f1": 1746057
+   }
+  },
+  "zz_reader_test_7": {
+   "id": 410191,
+   "state": "built-off",
+   "made": {
+    "date": "2026-10-23",
+    "run": "zz",
+    "session": "post-flows-2 reader test"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.11",
+    "inputs": [
+     "zz1.json@c492e8b371e1",
+     "zz2.json@5ff0c16fc3e6",
+     "zz3.json@5b3fc2174363",
+     "zz4.json@d4458d87adec",
+     "zz5.json@fc29234093fc",
+     "zz6.json@a5eacbb43920",
+     "zz7.json@63c8f0e0c871"
+    ]
+   },
+   "verify": "ok",
+   "name": "ZZ reader test 7 - delete",
+   "steps": {
+    "t1": 1746058,
+    "f1": 1746059
+   }
   }
  },
  "segments": {
