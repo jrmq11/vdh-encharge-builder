@@ -660,25 +660,25 @@
    }
   },
   "lane_cleanup_pack": {
-   "id": 405727,
+   "id": 410153,
    "state": "built-off",
    "made": {
-    "date": "2026-09-28",
-    "run": "lane-pack-1",
-    "session": "build sitting 2026-09-28 (email-set chat)"
+    "date": "2026-10-23",
+    "run": "lc_flow",
+    "session": "Post flows 2, Lane cleanup Templates Pack, 2026-10-23"
    },
    "spec": {
-    "compiler": "vdh-encharge-builder v1.02",
+    "compiler": "vdh-encharge-builder v1.11",
     "inputs": [
-     "lane-cleanup-pack.json@94e39353d9c9"
+     "lane-cleanup-pack.json@3b95806b79d7"
     ],
-    "emailSet": "v52"
+    "emailSet": "v57"
    },
    "verify": "ok",
    "name": "Lane cleanup · Templates Pack",
    "steps": {
-    "t1": 1721520,
-    "f1": 1721521
+    "t1": 1745867,
+    "f1": 1745868
    }
   },
   "lane_cleanup_library_refund": {
@@ -1039,6 +1039,32 @@
     "a3": 1745852,
     "r8": 1745853,
     "x7": 1745854
+   }
+  },
+  "lane_cleanup_pack-old-2026-10-23": {
+   "id": 405727,
+   "state": "failed",
+   "made": {
+    "date": "2026-09-28",
+    "run": "lane-pack-1",
+    "session": "build sitting 2026-09-28 (email-set chat)"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.02",
+    "inputs": [
+     "lane-cleanup-pack.json@94e39353d9c9"
+    ],
+    "emailSet": "v52"
+   },
+   "verify": "ok",
+   "name": "Lane cleanup · Templates Pack",
+   "steps": {
+    "t1": 1721520,
+    "f1": 1721521
+   },
+   "superseded": {
+    "date": "2026-10-23",
+    "joeSaid": "Lane cleanup · Templates Pack: a new flow on product_canva_templates_best_of_hacks (decision 134); old flow 405727 untouched."
    }
   }
  },
