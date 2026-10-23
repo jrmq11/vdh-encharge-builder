@@ -415,6 +415,24 @@
    },
    "verify": "ok",
    "name": "Library Onboarding 4"
+  },
+  "template_delivery_1": {
+   "id": 496073,
+   "state": "built-off",
+   "made": {
+    "date": "2026-10-23",
+    "run": "td_emails",
+    "session": "Post flows 2, Free Template Delivery emails, 2026-10-23"
+   },
+   "spec": {
+    "compiler": "vdh-encharge-builder v1.11",
+    "inputs": [
+     "manifest-template_delivery-emails.json@872621b45889"
+    ],
+    "emailSet": "v57"
+   },
+   "verify": "ok",
+   "name": "Free Template Delivery 1"
   }
  },
  "flows": {
